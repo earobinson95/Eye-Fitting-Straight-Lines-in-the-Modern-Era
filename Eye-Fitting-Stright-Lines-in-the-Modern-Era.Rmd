@@ -6,7 +6,7 @@ blinded: 0
 
 authors: 
 - name: Emily A. Robinson 1
-  thanks: The authors gratefully acknowledge ...
+  #thanks: The authors gratefully acknowledge ...
   affiliation: Department of Statistics, University of Nebraska - Lincoln
   
 - name: Susan VanderPlas 2
@@ -18,10 +18,12 @@ authors:
 keywords:
 - Graphics
 - Regression
-- Perception
+- Graph Perception
+- Scatterplot
+- Cognitive Bias
 
 abstract: |
-  Fitting lines by eye through a set of points has been explored since the 20th century. Common methods of fitting trends by eye involve maneuvering a string, black thread, or ruler until the fit is suitable, then drawing the line through the set of points. In 2015, the New York Times introduced an interactive feature, called ‘You Draw It’. Readers are asked to input their own assumptions about various metrics and compare how these assumptions relate to reality. The New York Times team utilizes Data Driven Documents (D3) that allows readers to predict these metrics through the use of drawing a line on their computer screen with their computer mouse. In my research, I created ‘You Draw It’ interactive graphics using the r2d3 package in R statistical software and validated this as a tool and method for testing graphics. I recruited participants via crowdsourcing websites and replicated the study found in Eye Fitting Straight Lines (Mosteller et al., 1981) in order to establish you draw it as a tool and method for testing graphics. Participats were directed to an RShiny application link and shown points following a linear trend and asked to draw a line through the data points using their computer mouse. A total of 39 participants completed trendlines for 256 unique interactive plots. A linear mixed model and a generalized additive mixed model were used to determine the relationship between the participants drawn points and the best fit lines. Results from my study were consistent with those found in the previous study. When shown points following a linear trend, participants tended to fit the slope of the first principal component over the slope of the least squares regression line. This trend was most prominent when shown data simulated with larger variances. The reproducibility of these results serve as evidence of the reliability of the you draw it method. Future work is necessarry to implement the ‘You Draw It’ tool as a method of testing graphics. [200 word limit]
+  Fitting lines by eye through a set of points has been explored since the 20th century. Common methods of fitting trends by eye involve maneuvering a string, black thread, or ruler until the fit is suitable, then drawing the line through the set of points. In 2015, the New York Times introduced an interactive feature, called 'You Draw It'. Readers are asked to input their own assumptions about various metrics and compare how these assumptions relate to reality. The New York Times team utilizes Data Driven Documents (D3) that allows readers to predict these metrics by drawing a line on their computer screen with their computer mouse. In my research, I established ‘You Draw It’ as a method for graphical testing by adapting the New York Times feature. I recruited participants via crowdsourcing websites and replicated the study found in Eye Fitting Straight Lines (Mosteller et al., 1981). Participants were directed to an RShiny application link and shown points following a linear trend and asked to draw a line through the data points using their computer mouse; task plots were generated using the r2d3 package in R statistical software. Results from my study were consistent with those found in the previous study; when shown points following a linear trend, participants tended to fit the slope of the first principal component over the slope of the least-squares regression line. This trend was most prominent when shown data simulated with larger variances. The reproducibility of these results serves as evidence of the reliability of the you draw it method. Future work is necessary to implement the 'You Draw It' tool as a method of testing graphics. [200 word limit]
 
 bibliography: bibliography.bib
 output: rticles::asa_article
@@ -57,10 +59,30 @@ library(ggforce)
 ```
 
 # Introduction
+Advanced technology and computing power have promoted data visualization as a central tool in modern data science. @unwin2020data defines data visualization as the art of drawing graphical charts in order to display data. Graphics are useful for data cleaning, exploring data structure, and have been an essential component in communicating information for the last 200 years [@lewandowsky1989perception]. Although statistical graphics have become widely used and valued in science, business, and in many other aspects of life, as creators of graphics, we are too accepting of them as default without asking critical questions about the graphics we create or view (Unwin, 2020). 
 
-Initial studies in the 20th century explored the use of fitting lines by eye through a set of points [@finney_subjective_1951; @mosteller_eye_1981]. 
+## Graph Perception
+
+
+## Testing Statistical Graphics
+
+One way in which we evaluate the effectiveness of charts is through the use of graphical tests. We could ask participants to identify differences in graphs, read information off of a chart accurately, use data to make correct real-world decisions, or predict the next few observations. All of these types of tests require different levels of use and manipulation of the information being presented in the chart.
+
++ Psychophysics (speed and accuracy)
++ Lineups
+
+## Trend Judgement
+
++ @finney1951subjective: "rule two lines"
++ @mosteller1981eye: transparancy sheet with a line drawn across middle.
++ @ciccione2021can: used a trackpad to adjust the tilt of a line on screen.
+
++ Ensemble Perception: the visual system can compute averages of various features in parallel across the items in a set
++ Strength of Association: when participants are asked to judge the strength of an association presented in a scatterplot, their judgement is more accurate for higher levels of the Pearson correlation coefficient r, although still affected by the variance of the dataset.
+
+Initial studies in the 20th century explored the use of fitting lines by eye through a set of points [@finney1951subjective; @mosteller1981eye]. 
 Common methods of fitting trends by eye involve maneuvering a string, black thread, or ruler until the fit is suitable, then drawing the line through the set of points. 
-In @finney_subjective_1951, it was of interest to determine the effect of stopping iterative maximum likelihood calculations after one iteration. 
+In @finney1951subjective, it was of interest to determine the effect of stopping iterative maximum likelihood calculations after one iteration. 
 Many techniques in statistical analysis are performed with the aid of iterative calculations such as Newton's method or Fisher's scoring. 
 Guesses are made at the best estimates of certain parameters and these guesses are then used as the basis of a computation which yields a new set of approximation to the parameter estimates; this same procedure is the performed on the new parameter estimates and the computing cycle is repeated until convergence, as determined by the statistician, is reached. 
 The author was interested in whether one iteration of calculations was sufficient in the estimation of parameters connected with dose-response relationships. 
@@ -68,36 +90,24 @@ One measure of interest is the relative potency between a test preparation of do
 \cref{fig:subjective-judgement} shows a pair of parallel probit responses in a biological assay.
 The x-axis is the $\log_{1.5}$ dose level for four dose levels (for example, doses 4, 6, 9, and 13 correspond correspond to equally spaced values on a logarithmic scale, labeled  0, 1, 2, and 3) and the y-axis is the corresponding probit response as calculated in @finney1948table; circles correspond to the test preparation method while the crosses correspond to the standard preparation method.
 For these sort of assays, the does-response relationship follows a linear regression of the probit response on the logarithm of the dose levels; the two preparation methods can be constrained to be parallel [@jerne1949validity], limiting the relative potency to one consistent value. 
-In this study, twenty-one scientists were recruited via postal mail and asked to "rule two lines" in order to judge by eye the positions for a pair of parallel probit regression lines in a biological assay \pcref{fig:subjective-judgement}.
-<!-- \rh{I think more explanation is needed for Figure 3.1 and the corresponding experiment.} -->
+In this study, twenty-one scientists were recruited via postal mail and asked to "rule two lines" in order to judge by eye the positions for a pair of parallel probit regression lines in a biological assay.
 <!-- https://www.quantics.co.uk/blog/what-is-relative-potency/ -->
 The author then computed one iterative calculation of the relative potency based on starting values as indicated by the pair of lines provided by each participant and compared these relative potency estimates to that which was estimated by the full probit technique (reaching convergence through multiple iterations).
 Results indicated that one cycle of iterations for calculating the relative potency was sufficient based on the starting values provided by eye from the participants.
 
-```{r subjective-judgement, fig.cap = "Subjective Judgement in Statistical Analysis (1951) Parallel Probits", out.width="50%"}
-knitr::include_graphics("images/subjective-judgement-plot.png")
-```
-
-Thirty years later, Mosteller et al. (1981), sought to understand the properties of least squares and other computed lines by establishing one systematic method of fitting lines by eye. 
+Thirty years later, @mosteller1981eye, sought to understand the properties of least squares and other computed lines by establishing one systematic method of fitting lines by eye. 
 The authors recruited 153 graduate students and post doctoral researchers in Introductory Biostatistics. 
-Participants were asked to fit lines by eye to four sets of points \pcref{fig:mosteller-eyefitting-plot} using an 8.5 x 11 inch transparency with a straight line etched completely across the middle. 
+Participants were asked to fit lines by eye to four scatterplots using an 8.5 x 11 inch transparency with a straight line etched completely across the middle. 
 A latin square design [@giesbrecht2004planning] with packets of the set of points stapled together in four different sequences was used to determine if there is an effect of order of presentation.
-<!-- \rh{Maybe a reference would be nice for the latin square desing. THere might be people not being familiar with experimental design.} -->
 It was found that order of presentation had no effect and that participants tended to fit the slope of the first principal component (error minimized orthogonally, both horizontal and vertical, to the regression line) over the slope of the least squares regression line (error minimized vertically to the regression line).
-<!-- \pref{fig:ols-vs-pca-example} -->
-<!-- \rh{maybe some explanation would be nice for this.} -->
-
-```{r mosteller-eyefitting-plot, fig.cap = "Eye Fitting Straight Lines (1981) Data Sets", out.width="70%"}
-knitr::include_graphics("images/eyefitting-straight-lines-plots.png")
-```
 
 In 2015, the New York Times introduced an interactive feature, called You Draw It [@aisch_cox_quealy_2015; @buchanan_park_pearce_2017; @katz_2017].
 Readers are asked to input their own assumptions about various metrics and compare how these assumptions relate to reality.
 The New York Times team utilizes Data Driven Documents (D3) that allows readers to predict these metrics through the use of drawing a line on their computer screen with their computer mouse. 
-\cref{fig:nyt-caraccidents} [@katz_2017] is one such example in which readers are asked to draw the line for the missing years providing what they estimate to be the number of Americans who have died every year from car accidents, since 1990.
+[@katz_2017] is one such example in which readers are asked to draw the line for the missing years providing what they estimate to be the number of Americans who have died every year from car accidents, since 1990.
 After the reader has completed drawing the line, the actual observed values are revealed and the reader may check their estimated knowledge against the actual reported data.
 
-```{r nyt-caraccidents, fig.cap = "New York Times You Draw It Feature", out.width="75%"}
+```{r nyt-caraccidents, include = F, fig.cap = "New York Times You Draw It Feature", out.width="75%"}
 knitr::include_graphics("images/nyt-caraccidents-frame4.png")
 ```
 
@@ -107,14 +117,14 @@ During 2021 March Madness, FiveThirtyEight created a roster-shuffling machine wh
 Data Driven Documents (D3) is an open-source JavaScript based graphing framework created by Mike Bostock during his time working on graphics at the New York Times.
 For readers familiar with R, it is notable to consider D3 in JavaScript equivalent to the ggplot2 package in R [@ggplot2].
 
-The goal of this paper is to establish you draw it as a tool for measuring predictions of trends fitted by eye and a method for testing graphics, the second then applies you draw it to test an individual's ability to make predictions for exponentially increasing data.
-In order to validate you draw it as a method for testing graphics, the first sub-study, referred to as Eye Fitting Straight Lines in the Modern Era, replicated the experiment and results found in Mosteller et al. (1981). 
+## Research objective
 
-# Study Development
+The goal of this paper is to establish you draw it as a tool for measuring predictions of trends fitted by eye and a method for testing graphics.
+In order to validate you draw it as a method for testing graphics, the first sub-study, referred to as Eye Fitting Straight Lines in the Modern Era, replicated the experiment and results found in @mosteller1981eye. 
 
-## Interactive Plot Development
+# Methods
 
-## Data Generation
+## Data Simulation
 
 All data processing was conducted in R before being passed to the D3.js source code. 
 A total of $N = 30$ points $(x_i, y_i), i = 1,...N$ were generated for $x_i \in [x_{min}, x_{max}]$ where $x$ and $y$ have a linear relationship.
@@ -123,7 +133,7 @@ Data were simulated based on linear model with additive errors:
 y_i & = \beta_0 + \beta_1 x_i + e_i \\
 \text{with } e_i & \sim N(0, \sigma^2). \nonumber
 \end{align} 
-The parameters $\beta_0$ and $\beta_1$ are selected to replicate Mosteller et al. (1981) with $e_i$ generated by rejection sampling in order to guarantee the points shown align with that of the fitted line. 
+The parameters $\beta_0$ and $\beta_1$ are selected to replicate @mosteller1981eye with $e_i$ generated by rejection sampling in order to guarantee the points shown align with that of the fitted line. 
 An ordinary least squares regression is then fit to the simulated points in order to obtain the best fit line and fitted values in 0.25 increments across the domain, $(x_k, \hat y_{k,OLS}), k = 1, ..., 4 x_{max} +1$.
 The data simulation function then outputs a list of point data and line data both indicating the parameter identification, x-value, and corresponding simulated or fitted y value.
 The data simulation procedure is described in \cref{alg:eyefitting-algorithm}.
@@ -162,13 +172,14 @@ data.frame(Parm = c("F", "N", "S", "V"),
         caption = "Eye Fitting Straight Lines in the Modern Era simulation model parameters")
 ```
 
-Simulated model equation parameters were selected to reflect the four data sets (F, N, S, and V) used in @mosteller_eye_1981 \pcref{tab:eyefitting-parameters}. 
+## Parameter selection
+
+Simulated model equation parameters were selected to reflect the four data sets (F, N, S, and V) used in @mosteller1981eye \pcref{tab:eyefitting-parameters}. 
 Parameter choices F, N, and S simulated data across a domain of 0 to 20. 
 Parameter choice F produces a trend with a positive slope and a large variance while N has a negative slope and a large variance. 
 In comparison, S shows a trend with a positive slope with a small variance and V yields a steep positive slope with a small variance over the domain of 4 to 16. 
 \cref{fig:eyefitting-simplot} illustrates an example of simulated data for all four parameter choices intended to reflect the trends seen in \cref{fig:mosteller-eyefitting-plot}.
 Aesthetic design choices were made consistent across each of the interactive you draw it plots; the aspect ratio, defining the $x$ to $y$ axis ratio was set to one and the y-axis range extended 10\% beyond (above and below) the range of the simulated data points to allow for users to draw outside the simulated data set range. 
-<!-- \rh{I am not sure if readers wll understand "buffer of 50\% on the lower limit", "linear scale option", "start draw point set to 50\%.} -->
 
 ```{r eyefitting-simplot, fig.height = 6, fig.width = 6, fig.cap = "Eye Fitting Straight Lines in the Modern Era Simulated Data Example", out.width="75%"}
 
@@ -197,13 +208,25 @@ eyefitting_example_simplot <- eyefitting_example_sim %>%
 eyefitting_example_simplot
 ```
 
-## Study Design
+## 'You Draw It' Task Plots
 
-Participants completed the experiment using a RShiny application found [here](https://shiny.srvanderplas.com/you-draw-it/).
-During May 2021, participants were recruited through Twitter, Reddit, and direct email.
-A total of 39 individuals completed 256 unique you draw it task plots; all completed you draw it task plots were included in the analysis.
+## Procedure
+
++ 2 practice trials.
+
+## Participants
+
++ Recruted through Twitter, Reddit, and direct email (May 2021)
++ 39 individuals completed 256 unique 'You Draw It' task plots; all completed you draw it task plots were included in the analysis.
++ All participants had normal or corrected to normal vision.
++ IRB approval and informed consent.
++ Not paid.
++ Took approximately 15 minutes to complete.
++ Participants completed the experiment using a RShiny application found [here](https://shiny.srvanderplas.com/you-draw-it/).
 
 # Results
+
++ Because of the randomness in the stimulus generation process, on any given trial the actual slope of the linear regression line could differ from its prescribed value.
 
 In addition to the participant drawn points, $(x_k, y_{k,drawn})$, and the ordinary least squares (OLS) regression fitted values, $(x_k, \hat y_{k,OLS})$, a regression equation with a slope based on the first principal component (PCA) was used to calculate fitted values, $(x_k, \hat y_{k,PCA})$.
 For each set of simulated data and parameter choice, the PCA regression equation was determined by using the princomp function in the stats package in base R to obtain the rotation of the coordinate axes from the first principal component (direction which captures the most variance).
@@ -282,8 +305,6 @@ ggplot(aes(x1,x2))+
 
 <!-- To calculate the first principal component fit: https://benediktehinger.de/blog/science/scatterplots-regression-lines-and-the-first-principal-component/ -->
 
-<!-- \rh{you have xijk and xk -> a little confusing.} -->
-<!-- \rh{you mention "domain of "x". what do you mean by that?} -->
 For each participant, the final data set used for analysis contains $x_{ijk}, y_{ijk,drawn}, \hat y_{ijk,OLS}$, and $\hat y_{ijk,PCA}$ for parameter choice $i = 1,2,3,4$, j = $1,...N_{participant}$, and $x_{ijk}$ value $k = 1, ...,4 x_{max} + 1$. 
 Using both a linear mixed model and a generalized additive mixed model, comparisons of vertical residuals in relation to the OLS fitted values ($e_{ijk,OLS} = y_{ijk,drawn} - \hat y_{ijk,OLS}$) and PCA fitted values ($e_{ijk,PCA} = y_{ijk,drawn} - \hat y_{ijk,PCA}$) were made across the domain.
 \cref{fig:eyefitting-example-plot} displays an example of all three fitted trend lines for parameter choice F.
@@ -356,7 +377,7 @@ y_{ijk, drawn} - \hat y_{ijk, fit} = e_{ijk,fit} = \alpha_i + s_{i}(x_{ijk}) + p
 \cref{fig:eyefitting-lmer-residualplots} and \cref{fig:eyefitting-gamm-residualplots} show the estimated trends of residuals (vertical deviation of participant drawn points from both the OLS and PCA fitted points) as modeled by a LMM and GAMM respectively. 
 Examining the plots, the estimated trends of PCA residuals (orange) appear to align closer to the $y=0$ horizontal (dashed) line than the OLS residuals (blue). 
 In particular, this trend is more prominent in parameter choices with large variances (F and N).
-These results are consistent to those found in @mosteller_eye_1981 indicating participants fit a trend line closer to the estimated regression line with the slope of the first principal component than the estimated OLS regression line.
+These results are consistent to those found in @mosteller1981eye indicating participants fit a trend line closer to the estimated regression line with the slope of the first principal component than the estimated OLS regression line.
 
 ```{r eyefitting-plots}
 eyefitting_model_data <- read.csv("data/youdrawit/youdrawit-eyefitting-model-data.csv") %>%
@@ -431,51 +452,16 @@ eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
 eyefitting.gamm.plot
 ```
 
-In addition to fitting trend lines over the residuals between the participant drawn values and fitted values, an OLS sum of squares and PCA sums of squares measure was calculated for each you draw it plot.
-Sums of squares between the two fits were compared using the lmer function in the lme4 package in R [@lme4] to run a linear mixed model (LMM) with a log transformation.
-Parameter choice (S, F, V, N), fit (OLS, PCA), and the interaction between parameter choice and fit were treated as fixed effects with a random participant effect. 
-Define $SS_{ijk}$ as the sums of squares for parameter choice $i = 1,2,3,4$, fit $j=1,2$, and participant $k = 1,...,N_{participant}$.
-The LMM equation is given by: 
-<!-- \rh{in equation 3.4, have epsilon ijk, and on page 56 too.} -->
-\begin{equation}
-\log\left(SS_{ijk}\right) = \alpha_i + \beta_j + \alpha\beta_{ij} + p_{j} + \epsilon_{ijk}
-\end{equation}
-
-+ $\alpha_i$ denotes the effect of the $i^{th}$ parameter choice
-+ $\beta_j$ denotes the effect of the $j^{th}$ fit
-+ $\alpha\beta_{ij}$ denotes the interaction between the $i^{th}$ parameter choice and $j^{th}$ fit
-+ $p_{j} \sim N(0, \sigma^2_{participant})$ is the random error due to the $k^{th}$ participant's characteristics
-+ $\epsilon_{ijk} \sim N(0, \sigma^2)$ is the residual error.
-
-The estimated odds ratios between the OLS fit and PCA fit for each parameter choice are displayed in \cref{fig:eyefitting-ss-oddsratio}.
-While there is no significant effect of fit for any parameter choices, there is indication of the trend found previously in the residual regression models indicating that participants tend to fit the slope of the first principal component over the slope of the ordinary least squares regression line, particularly for trends with large variation (parameter choices N and F). 
-
-```{r eyefitting-ss-oddsratio, fig.cap = "Eye Fitting Straight Lines in the Modern Era Sum of Squares Results", out.width="75%"}
-ss.slicediffs <- read.csv("data/youdrawit/youdrawit-ssSlicediffs-lmer.csv")
-ss.slicediffs %>%
-  ggplot(aes(x = ratio, y = parm_id)) +
-  geom_point() +
-  geom_errorbar(aes(xmin = lower.CL, xmax = upper.CL), width = 0.5) +
-  geom_vline(xintercept = 1, linetype = "dashed") +
-  theme_bw(base_size = 14) +
-  theme(aspect.ratio = 0.5,
-        axis.text    = element_text(size = 12),
-        axis.title   = element_text(size = 12),
-        legend.title = element_text(size = 12),
-        legend.text  = element_text(size = 12)
-        ) +
-  scale_x_continuous("Sum of Squares Odds Ratio \n (OLS vs PCA)", limits = c(0,2.5), breaks = seq(0,2.5,0.5)) +
-  scale_y_discrete("Data Set")
-```
-
 # Discussion and Conclusion
 
-The intent of this paper was to establish you draw it as a tool for testing graphics then use this tool to determine the cognitive implications of displaying data on the log scale.
-Eye Fitting Straight Lines in the Modern Era replicated the results found in Mosteller et al. (1981). 
+The intent of this paper was to establish you draw it as a tool. 
+Eye Fitting Straight Lines in the Modern Era replicated the results found in @mosteller1981eye.
 When shown points following a linear trend, participants tended to fit the slope of the first principal component over the slope of the least squares regression line.
-This trend was most prominent when shown data simulated with larger variances. 
+This trend was most prominent when shown data simulated with larger variances.
 The reproducibility of these results serve as evidence of the reliability of the you draw it method.
 
 # Future Work
 
++ Use the method.
++ Write R package.
 
