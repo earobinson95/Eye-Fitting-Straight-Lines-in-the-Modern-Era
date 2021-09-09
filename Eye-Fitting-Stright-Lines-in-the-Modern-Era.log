@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.5.12)  6 SEP 2021 14:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.5.12)  9 SEP 2021 12:40
 entering extended mode
 **./Eye-Fitting-Stright-Lines-in-the-Modern-Era.tex
 (Eye-Fitting-Stright-Lines-in-the-Modern-Era.tex
@@ -283,7 +283,28 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
 \Hy@SectionHShift=\skip54
+) (C:\Users\ERobi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:\Users\ERobi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\color.
+cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+
+(C:\Users\ERobi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\dvipsnam.d
+ef
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+))
 (C:\Users\ERobi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/cleveref\cleveref.s
 ty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
@@ -370,24 +391,24 @@ File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
 ) (Eye-Fitting-Stright-Lines-in-the-Modern-Era.aux)
 \openout1 = `Eye-Fitting-Stright-Lines-in-the-Modern-Era.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
 
 (C:\Users\ERobi\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-pd
 f.mkii
@@ -414,7 +435,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 ys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 37.
+Package hyperref Info: Link coloring OFF on input line 38.
 
 (C:\Users\ERobi\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.st
 y
@@ -430,9 +451,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count298
 )
-LaTeX Info: Redefining \ref on input line 37.
-LaTeX Info: Redefining \pageref on input line 37.
-LaTeX Info: Redefining \nameref on input line 37.
+LaTeX Info: Redefining \ref on input line 38.
+LaTeX Info: Redefining \pageref on input line 38.
+LaTeX Info: Redefining \nameref on input line 38.
 (Eye-Fitting-Stright-Lines-in-the-Modern-Era.out) (Eye-Fitting-Stright-Lines-in
 -the-Modern-Era.out)
 \@outlinefile=\write4
@@ -442,151 +463,77 @@ LaTeX Info: Redefining \nameref on input line 37.
 Non-PDF special ignored!
 <special> header=psfrag.pro
 
-{C:/Users/ERobi/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-
-LaTeX Warning: Reference `fig:subjective-judgement' on page 1 undefined on inpu
-t line 178.
-
-
-Package natbib Warning: Citation `jerne1949validity' on page 2 undefined on inp
-ut line 189.
-
-[2] [3] [4]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 287.
-
-LaTeX Warning: Reference `fig:mosteller-eyefitting-plot' on page 1 undefined on
- input line 327.
-
-[5] [6pdfTeX warning (ext4): destination with the same identifier (name{table.1
-}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.333 
-      ]
+{C:/Users/ERobi/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3] [4]
+<images/ydi-stimuli.png, id=145, 713.94pt x 196.662pt>
+File: images/ydi-stimuli.png Graphic file (type png)
+<use images/ydi-stimuli.png>
+Package pdftex.def Info: images/ydi-stimuli.png  used on input line 289.
+(pdftex.def)             Requested size: 462.26999pt x 127.33664pt.
+[5]
 <Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-simp
-lot-1.pdf, id=149, 433.62pt x 433.62pt>
+lot-1.pdf, id=164, 650.43pt x 216.81pt>
 File: Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting
 -simplot-1.pdf Graphic file (type pdf)
 <use Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-
 simplot-1.pdf>
 Package pdftex.def Info: Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figu
-re-latex/eyefitting-simplot-1.pdf  used on input line 336.
-(pdftex.def)             Requested size: 346.70248pt x 346.71782pt.
-[7pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
+re-latex/eyefitting-simplot-1.pdf  used on input line 344.
+(pdftex.def)             Requested size: 462.26999pt x 154.09497pt.
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.354 \section{Results}\label{results}}
-                                        <./Eye-Fitting-Stright-Lines-in-the-Mod
-ern-Era_files/figure-latex/eyefitting-simplot-1.pdf>]
-<Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-exam
-ple-1.pdf, id=164, 578.16pt x 433.62pt>
-File: Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca
--example-1.pdf Graphic file (type pdf)
-<use Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-
-example-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figu
-re-latex/ols-vs-pca-example-1.pdf  used on input line 380.
-(pdftex.def)             Requested size: 462.26999pt x 346.69797pt.
-<Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-exam
-ple-plot-1.pdf, id=166, 289.08pt x 289.08pt>
-File: Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting
--example-plot-1.pdf Graphic file (type pdf)
-<use Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-
-example-plot-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figu
-re-latex/eyefitting-example-plot-1.pdf  used on input line 400.
-(pdftex.def)             Requested size: 300.47266pt x 300.48613pt.
-[8] [9pdfTeX warning (ext4): destination with the same identifier (name{figure.
+l.363 
+       <./images/ydi-stimuli.png>] [7pdfTeX warning (ext4): destination with th
+e same identifier (name{table.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  
+l.363 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
 2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
-l.420   \(
-          y_{ijk,drawn}\) is the drawn y-value for the \(i^{th}\) parameter <./
-Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-examp
-le-1.pdf>] [10pdfTeX warning (ext4): destination with the same identifier (name
-{figure.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.420   \(
-          y_{ijk,drawn}\) is the drawn y-value for the \(i^{th}\) parameter <./
-Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-examp
-le-plot-1.pdf>] [11]
-<Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer
--residualplots-1.pdf, id=218, 578.16pt x 578.16pt>
-File: Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting
--lmer-residualplots-1.pdf Graphic file (type pdf)
-<use Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-
-lmer-residualplots-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figu
-re-latex/eyefitting-lmer-residualplots-1.pdf  used on input line 506.
-(pdftex.def)             Requested size: 416.04016pt x 416.03668pt.
-<Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm
--residualplots-1.pdf, id=219, 578.16pt x 578.16pt>
-File: Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting
--gamm-residualplots-1.pdf Graphic file (type pdf)
-<use Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-
-gamm-residualplots-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figu
-re-latex/eyefitting-gamm-residualplots-1.pdf  used on input line 515.
-(pdftex.def)             Requested size: 416.04016pt x 416.03668pt.
-(Eye-Fitting-Stright-Lines-in-the-Modern-Era.bbl
+l.363 
+       <./Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefit
+ting-simplot-1.pdf>]
+
+LaTeX Warning: Reference `fig:ols-vs-pca-example' on page 1 undefined on input 
+line 386.
+
+[8] (Eye-Fitting-Stright-Lines-in-the-Modern-Era.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 5--9
 \OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 https://www.nytimes.com/interactive/2015
 /05/28/upshot/you-draw-it-how-
  []
 
-[12] [13pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.9 
-     <./Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitti
-ng-lmer-residualplots-1.pdf>] [14pdfTeX warning (ext4): destination with the sa
-me identifier (name{figure.5}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.9 
-     <./Eye-Fitting-Stright-Lines-in-the-Modern-Era_files/figure-latex/eyefitti
-ng-gamm-residualplots-1.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 13--18
-\OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 https://www.nytimes.com/interactive/2020
-/05/24/us/us-coronavirus-deaths-
- []
 
-
-Underfull \hbox (badness 2865) in paragraph at lines 27--31
+Underfull \hbox (badness 2865) in paragraph at lines 12--16
 \OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 https://www.nytimes.com/interactive/2017
 /01/15/us/politics/you-draw-obama-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 53--56
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 36--39
 \OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 https://www.nytimes.com/interactive/2017
 /04/14/upshot/drug-overdose-
  []
 
-[15])
-
-Package natbib Warning: There were undefined citations.
-
-[16] (Eye-Fitting-Stright-Lines-in-the-Modern-Era.aux)
+) [10] (Eye-Fitting-Stright-Lines-in-the-Modern-Era.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `Eye-Fitting-Stright-Lines-in-the-Modern-Era.
 out' has not changed.
-(rerunfilecheck)             Checksum: 4CAD1C562B25AB4D6C4F467BC0345183;1676.
+(rerunfilecheck)             Checksum: A4787AC292A7C251AB25BE73F93FF437;2466.
  ) 
 Here is how much of TeX's memory you used:
- 11384 strings out of 479287
- 185969 string characters out of 2853043
- 496064 words of memory out of 3000000
- 28647 multiletter control sequences out of 15000+600000
+ 11847 strings out of 479287
+ 189538 string characters out of 2853043
+ 507207 words of memory out of 3000000
+ 29112 multiletter control sequences out of 15000+600000
  411322 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,11n,74p,348b,454s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,12n,74p,327b,445s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\ERobi\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 tcrm1200.pk><C:/Users/ERobi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmbx10.pfb><C:/Users/ERobi/AppData/Local/Programs/MiKTeX 2.9/font
@@ -599,10 +546,10 @@ r12.pfb><C:/Users/ERobi/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmr8.pfb><C:/Users/ERobi/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ERobi/AppData/Local/Programs/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Eye-Fitting-Stright-Lines-in-the-Modern-Era.pdf (16 pages, 40
-1916 bytes).
+Output written on Eye-Fitting-Stright-Lines-in-the-Modern-Era.pdf (10 pages, 45
+5587 bytes).
 PDF statistics:
- 316 PDF objects out of 1000 (max. 8388607)
- 71 named destinations out of 1000 (max. 500000)
- 122 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 257 PDF objects out of 1000 (max. 8388607)
+ 61 named destinations out of 1000 (max. 500000)
+ 147 words of extra memory for PDF output out of 10000 (max. 10000000)
 
