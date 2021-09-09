@@ -218,27 +218,252 @@ The order of the task plots was randomly assigned for each individual in a compl
 
 # Results
 
-## Fitted Values
+## Fitted Regression Lines
 
-In addition to the participant drawn points, $(x_k, y_{k,drawn})$, and the ordinary least squares (OLS) regression fitted values, $(x_k, \hat y_{k,OLS})$, a regression equation with a slope based on the first principal component (PCA) was used to calculate fitted values, $(x_k, \hat y_{k,PCA})$.
-          For each set of simulated data and parameter choice, the PCA regression equation was determined by using the princomp function in the stats package in base R to obtain the rotation of the coordinate axes from the first principal component (direction which captures the most variance).
-          The estimated slope, $\hat\beta_{1,PCA}$, is determined by the ratio of the axis rotation in y and axis rotation in x of the first principal component with the y-intercept, $\hat\beta_{0,PCA}$ calculated by the point-slope equation of a line using the mean of of the simulated points, $(\bar x_i, \bar y_i)$.
-            Fitted values, $\hat y_{k,PCA}$ are then obtained every 0.25 increment across the domain from the PCA regression equation, $\hat y_{k,PCA} = \hat\beta_{0,PCA} + \hat\beta_{1,PCA} x_k$.
-          \cref{fig:ols-vs-pca-example} illustrates the difference between an OLS regression equation which minimizes the vertical distance of points from the line and a regression equation with a slope calculated by the first principal component which minimizes the smallest distance of points from the line.
+We compare the participant drawn line to two regression lines determined by ordinary least squares regression and regression based on the principal axis (i.e. Deming Regression). \cref{fig:ols-vs-pca-example} illustrates the difference between an OLS regression equation which minimizes the vertical distance of points from the line and a regression equation based on the principal axis which minimizes the Euclidean distance of points (orthogonal) from the line.
 
-+ Because of the randomness in the stimulus generation process, on any given trial the actual slope of the linear regression line could differ from its prescribed value.
+Due to the randomness in the data generation process, the actual slope of the linear regression line fit through the simulated points could differ from the predetermined slope.
+Therefore, we fit an ordinary least squares (OLS) regression to each scatter-plot to obtain fitted values in 0.25 increments across the domain, $\hat y_{k,OLS}$ for $k = 1, ..., 4 x_{max} +1$. 
 
-## Feedback Data
+The regression equation based on the principal axis was determined by using the `princomp` function in the stats package in base R to obtain the rotation of the coordinate axes from the first principal component (direction which captures the most variance).
+The estimated slope, $\hat\beta_{1,PCA}$, is determined by the ratio of the axis rotation in y and axis rotation in x of the first principal component with the y-intercept, $\hat\beta_{0,PCA}$ calculated by the point-slope equation of a line using the mean of of the simulated points, $(\bar x_i, \bar y_i)$.
+Fitted values, $\hat y_{k,PCA}$, are then obtained every 0.25 increment across the domain from the PCA regression equation, $\hat y_{k,PCA} = \hat\beta_{0,PCA} + \hat\beta_{1,PCA} x_k$.
 
-## Linear Trend Constraint Performance
+```{r ols-vs-pca-example, fig.height = 3, fig.width = 6, fig.cap="OLS vs PCA Regression Lines", message=FALSE, warning=FALSE, out.width="100%"}
+library(ggplot2)
+library(magrittr)
+library(plyr)
 
-## Smoothing Spline Trend Performance
+set.seed(2)
+corrCoef = 0.5 # sample from a multivariate normal, 10 datapoints
+dat = MASS::mvrnorm(10,c(0,0),Sigma = matrix(c(1,corrCoef,2,corrCoef),2,2))
+dat[,1] = dat[,1] - mean(dat[,1]) # it makes life easier for the princomp
+dat[,2] = dat[,2] - mean(dat[,2])
+
+dat = data.frame(x1 = dat[,1],x2 = dat[,2])
+
+# Calculate the first principle component
+# see http://stats.stackexchange.com/questions/13152/how-to-perform-orthogonal-regression-total-least-squares-via-pca
+v = dat%>%prcomp%$%rotation
+x1x2cor = bCor = v[2,1]/v[1,1]
+
+x1tox2 = coef(lm(x1~x2,dat))
+x2tox1 = coef(lm(x2~x1,dat))
+slopeData = data.frame(slope = c(x1x2cor,x2tox1[2]),
+                       type=c("PC", "OLS"))
+
+# We want this to draw the neat orthogonal lines.
+pointOnLine = function(inp){
+  # y = a*x + c (c=0)
+  # yOrth = -(1/a)*x + d
+  # yOrth = b*x + d
+  x0 = inp[1] 
+  y0 = inp[2] 
+  a = x1x2cor
+  b = -(1/a)
+  c = 0
+  d = y0 - b*x0
+  x = (d-c)/(a-b)
+  y = -(1/a)*x+d
+  return(c(x,y))
+}
+
+points = apply(dat,1,FUN=pointOnLine)
+
+segmeData = rbind(data.frame(x=dat[,1],y=dat[,2],xend=points[1,],yend=points[2,],type = "PC"),
+                  data.frame(x=dat[,1],y=dat[,2],yend=dat[,1]*x2tox1[2],xend=dat[,1],type="OLS"))
+
+dat %>%
+ggplot(aes(x1,x2))+
+  geom_point()+
+  geom_abline(data=slopeData,aes(slope = slope,intercept=0,color=type, linetype=type), size = 1.2)+
+  geom_segment(data=segmeData,aes(x=x,y=y,xend=xend,yend=yend,color=type, linetype=type))+
+  facet_grid(.~type)+
+  coord_equal()+
+  scale_x_continuous("x") +
+  scale_y_continuous("y") +
+  theme_bw(base_size = 14) +
+  theme(aspect.ratio = 1,
+        legend.position = "none",
+        axis.text    = element_text(size = 12),
+        axis.title   = element_text(size = 12),
+        legend.title = element_blank(),
+        # legend.text  = element_text(size = 10),
+        # strip.text = element_text(size = 8, margin = margin(0.1,0,0.1,0, "cm")),
+        # strip.background = element_rect(size = 0.8),
+        legend.key.size = unit(1, "line")
+        ) +
+  scale_color_manual(values = c("steelblue", "orange"), labels = c("OLS", "PCA")) +
+  scale_linetype_manual(values = c("solid", "dashed"), labels = c("OLS", "PCA"))
+```
+
+## Data Availability
+
+```{r eyefitting-plots}
+eyefitting_model_data <- read.csv("data/youdrawit-eyefitting-model-data.csv") %>%
+  dplyr::rename(`Parameter Choice` = parm_id)
+```
+
+For each participant, the final data set used for analysis contains $x_{ijk}, y_{ijk,drawn}, \hat y_{ijk,OLS}$, and $\hat y_{ijk,PCA}$ for parameter choice $i = 1,2,3,4$, j = $1,...N_{participant}$, and $x_{ijk}$ value $k = 1, ...,4 x_{max} + 1$. 
+Using both a linear mixed model and a generalized additive mixed model, comparisons of vertical residuals in relation to the OLS fitted values ($e_{ijk,OLS} = y_{ijk,drawn} - \hat y_{ijk,OLS}$) and PCA fitted values ($e_{ijk,PCA} = y_{ijk,drawn} - \hat y_{ijk,PCA}$) were made across the domain.
+\cref{fig:eyefitting-example-plot} displays an example of all three fitted trend lines for parameter choice F.
+
+```{r eyefitting-example-plot, fig.height = 4, fig.width = 4, fig.cap = "Eye Fitting Straight Lines in the Modern Era Example", out.width="65%"}
+trial.feedback <- read.csv("data/youdrawit-eyefitting-example-feedback.csv") %>%
+    mutate(`Parameter Choice` = "F")
+trial.sim <- read.csv("data/youdrawit-eyefitting-example-simulated.csv") %>%
+    mutate(`Parameter Choice` = "F")
+    
+trial.feedback %>%
+  ggplot(aes(x = x)) +
+  geom_line(aes(y = y, color = "OLS", linetype = "OLS")) +
+  geom_line(aes(y = ypca, color = "PCA", linetype = "PCA")) +
+  geom_line(aes(y = ydrawn, color = "Drawn", linetype = "Drawn")) +
+  geom_point(data = trial.sim, aes(y = y)) +
+  facet_wrap(~`Parameter Choice`) +
+  theme_bw(base_size = 14) +
+  theme(aspect.ratio = 1,
+        legend.position = "bottom",
+        axis.text    = element_text(size = 12),
+        axis.title   = element_text(size = 12),
+        legend.title = element_text(size = 12),
+        legend.text  = element_text(size = 12),
+        # strip.text = element_text(size = 8, margin = margin(0.1,0,0.1,0, "cm")),
+        # strip.background = element_rect(size = 0.8),
+        legend.key.size = unit(1, "line")
+        ) +
+  scale_x_continuous(limits = c(0,20)) +
+  scale_y_continuous(limits = c(-5, 17), breaks = seq(-5, 15, 5)) +
+  scale_color_manual("", values = c("black", "steelblue", "orange")) +
+  scale_linetype_manual("", values = c("dashed", "solid", "solid"))
+```
+
+## Linear Trend Constraint
+
+Using the lmer function in the lme4 package [@lme4], a linear mixed model (LMM) is fit separately to the OLS and PCA residuals, constraining the fit to a linear trend. 
+Parameter choice, $x$, and the interaction between $x$ and parameter choice were treated as fixed effects with a random participant effect accounting for variation due to participant.
+The LMM equation for each fit (OLS and PCA) residuals is given by:
+\begin{equation}
+y_{ijk,drawn} - \hat y_{ijk,fit} = e_{ijk,fit} = \left[\gamma_0 + \alpha_i\right] + \left[\gamma_{1} x_{ijk} + \gamma_{2i} x_{ijk}\right] + p_{j} + \epsilon_{ijk}
+\end{equation}
+\noindent where
+
++ $y_{ijk,drawn}$ is the drawn y-value for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment of x-value
++ $\hat y_{ijk,fit}$ is the fitted y-value for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment of x-value corresponding to either the OLS or PCA fit
++ $e_{ijk,fit}$ is the residual between the drawn and fitted y-values for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment of x-value corresponding to either the OLS or PCA fit
++ $\gamma_0$ is the overall intercept
++ $\alpha_i$ is the effect of the $i^{th}$ parameter choice (F, S, V, N) on the intercept
++ $\gamma_1$ is the overall slope for $x$
++ $\gamma_{2i}$ is the effect of the parameter choice on the slope
++ $x_{ijk}$ is the x-value for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment
++ $p_{j} \sim N(0, \sigma^2_{participant})$ is the random error due to the $j^{th}$ participant's characteristics
++ $\epsilon_{ijk} \sim N(0, \sigma^2)$ is the residual error.
+
+```{r eyefitting-lmer-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Eye Fitting Straight Lines in the Modern Era LMM results"}
+eyefitting.preds.lmer <- read.csv("data/youdrawit-eyefitting-lmerpred-data.csv")
+# Plot Predictions
+eyefitting.lmer.plot <- eyefitting.preds.lmer %>%
+  filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
+  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
+  dplyr::rename(`Parameter Choice` = parm_id) %>%
+  ggplot(aes(x = x)) +
+  geom_line(data = eyefitting_model_data, aes(x = x, y = residualols, group = plotID, color = "OLS"), alpha = 0.1) +
+  geom_line(data = eyefitting_model_data, aes(x = x, y = residualpca, group = plotID, color = "PCA"), alpha = 0.1) +
+  geom_ribbon(aes(ymin = asymp.LCL.ols, ymax = asymp.UCL.ols, fill = "OLS"), color = NA, alpha = 0.7) +
+  geom_line(aes(y = emmean.ols, color = "OLS")) +
+  geom_ribbon(aes(ymin = asymp.LCL.pca, ymax = asymp.UCL.pca, fill = "PCA"), color = NA, alpha = 0.7) +
+  geom_line(aes(y = emmean.pca, color = "PCA")) +
+  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
+  facet_wrap(~`Parameter Choice`, ncol = 4) +
+  theme_bw(base_size = 14) +
+  theme(aspect.ratio = 1,
+        legend.position = "right",
+        plot.title   = element_text(size = 12, hjust = 0),
+        axis.text    = element_text(size = 12),
+        axis.title   = element_text(size = 12),
+        legend.title = element_text(size = 12),
+        legend.text  = element_text(size = 12),
+        # strip.text = element_text(size = 5, margin = margin(0.05,0,0.05,0, "cm")),
+        # strip.background = element_rect(size = 0.5),
+        legend.key.size = unit(1, "line")
+        ) +
+  scale_y_continuous("Residual") +
+  scale_color_manual("Individual participant \nresiduals", values = c("steelblue", "orange"), labels = c("OLS", "PCA")) +
+  scale_fill_manual("LMER fitted trend", values = c("steelblue", "orange"), labels = c("OLS", "PCA")) 
+
+eyefitting.lmer.plot
+```
+
+## Smoothing Spline Trend
+
+Eliminating the linear trend constraint, the bam function in the mgcv package [@mgcv1; @mgcv2; @mgcv3; @mgcv4; @mgcv5] is used to fit a generalized additive mixed model (GAMM) separately to the OLS and PCA residuals to allow for estimation of smoothing splines.
+Parameter choice was treated as a fixed effect with no estimated intercept and a separate smoothing spline for $x$ was estimated for each parameter choice. A random participant effect accounting for variation due to participant and a random spline for each participant accounted for variation in spline for each participant.
+The GAMM equation for each fit (OLS and PCA) residuals is given by:
+\begin{equation}
+y_{ijk, drawn} - \hat y_{ijk, fit} = e_{ijk,fit} = \alpha_i + s_{i}(x_{ijk}) + p_{j} + s_{j}(x_{ijk})
+\end{equation}
+\noindent where
+
++ $y_{ijk,drawn}$ is the drawn y-value for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment of x-value
++ $\hat y_{ijk,fit}$ is the fitted y-value for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment of x-value corresponding to either the OLS or PCA fit
++ $e_{ijk,fit}$ is the residual between the drawn and fitted y-values for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment of x-value corresponding to either the OLS or PCA fit
++ $\alpha_i$ is the intercept for the parameter choice $i$
++ $s_{i}$ is the smoothing spline for the $i^{th}$ parameter choice
++ $x_{ijk}$ is the x-value for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment
++ $p_{j} \sim N(0, \sigma^2_{participant})$ is the error due to participant variation
++ $s_{j}$ is the random smoothing spline for each participant.
+
+\cref{fig:eyefitting-lmer-residualplots} and \cref{fig:eyefitting-gamm-residualplots} show the estimated trends of residuals (vertical deviation of participant drawn points from both the OLS and PCA fitted points) as modeled by a LMM and GAMM respectively. 
+Examining the plots, the estimated trends of PCA residuals (orange) appear to align closer to the $y=0$ horizontal (dashed) line than the OLS residuals (blue). 
+In particular, this trend is more prominent in parameter choices with large variances (F and N).
+These results are consistent to those found in @mosteller1981eye indicating participants fit a trend line closer to the estimated regression line with the slope of the first principal component than the estimated OLS regression line.
+
+```{r eyefitting-gamm-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Eye Fitting Straight Lines in the Modern Era GAMM results"}
+eyefitting.grid.gamm <- read.csv("data/youdrawit-eyefitting-gammpred-data.csv")
+eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
+  filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
+  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
+  dplyr::rename(`Parameter Choice` = parm_id) %>%
+  ggplot(aes(x = x)) +
+  geom_line(data = eyefitting_model_data, aes(x = x, y = residualols, group = plotID, color = "OLS"), alpha = 0.1) +
+  geom_line(data = eyefitting_model_data, aes(x = x, y = residualpca, group = plotID, color = "PCA"), alpha = 0.1) +
+  geom_ribbon(aes(ymin = ols.lower, ymax = ols.upper, fill = "OLS"), color = NA, alpha = 0.5) +
+  geom_line(aes(y = ols.pred, color = "OLS")) +
+  geom_ribbon(aes(ymin = pca.lower, ymax = pca.upper, fill = "PCA"), color = NA, alpha = 0.5) +
+  geom_line(aes(y = pca.pred, color = "PCA")) +
+  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
+  facet_wrap(~`Parameter Choice`, ncol = 4) +
+  theme_bw(base_size = 14) +
+  theme(aspect.ratio = 1,
+        legend.position = "right",
+        plot.title   = element_text(size = 12, hjust = 0),
+        axis.text    = element_text(size = 12),
+        axis.title   = element_text(size = 12),
+        legend.title = element_text(size = 12),
+        legend.text  = element_text(size = 12),
+        # strip.text = element_text(size = 5, margin = margin(0.05,0,0.05,0, "cm")),
+        # strip.background = element_rect(size = 0.5),
+        legend.key.size = unit(1, "line")
+        ) +
+  scale_y_continuous("Residual") +
+  scale_color_manual("Individual participant \nresiduals", values = c("steelblue", "orange"), labels = c("OLS", "PCA")) +
+  scale_fill_manual("GAMM fitted trend", values = c("steelblue", "orange"), labels = c("OLS", "PCA")) 
+eyefitting.gamm.plot
+```
 
 # Discussion and Conclusion
 
+The intent of research was to establish you draw it as a tool for testing graphics then use this tool to determine the cognitive implications of displaying data on the log scale.
+Eye Fitting Straight Lines in the Modern Era replicated the results found in @mosteller1981eye. 
+When shown points following a linear trend, participants tended to fit the slope of the first principal component over the slope of the least squares regression line.
+This trend was most prominent when shown data simulated with larger variances. 
+The reproducibility of these results serve as evidence of the reliability of the you draw it method.
 
 # Future Work
 
-+ Use the method.
-+ Write R package.
+This study provided a basis for the use of 'You Draw It' as a tool for testing graphics.
+Further investigation is necessary to implement the method in non-linear settings and with real data.
+This tool could also be used to evaluate human ability to extrapolate data from trends. 
+In the future, an R package designed for easy implementation of 'You Draw It' task plots will help make this tool accessible to other researchers. 
+
 

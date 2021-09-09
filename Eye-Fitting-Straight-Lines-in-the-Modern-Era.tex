@@ -364,63 +364,213 @@ each individual in a completely randomized design.
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-\hypertarget{fitted-values}{%
-\subsection{Fitted Values}\label{fitted-values}}
+\hypertarget{fitted-regression-lines}{%
+\subsection{Fitted Regression Lines}\label{fitted-regression-lines}}
 
-In addition to the participant drawn points, \((x_k, y_{k,drawn})\), and
-the ordinary least squares (OLS) regression fitted values,
-\((x_k, \hat y_{k,OLS})\), a regression equation with a slope based on
-the first principal component (PCA) was used to calculate fitted values,
-\((x_k, \hat y_{k,PCA})\). For each set of simulated data and parameter
-choice, the PCA regression equation was determined by using the princomp
-function in the stats package in base R to obtain the rotation of the
-coordinate axes from the first principal component (direction which
-captures the most variance). The estimated slope, \(\hat\beta_{1,PCA}\),
-is determined by the ratio of the axis rotation in y and axis rotation
-in x of the first principal component with the y-intercept,
-\(\hat\beta_{0,PCA}\) calculated by the point-slope equation of a line
-using the mean of of the simulated points, \((\bar x_i, \bar y_i)\).
-Fitted values, \(\hat y_{k,PCA}\) are then obtained every 0.25 increment
-across the domain from the PCA regression equation,
+We compare the participant drawn line to two regression lines determined
+by ordinary least squares regression and regression based on the
+principal axis (i.e.~Deming Regression). \cref{fig:ols-vs-pca-example}
+illustrates the difference between an OLS regression equation which
+minimizes the vertical distance of points from the line and a regression
+equation based on the principal axis which minimizes the Euclidean
+distance of points (orthogonal) from the line.
+
+Due to the randomness in the data generation process, the actual slope
+of the linear regression line fit through the simulated points could
+differ from the predetermined slope. Therefore, we fit an ordinary least
+squares (OLS) regression to each scatter-plot to obtain fitted values in
+0.25 increments across the domain, \(\hat y_{k,OLS}\) for
+\(k = 1, ..., 4 x_{max} +1\).
+
+The regression equation based on the principal axis was determined by
+using the \texttt{princomp} function in the stats package in base R to
+obtain the rotation of the coordinate axes from the first principal
+component (direction which captures the most variance). The estimated
+slope, \(\hat\beta_{1,PCA}\), is determined by the ratio of the axis
+rotation in y and axis rotation in x of the first principal component
+with the y-intercept, \(\hat\beta_{0,PCA}\) calculated by the
+point-slope equation of a line using the mean of of the simulated
+points, \((\bar x_i, \bar y_i)\). Fitted values, \(\hat y_{k,PCA}\), are
+then obtained every 0.25 increment across the domain from the PCA
+regression equation,
 \(\hat y_{k,PCA} = \hat\beta_{0,PCA} + \hat\beta_{1,PCA} x_k\).
-\cref{fig:ols-vs-pca-example} illustrates the difference between an OLS
-regression equation which minimizes the vertical distance of points from
-the line and a regression equation with a slope calculated by the first
-principal component which minimizes the smallest distance of points from
-the line.
+
+\begin{figure}[tbp]
+
+{\centering \includegraphics[width=1\linewidth,]{Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-example-1} 
+
+}
+
+\caption{OLS vs PCA Regression Lines}\label{fig:ols-vs-pca-example}
+\end{figure}
+
+\hypertarget{data-availability}{%
+\subsection{Data Availability}\label{data-availability}}
+
+For each participant, the final data set used for analysis contains
+\(x_{ijk}, y_{ijk,drawn}, \hat y_{ijk,OLS}\), and \(\hat y_{ijk,PCA}\)
+for parameter choice \(i = 1,2,3,4\), j = \(1,...N_{participant}\), and
+\(x_{ijk}\) value \(k = 1, ...,4 x_{max} + 1\). Using both a linear
+mixed model and a generalized additive mixed model, comparisons of
+vertical residuals in relation to the OLS fitted values
+(\(e_{ijk,OLS} = y_{ijk,drawn} - \hat y_{ijk,OLS}\)) and PCA fitted
+values (\(e_{ijk,PCA} = y_{ijk,drawn} - \hat y_{ijk,PCA}\)) were made
+across the domain. \cref{fig:eyefitting-example-plot} displays an
+example of all three fitted trend lines for parameter choice F.
+
+\begin{figure}[tbp]
+
+{\centering \includegraphics[width=0.65\linewidth,]{Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1} 
+
+}
+
+\caption{Eye Fitting Straight Lines in the Modern Era Example}\label{fig:eyefitting-example-plot}
+\end{figure}
+
+\hypertarget{linear-trend-constraint}{%
+\subsection{Linear Trend Constraint}\label{linear-trend-constraint}}
+
+Using the lmer function in the lme4 package \citep{lme4}, a linear mixed
+model (LMM) is fit separately to the OLS and PCA residuals, constraining
+the fit to a linear trend. Parameter choice, \(x\), and the interaction
+between \(x\) and parameter choice were treated as fixed effects with a
+random participant effect accounting for variation due to participant.
+The LMM equation for each fit (OLS and PCA) residuals is given by:
+\begin{equation}
+y_{ijk,drawn} - \hat y_{ijk,fit} = e_{ijk,fit} = \left[\gamma_0 + \alpha_i\right] + \left[\gamma_{1} x_{ijk} + \gamma_{2i} x_{ijk}\right] + p_{j} + \epsilon_{ijk}
+\end{equation} \noindent where
 
 \begin{itemize}
 \tightlist
 \item
-  Because of the randomness in the stimulus generation process, on any
-  given trial the actual slope of the linear regression line could
-  differ from its prescribed value.
+  \(y_{ijk,drawn}\) is the drawn y-value for the \(i^{th}\) parameter
+  choice, \(j^{th}\) participant, and \(k^{th}\) increment of x-value
+\item
+  \(\hat y_{ijk,fit}\) is the fitted y-value for the \(i^{th}\)
+  parameter choice, \(j^{th}\) participant, and \(k^{th}\) increment of
+  x-value corresponding to either the OLS or PCA fit
+\item
+  \(e_{ijk,fit}\) is the residual between the drawn and fitted y-values
+  for the \(i^{th}\) parameter choice, \(j^{th}\) participant, and
+  \(k^{th}\) increment of x-value corresponding to either the OLS or PCA
+  fit
+\item
+  \(\gamma_0\) is the overall intercept
+\item
+  \(\alpha_i\) is the effect of the \(i^{th}\) parameter choice (F, S,
+  V, N) on the intercept
+\item
+  \(\gamma_1\) is the overall slope for \(x\)
+\item
+  \(\gamma_{2i}\) is the effect of the parameter choice on the slope
+\item
+  \(x_{ijk}\) is the x-value for the \(i^{th}\) parameter choice,
+  \(j^{th}\) participant, and \(k^{th}\) increment
+\item
+  \(p_{j} \sim N(0, \sigma^2_{participant})\) is the random error due to
+  the \(j^{th}\) participant's characteristics
+\item
+  \(\epsilon_{ijk} \sim N(0, \sigma^2)\) is the residual error.
 \end{itemize}
 
-\hypertarget{feedback-data}{%
-\subsection{Feedback Data}\label{feedback-data}}
+\begin{figure}[tbp]
 
-\hypertarget{linear-trend-constraint-performance}{%
-\subsection{Linear Trend Constraint
-Performance}\label{linear-trend-constraint-performance}}
+{\centering \includegraphics[width=1\linewidth,]{Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1} 
 
-\hypertarget{smoothing-spline-trend-performance}{%
-\subsection{Smoothing Spline Trend
-Performance}\label{smoothing-spline-trend-performance}}
+}
+
+\caption{Eye Fitting Straight Lines in the Modern Era LMM results}\label{fig:eyefitting-lmer-residualplots}
+\end{figure}
+
+\hypertarget{smoothing-spline-trend}{%
+\subsection{Smoothing Spline Trend}\label{smoothing-spline-trend}}
+
+Eliminating the linear trend constraint, the bam function in the mgcv
+package \citep{mgcv1, mgcv2, mgcv3, mgcv4, mgcv5} is used to fit a
+generalized additive mixed model (GAMM) separately to the OLS and PCA
+residuals to allow for estimation of smoothing splines. Parameter choice
+was treated as a fixed effect with no estimated intercept and a separate
+smoothing spline for \(x\) was estimated for each parameter choice. A
+random participant effect accounting for variation due to participant
+and a random spline for each participant accounted for variation in
+spline for each participant. The GAMM equation for each fit (OLS and
+PCA) residuals is given by: \begin{equation}
+y_{ijk, drawn} - \hat y_{ijk, fit} = e_{ijk,fit} = \alpha_i + s_{i}(x_{ijk}) + p_{j} + s_{j}(x_{ijk})
+\end{equation} \noindent where
+
+\begin{itemize}
+\tightlist
+\item
+  \(y_{ijk,drawn}\) is the drawn y-value for the \(i^{th}\) parameter
+  choice, \(j^{th}\) participant, and \(k^{th}\) increment of x-value
+\item
+  \(\hat y_{ijk,fit}\) is the fitted y-value for the \(i^{th}\)
+  parameter choice, \(j^{th}\) participant, and \(k^{th}\) increment of
+  x-value corresponding to either the OLS or PCA fit
+\item
+  \(e_{ijk,fit}\) is the residual between the drawn and fitted y-values
+  for the \(i^{th}\) parameter choice, \(j^{th}\) participant, and
+  \(k^{th}\) increment of x-value corresponding to either the OLS or PCA
+  fit
+\item
+  \(\alpha_i\) is the intercept for the parameter choice \(i\)
+\item
+  \(s_{i}\) is the smoothing spline for the \(i^{th}\) parameter choice
+\item
+  \(x_{ijk}\) is the x-value for the \(i^{th}\) parameter choice,
+  \(j^{th}\) participant, and \(k^{th}\) increment
+\item
+  \(p_{j} \sim N(0, \sigma^2_{participant})\) is the error due to
+  participant variation
+\item
+  \(s_{j}\) is the random smoothing spline for each participant.
+\end{itemize}
+
+\cref{fig:eyefitting-lmer-residualplots} and
+\cref{fig:eyefitting-gamm-residualplots} show the estimated trends of
+residuals (vertical deviation of participant drawn points from both the
+OLS and PCA fitted points) as modeled by a LMM and GAMM respectively.
+Examining the plots, the estimated trends of PCA residuals (orange)
+appear to align closer to the \(y=0\) horizontal (dashed) line than the
+OLS residuals (blue). In particular, this trend is more prominent in
+parameter choices with large variances (F and N). These results are
+consistent to those found in \citet{mosteller1981eye} indicating
+participants fit a trend line closer to the estimated regression line
+with the slope of the first principal component than the estimated OLS
+regression line.
+
+\begin{figure}[tbp]
+
+{\centering \includegraphics[width=1\linewidth,]{Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1} 
+
+}
+
+\caption{Eye Fitting Straight Lines in the Modern Era GAMM results}\label{fig:eyefitting-gamm-residualplots}
+\end{figure}
 
 \hypertarget{discussion-and-conclusion}{%
 \section{Discussion and Conclusion}\label{discussion-and-conclusion}}
 
+The intent of research was to establish you draw it as a tool for
+testing graphics then use this tool to determine the cognitive
+implications of displaying data on the log scale. Eye Fitting Straight
+Lines in the Modern Era replicated the results found in
+\citet{mosteller1981eye}. When shown points following a linear trend,
+participants tended to fit the slope of the first principal component
+over the slope of the least squares regression line. This trend was most
+prominent when shown data simulated with larger variances. The
+reproducibility of these results serve as evidence of the reliability of
+the you draw it method.
+
 \hypertarget{future-work}{%
 \section{Future Work}\label{future-work}}
 
-\begin{itemize}
-\tightlist
-\item
-  Use the method.
-\item
-  Write R package.
-\end{itemize}
+This study provided a basis for the use of `You Draw It' as a tool for
+testing graphics. Further investigation is necessary to implement the
+method in non-linear settings and with real data. This tool could also
+be used to evaluate human ability to extrapolate data from trends. In
+the future, an R package designed for easy implementation of `You Draw
+It' task plots will help make this tool accessible to other researchers.
 
 \bibliographystyle{agsm}
 \bibliography{bibliography.bib}
