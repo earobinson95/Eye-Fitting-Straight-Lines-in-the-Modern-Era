@@ -65,14 +65,15 @@ library(ggforce)
 
 ## Graph Perception
 
-+ Cleveland and McGill
++ @cleveland1984graphical
++ @cleveland1985graphical
 
 ## Testing Statistical Graphics
 
 Graphical tests are useful for studying the perception of statistical graphs. 
 Studies might ask participants to identify differences in graphs, read information off of a chart accurately, use data to make correct real-world decisions, or predict the next few observations.
-All of these types of tests require different levels of use and manipulation of the information being presented in the chart. Early researchers studied graphs from a psychological perspective. 
-These studies generally tested participants ability to detect a stimulus (or a difference between two stimuli) (\ear{CITATIONS}).
+All of these types of tests require different levels of use and manipulation of the information being presented in the chart. Early researchers studied graphs from a psychological perspective [@spence1990visual; @lewandowsky1989perception]. 
+These studies generally tested participants ability to detect a stimulus or a difference between two stimuli.
 Here we focus on the how graphical testing has developed in statistics.
 
 A major development in statistical graphics research is Wilkinson’s Grammar of Graphics [@wilkinson2013grammar].
@@ -86,7 +87,7 @@ One useful tool for testing statistical graphics is the concept of a lineup.
 Supported by the grammar of graphics, a data plot can be characterized as a statistic, defined as, “a functional mapping of a variable or set of variables” [@vanderplas2020testing]. 
 This allows the data plot to be tested similar to other statistics, by comparing the actual data plot
 to a set of plots with the absence of any data structure we can test the likelihood of any perceived structure being significant. 
-The construction of data plots as statistics allow for easy experimentation, granting researchers the ability to compare the effectiveness of and understand the perception of different types of charts (\ear{CITATIONS}). The lineup protocol is one such example of the development of tools designed for statistical graphical testing. The advancement of graphing software provides the tools necessary to develop new methods of testing graphics. 
+The construction of data plots as statistics allow for easy experimentation, granting researchers the ability to compare the effectiveness of and understand the perception of different types of charts [@vanderplas2017clusters; @vanderplas2015spatial; @hofmann2012graphical]. The lineup protocol is one such example of the development of tools designed for statistical graphical testing. The advancement of graphing software provides the tools necessary to develop new methods of testing graphics. 
 
 ## Fitting Trends by Eye
 
@@ -105,7 +106,7 @@ Results indicated that one cycle of iterations for calculating the relative pote
 Participants were asked to fit lines by eye to four scatter-plots using an 8.5 x 11 inch transparency with a straight line etched completely across the middle. 
 A latin square design with packets of the set of points stapled together in four different sequences was used to determine if there is an effect of order of presentation.
 It was found that order of presentation had no effect and that participants tended to fit the slope of the principal axis (error minimized orthogonally, both horizontal and vertical, to the regression line) over the slope of the least squares regression line (error minimized vertically to the regression line).
-These results support previous research on "ensemble perception" indicating the visual system can compute averages of various features in parallel across the items in a set (\ear{CITATIONS}).
+These results support previous research on "ensemble perception" indicating the visual system can compute averages of various features in parallel across the items in a set [@chong2003representation; @chong2005statistical; @van2011rapid].
 
 In @ciccione2021can, participants were asked to judge trends, estimate slopes, and conduct extrapolation.
 To estimate slopes, participants were asked to report the slope of the best-fitting regression line using a trackpad to adjust the tilt of a line on screen.
@@ -119,7 +120,9 @@ After the reader has completed drawing the line, the actual observed values are 
 
 ## Research objectives
 
-In this paper, we establish 'You Draw It', adapted from the New York Times feature, as tool for graphical testing. The 'You Draw It' method is validated by replicating the study conducted by @mosteller1981eye. The results of our study provide support for "ensemble perception".
+In this paper, we establish 'You Draw It', adapted from the New York Times feature, as a tool for graphical testing. 
+The 'You Draw It' method is validated by replicating the study conducted by @mosteller1981eye. 
+Based on previous research surrounding "ensemble perception," we hypothesize that regression lines fit by human perception resemble regression lines based on the principal axis rather than an ordinary least squares regression line.
 
 # Methods
 
@@ -134,12 +137,12 @@ Participants completed the experiment on their own computers in an environment o
 ## 'You Draw It' Task
 
 Data Driven Documents (D3), a JavaScript-based graphing framework that facilitates user interaction, is used to create the 'You Draw It' task plots. 
-Integrating this into RShiny using the r2d3 package, participants are asked to draw a line using their computer mouse through trend shown on their screen. 
-Details of the development of the 'You Draw It' task plots will be addressed in future work. 
-In the study, participants are shown an interactive scatter-plot \cref{fig:ydi-stimuli} along with the prompt, “Use your mouse to fill in the trend in the yellow box region.”
-The yellow-box region moves along as the participant draws their trend-line until the yellow region disappears, indicating the participant has filled in the entire domain.
+Integrating this into RShiny using the `r2d3` package, participants are asked to draw a trend-line using their computer mouse through a scatter-plot shown on their screen. 
+In the study, participants are shown an interactive scatter-plot \pcref{fig:ydi-stimuli} along with the prompt, “Use your mouse to fill in the trend in the yellow box region.”
+The yellow box region moves along as the participant draws their trend-line until the yellow region disappears, indicating the participant has filled in the entire domain.
+Details of the development of the 'You Draw It' task plots will be addressed in future work.
 
-```{r ydi-stimuli, include = T, fig.cap = "'You Draw It' Stimuli", out.width="100%"}
+```{r ydi-stimuli, include = T, fig.cap = "'You Draw It' task plot as shown to particpants during the study. The first frame (left) illustrates what particpants first see with the prompt “Use your mouse to fill in the trend in the yellow box region.” The second frame (middle), illustrates what the particpant sees while completing the task; the yellow region provides a visual cue for participants indicating where the participant still needs to complete a trend-line. The last frame (right) illustrates the participants finished trend-line before submission.", out.width="100%"}
 knitr::include_graphics("images/ydi-stimuli.png")
 ```
 
@@ -147,19 +150,18 @@ knitr::include_graphics("images/ydi-stimuli.png")
 
 All data processing was conducted in R statistical software. 
 A total of $N = 30$ points $(x_i, y_i), i = 1,...N$ were generated for $x_i \in [x_{min}, x_{max}]$ where $x$ and $y$ have a linear relationship.
-Data were simulated based on linear model with additive errors: 
+Data were simulated based on a linear model with additive errors: 
 \begin{align}
 y_i & = \beta_0 + \beta_1 x_i + e_i \\
 \text{with } e_i & \sim N(0, \sigma^2). \nonumber
 \end{align} 
-The parameters $\beta_0$ and $\beta_1$ are selected to replicate @mosteller1981eye with $e_i$ generated by rejection sampling in order to guarantee the points shown align with that of the fitted line.
 
-Simulated model equation parameters were selected to reflect the four data sets (F, N, S, and V) used in @mosteller1981eye \pcref{tab:eyefitting-parameters}. 
+Model equation parameters, $\beta_0$ and $\beta_1$, were selected to reflect the four data sets (F, N, S, and V) used in @mosteller1981eye \pcref{tab:eyefitting-parameters}. 
 Parameter choices F, N, and S simulated data across a domain of 0 to 20. 
 Parameter choice F produces a trend with a positive slope and a large variance while N has a negative slope and a large variance. 
 In comparison, S shows a trend with a positive slope with a small variance and V yields a steep positive slope with a small variance over the domain of 4 to 16. 
 \cref{fig:eyefitting-simplot} illustrates an example of simulated data for all four parameter choices intended to reflect the trends in @mosteller1981eye.
-Aesthetic design choices were made consistent across each of the interactive you draw it plots. 
+Aesthetic design choices were made consistent across each of the interactive 'You Draw It' task plots. 
 The y-axis range extended 10\% beyond (above and below) the range of the simulated data points to allow for users to draw outside the simulated data set range. 
 
 ```{r eyefitting-parameters}
@@ -178,10 +180,10 @@ The y-axis range extended 10\% beyond (above and below) the range of the simulat
                          align = "c", 
                          label = "eyefitting-parameters",
                          col.names = c("Parameter Choice", "$y_{\\bar{x}}$", "$\\beta_1$", "$\\sigma$"),
-                         caption = "Eye Fitting Straight Lines in the Modern Era simulation model parameters")
+                         caption = "Designated model equation parameters for simulated data.")
 ```
 
-```{r eyefitting-simplot, fig.height = 3, fig.width = 9, fig.cap = "Eye Fitting Straight Lines in the Modern Era Simulated Data Example", out.width="100%"}
+```{r eyefitting-simplot, fig.height = 3, fig.width = 9, fig.cap = "Example of simulated data points displayed in a scatter-plot illustrating the trends associated with the four selected parameter choices.", out.width="100%"}
           
 eyefitting_example_sim <- read.csv("data/youdrawit-eyefitting-simdata-example.csv")
 
@@ -213,23 +215,26 @@ eyefitting_example_simplot
 
 This experiment was conducted as part of a larger study; for simplicity, we focus on the study design and methods related to the current study. 
 Each scatter-plot was the graphical representation of a data set that was generated randomly, independently for each participant at the start of the experiment.
-Participants in the study are shown two 'You Draw It' practice plots in order to train participants in the skills associated with executing the task followed by four task plots associated with the current study. 
+Participants in the study are shown two 'You Draw It' practice plots in order to train participants in the skills associated with executing the task. 
+During the practice session, participants are provided with instruction prompts accompanied by a .gif and a practice plot.
+Instructions guide participants to start at the edge of the yellow box, to make sure the yellow region is moving along with their mouse as they draw, and that they can draw over their already drawn line.
+Practice plots are then followed by four 'You Draw It' task plots associated with the current study.
 The order of the task plots was randomly assigned for each individual in a completely randomized design.
 
 # Results
 
 ## Fitted Regression Lines
 
-We compare the participant drawn line to two regression lines determined by ordinary least squares regression and regression based on the principal axis (i.e. Deming Regression). \cref{fig:ols-vs-pca-example} illustrates the difference between an OLS regression equation which minimizes the vertical distance of points from the line and a regression equation based on the principal axis which minimizes the Euclidean distance of points (orthogonal) from the line.
+We compare the participant drawn line to two regression lines determined by ordinary least squares regression and regression based on the principal axis (i.e. Deming Regression). \cref{fig:ols-vs-pca-example} illustrates the difference between an OLS regression line which minimizes the vertical distance of points from the line and a regression line based on the principal axis which minimizes the Euclidean distance of points (orthogonal) from the line. 
 
 Due to the randomness in the data generation process, the actual slope of the linear regression line fit through the simulated points could differ from the predetermined slope.
-Therefore, we fit an ordinary least squares (OLS) regression to each scatter-plot to obtain fitted values in 0.25 increments across the domain, $\hat y_{k,OLS}$ for $k = 1, ..., 4 x_{max} +1$. 
-
+Therefore, we fit an ordinary least squares (OLS) regression to each scatter-plot to obtain estimated parameters $\hat\beta_{0,OLS}$ and $\hat\beta_{1,OLS}$. 
+Fitted values, $\hat y_{k,OLS}$, are then obtained every 0.25 increments across the domain from the OLS regression equation, $\hat y_{k,OLS} = \hat\beta_{0,OLS} + \hat\beta_{1,OLS} x_k$., for $k = 1, ..., 4 x_{max} +1$. 
 The regression equation based on the principal axis was determined by using the `princomp` function in the stats package in base R to obtain the rotation of the coordinate axes from the first principal component (direction which captures the most variance).
 The estimated slope, $\hat\beta_{1,PCA}$, is determined by the ratio of the axis rotation in y and axis rotation in x of the first principal component with the y-intercept, $\hat\beta_{0,PCA}$ calculated by the point-slope equation of a line using the mean of of the simulated points, $(\bar x_i, \bar y_i)$.
 Fitted values, $\hat y_{k,PCA}$, are then obtained every 0.25 increment across the domain from the PCA regression equation, $\hat y_{k,PCA} = \hat\beta_{0,PCA} + \hat\beta_{1,PCA} x_k$.
 
-```{r ols-vs-pca-example, fig.height = 3, fig.width = 6, fig.cap="OLS vs PCA Regression Lines", message=FALSE, warning=FALSE, out.width="100%"}
+```{r ols-vs-pca-example, fig.height = 3, fig.width = 6, fig.cap=" Comparison between an OLS regression line which minimizes the vertical distance of points from the line and a regression line based on the principal axis which minimizes the Euclidean distance of points (orthogonal) from the line.", message=FALSE, warning=FALSE, out.width="80%"}
 library(ggplot2)
 library(magrittr)
 library(plyr)
@@ -297,7 +302,8 @@ ggplot(aes(x1,x2))+
   scale_linetype_manual(values = c("solid", "dashed"), labels = c("OLS", "PCA"))
 ```
 
-## Data Availability
+
+## Residual Trends
 
 ```{r eyefitting-plots}
 eyefitting_model_data <- read.csv("data/youdrawit-eyefitting-model-data.csv") %>%
@@ -306,9 +312,9 @@ eyefitting_model_data <- read.csv("data/youdrawit-eyefitting-model-data.csv") %>
 
 For each participant, the final data set used for analysis contains $x_{ijk}, y_{ijk,drawn}, \hat y_{ijk,OLS}$, and $\hat y_{ijk,PCA}$ for parameter choice $i = 1,2,3,4$, j = $1,...N_{participant}$, and $x_{ijk}$ value $k = 1, ...,4 x_{max} + 1$. 
 Using both a linear mixed model and a generalized additive mixed model, comparisons of vertical residuals in relation to the OLS fitted values ($e_{ijk,OLS} = y_{ijk,drawn} - \hat y_{ijk,OLS}$) and PCA fitted values ($e_{ijk,PCA} = y_{ijk,drawn} - \hat y_{ijk,PCA}$) were made across the domain.
-\cref{fig:eyefitting-example-plot} displays an example of all three fitted trend lines for parameter choice F.
+\cref{fig:eyefitting-example-plot} displays an example of all three fitted trend lines for parameter choice F. Data used in the analyses are available to be downloaded from GitHub [here](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/raw/main/data/youdrawit-eyefitting-model-data.csv). 
 
-```{r eyefitting-example-plot, fig.height = 4, fig.width = 4, fig.cap = "Eye Fitting Straight Lines in the Modern Era Example", out.width="65%"}
+```{r eyefitting-example-plot, fig.height = 4, fig.width = 4, fig.cap = "Illustrates the data associated with and collected for one 'You Draw It' task plot. Trend-lines include the participant drawn line (dashed black), the OLS regression line (solid steelblue) and the PCA regression line based on the principal axis (solid orange).", out.width="50%"}
 trial.feedback <- read.csv("data/youdrawit-eyefitting-example-feedback.csv") %>%
     mutate(`Parameter Choice` = "F")
 trial.sim <- read.csv("data/youdrawit-eyefitting-example-simulated.csv") %>%
@@ -316,10 +322,10 @@ trial.sim <- read.csv("data/youdrawit-eyefitting-example-simulated.csv") %>%
     
 trial.feedback %>%
   ggplot(aes(x = x)) +
+  geom_point(data = trial.sim, aes(y = y), alpha = 0.7) +
   geom_line(aes(y = y, color = "OLS", linetype = "OLS")) +
   geom_line(aes(y = ypca, color = "PCA", linetype = "PCA")) +
   geom_line(aes(y = ydrawn, color = "Drawn", linetype = "Drawn")) +
-  geom_point(data = trial.sim, aes(y = y)) +
   facet_wrap(~`Parameter Choice`) +
   theme_bw(base_size = 14) +
   theme(aspect.ratio = 1,
@@ -338,11 +344,12 @@ trial.feedback %>%
   scale_linetype_manual("", values = c("dashed", "solid", "solid"))
 ```
 
-## Linear Trend Constraint
 
-Using the lmer function in the lme4 package [@lme4], a linear mixed model (LMM) is fit separately to the OLS and PCA residuals, constraining the fit to a linear trend. 
+### Linear Trend Constraint
+
+Using the `lmer` function in the lme4 package [@lme4], a linear mixed model (LMM) is fit separately to the OLS residuals and PCA residuals, constraining the fit to a linear trend. 
 Parameter choice, $x$, and the interaction between $x$ and parameter choice were treated as fixed effects with a random participant effect accounting for variation due to participant.
-The LMM equation for each fit (OLS and PCA) residuals is given by:
+The LMM equation for each fit (OLS and PCA) is given by:
 \begin{equation}
 y_{ijk,drawn} - \hat y_{ijk,fit} = e_{ijk,fit} = \left[\gamma_0 + \alpha_i\right] + \left[\gamma_{1} x_{ijk} + \gamma_{2i} x_{ijk}\right] + p_{j} + \epsilon_{ijk}
 \end{equation}
@@ -358,6 +365,12 @@ y_{ijk,drawn} - \hat y_{ijk,fit} = e_{ijk,fit} = \left[\gamma_0 + \alpha_i\right
 + $x_{ijk}$ is the x-value for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment
 + $p_{j} \sim N(0, \sigma^2_{participant})$ is the random error due to the $j^{th}$ participant's characteristics
 + $\epsilon_{ijk} \sim N(0, \sigma^2)$ is the residual error.
+
+Constraining the residual trend to a linear fit, \cref{fig:eyefitting-lmer-residualplots} shows the estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS regression line and PCA regression line. 
+Estimated residual trend lines are overlaid on the observed individual participant residuals. 
+Results indicate the estimated trends of PCA residuals (orange) appear to align closer to the $y=0$ horizontal (dashed) line than the OLS residuals (blue). 
+In particular, this trend is more prominent in parameter choices with large variances (F and N).
+These results are consistent to those found in @mosteller1981eye indicating participants fit a trend-line closer to the estimated regression line with the slope of based on the first principal axis than the estimated OLS regression line thus, providing support for "ensemble perception". 
 
 ```{r eyefitting-lmer-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Eye Fitting Straight Lines in the Modern Era LMM results"}
 eyefitting.preds.lmer <- read.csv("data/youdrawit-eyefitting-lmerpred-data.csv")
@@ -394,9 +407,9 @@ eyefitting.lmer.plot <- eyefitting.preds.lmer %>%
 eyefitting.lmer.plot
 ```
 
-## Smoothing Spline Trend
+### Smoothing Spline Trend
 
-Eliminating the linear trend constraint, the bam function in the mgcv package [@mgcv1; @mgcv2; @mgcv3; @mgcv4; @mgcv5] is used to fit a generalized additive mixed model (GAMM) separately to the OLS and PCA residuals to allow for estimation of smoothing splines.
+Eliminating the linear trend constraint, the `bam` function in the mgcv package [@mgcv1; @mgcv2; @mgcv3; @mgcv4; @mgcv5] is used to fit a generalized additive mixed model (GAMM) separately to the OLS residuals and PCA residuals to allow for estimation of smoothing splines.
 Parameter choice was treated as a fixed effect with no estimated intercept and a separate smoothing spline for $x$ was estimated for each parameter choice. A random participant effect accounting for variation due to participant and a random spline for each participant accounted for variation in spline for each participant.
 The GAMM equation for each fit (OLS and PCA) residuals is given by:
 \begin{equation}
@@ -413,10 +426,13 @@ y_{ijk, drawn} - \hat y_{ijk, fit} = e_{ijk,fit} = \alpha_i + s_{i}(x_{ijk}) + p
 + $p_{j} \sim N(0, \sigma^2_{participant})$ is the error due to participant variation
 + $s_{j}$ is the random smoothing spline for each participant.
 
-\cref{fig:eyefitting-lmer-residualplots} and \cref{fig:eyefitting-gamm-residualplots} show the estimated trends of residuals (vertical deviation of participant drawn points from both the OLS and PCA fitted points) as modeled by a LMM and GAMM respectively. 
-Examining the plots, the estimated trends of PCA residuals (orange) appear to align closer to the $y=0$ horizontal (dashed) line than the OLS residuals (blue). 
-In particular, this trend is more prominent in parameter choices with large variances (F and N).
-These results are consistent to those found in @mosteller1981eye indicating participants fit a trend line closer to the estimated regression line with the slope of the first principal component than the estimated OLS regression line.
+Allowing for flexibility in the residual trend, \cref{fig:eyefitting-gamm-residualplots} shows the estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS regression line and PCA regression line. 
+Estimated residual trends are overlaid on the observed individual participant residuals. 
+The results of the GAMM align with those shown in \cref{fig:eyefitting-lmer-residualplots} providing support that for scatter-plots with more noise (F and N), estimated trends of PCA residuals (orange) appear to align closer to the $y=0$ horizontal (dashed) line than the OLS residuals (blue).
+By fitting smoothing splines, we can determine whether participants naturally fit a straight trend-line to the set of points or whether they deviate throughout the domain. In particular, in scatter-plots with smaller variance (S and V), we can see that participants began at approximately the correct starting point then deviated away from the fitted regression lines and correcting for their fit toward the end of their trend-line.
+In scatter-plots with larger variance (F and N), participants estimated their starting value in the extreme direction of the OLS regression line based on the increasing or decreasing trend but more accurately represented the starting value of the PCA regression line. 
+As participants continued their trend-line, they crossed through the OLS regression line indicating they estimated the slope in the extreme direction.
+These results provide further insight into the curvature humans perceive in a set of points.
 
 ```{r eyefitting-gamm-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Eye Fitting Straight Lines in the Modern Era GAMM results"}
 eyefitting.grid.gamm <- read.csv("data/youdrawit-eyefitting-gammpred-data.csv")
@@ -453,15 +469,16 @@ eyefitting.gamm.plot
 
 # Discussion and Conclusion
 
-The intent of research was to establish you draw it as a tool for testing graphics then use this tool to determine the cognitive implications of displaying data on the log scale.
-Eye Fitting Straight Lines in the Modern Era replicated the results found in @mosteller1981eye. 
-When shown points following a linear trend, participants tended to fit the slope of the first principal component over the slope of the least squares regression line.
+The intent of research was to adapt 'You Draw It' from the New York Times feature as a tool and method for testing graphics
+The study conducted by @mosteller1981eye was replicated using the 'You Draw It' method providing support for the validity of the tool.
+Our results indicated that when shown points following a linear trend, participants tended to fit a line closer to a regression based on the principal axis over the ordinary least squares regression line.
 This trend was most prominent when shown data simulated with larger variances. 
-The reproducibility of these results serve as evidence of the reliability of the you draw it method.
+These results indicate that humans perform "ensemble perception" in a statistical graphic setting as participants minimized the distance from the their regression line over both the $x$ and $y$ axis simultaneously. 
+In addition, we allowed participants to draw trend lines that deviated from a straight line providing insight into the curvature the human eye perceives in a set of points.
 
 # Future Work
 
-This study provided a basis for the use of 'You Draw It' as a tool for testing graphics.
+This study provided a basis for the use of 'You Draw It' as a tool for testing graphics as well as provided support for "ensemble perception" in statistical graphics.
 Further investigation is necessary to implement the method in non-linear settings and with real data.
 This tool could also be used to evaluate human ability to extrapolate data from trends. 
 In the future, an R package designed for easy implementation of 'You Draw It' task plots will help make this tool accessible to other researchers. 
