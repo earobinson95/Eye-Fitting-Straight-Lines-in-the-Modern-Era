@@ -61,12 +61,24 @@ library(ggforce)
 
 # Introduction
 
-+ What are graphs? Why do we care?
+Data visualization has become a central tool in modern data science.
+@unwin2020data defines data visualization as the art of graphic displays to show data. 
+Graphics illustrate the relationship between two sets of information or variables. 
+Graphical displays are useful for data cleaning, exploratory data analysis, identifying trends, evaluating model output, and presenting results.
+When creating a graphic, we must consider the design choices most effective for conveying the intended result.
+In order to evaluate the effectiveness of a graphic, we must understand cognitive perception and biases related to different types of data structures. 
+Efforts in the field of graphics have developed graphical testing tools and methods such as the lineup protocol [@buja2009statistical] to provide a framework for inferential testing.
+Through experimentation, methods such as the lineup protocol allow researchers to conduct studies geared at understanding human ability to conduct tasks related to the perception of statistical charts such as differentiation, prediction, estimation, and extrapolation.
 
 ## Graph Perception
 
-+ @cleveland1984graphical
-+ @cleveland1985graphical
+With the widespread use of graphics, work has been done to understand the effect of charts and graphs on human perception and higher cognitive processing such as learning and analysis [@green2009personal].
+@carpenter1998model established the process of graph comprehension in which viewers interact with charts by first perceptually observing the visual features and later translating to cognitive processing of the information depicted by those features.
+Much of the research on the perception of visual features in charts has been conducted in psychophysics and test for accuracy and quantitative comparisons when understanding a plot. 
+Cleveland and McGill conducted a series of cognitive tasks designed to establish a hierarchy of visual components for making comparisons [@cleveland1984graphical]. For example, it is more effective to display information on an $x$ or $y$ axis rather than using color in order to reduce the visual effort necessary to make numerical comparisons.
+Other early studies evaluated human perception of lines. 
+For instance, @cleveland1985graphical found that assessing the position of points along an axis is easier than determining the slope of a line.
+The results of these cognitive tasks provide some consistent guidance for chart design; however, other methods of visual testing can further evaluate design choices and help us understand cognitive biases related to the evaluation of statistical charts.
 
 ## Testing Statistical Graphics
 
@@ -129,7 +141,7 @@ Based on previous research surrounding "ensemble perception," we hypothesize tha
 ## Participants
 
 Participants were recruited through through Twitter, Reddit, and direct email in May 2021. 
-A total of 39 individuals completed 256 unique 'You Draw It' task plots; all completed you draw it task plots were included in the analysis. 
+A total of 35 individuals completed 119 unique 'You Draw It' task plots; all completed you draw it task plots were included in the analysis. 
 All participants had normal or corrected to normal vision and signed an informed consent form.
 The experimental tasks took approximately 15 minutes to complete.
 Participants completed the experiment on their own computers in an environment of their choosing. The experiment was conducted and distributed through an RShiny application found [here](https://shiny.srvanderplas.com/you-draw-it/).
@@ -372,7 +384,7 @@ Results indicate the estimated trends of PCA residuals (orange) appear to align 
 In particular, this trend is more prominent in parameter choices with large variances (F and N).
 These results are consistent to those found in @mosteller1981eye indicating participants fit a trend-line closer to the estimated regression line with the slope of based on the first principal axis than the estimated OLS regression line thus, providing support for "ensemble perception". 
 
-```{r eyefitting-lmer-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Eye Fitting Straight Lines in the Modern Era LMM results"}
+```{r eyefitting-lmer-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS (blue) regression line and PCA (orange) regression line constrained to a linear fit modeled by a linear mixed model. Estimated residual trends with 95\\% confidence bands are overlaid on the observed individual participant residuals."}
 eyefitting.preds.lmer <- read.csv("data/youdrawit-eyefitting-lmerpred-data.csv")
 # Plot Predictions
 eyefitting.lmer.plot <- eyefitting.preds.lmer %>%
@@ -434,7 +446,7 @@ In scatter-plots with larger variance (F and N), participants estimated their st
 As participants continued their trend-line, they crossed through the OLS regression line indicating they estimated the slope in the extreme direction.
 These results provide further insight into the curvature humans perceive in a set of points.
 
-```{r eyefitting-gamm-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Eye Fitting Straight Lines in the Modern Era GAMM results"}
+```{r eyefitting-gamm-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS (blue) regression line and PCA (orange) regression line determined by smoothing splines fit by a generalized additive mixed model. Estimated residual trends with 95\\% confidence bands are overlaid on the observed individual participant residuals."}
 eyefitting.grid.gamm <- read.csv("data/youdrawit-eyefitting-gammpred-data.csv")
 eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
   filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%

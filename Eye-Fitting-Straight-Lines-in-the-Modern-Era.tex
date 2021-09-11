@@ -110,22 +110,48 @@ Perception, Scatterplot, Cognitive Bias
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-\begin{itemize}
-\tightlist
-\item
-  What are graphs? Why do we care?
-\end{itemize}
+Data visualization has become a central tool in modern data science.
+\citet{unwin2020data} defines data visualization as the art of graphic
+displays to show data. Graphics illustrate the relationship between two
+sets of information or variables. Graphical displays are useful for data
+cleaning, exploratory data analysis, identifying trends, evaluating
+model output, and presenting results. When creating a graphic, we must
+consider the design choices most effective for conveying the intended
+result. In order to evaluate the effectiveness of a graphic, we must
+understand cognitive perception and biases related to different types of
+data structures. Efforts in the field of graphics have developed
+graphical testing tools and methods such as the lineup protocol
+\citep{buja2009statistical} to provide a framework for inferential
+testing. Through experimentation, methods such as the lineup protocol
+allow researchers to conduct studies geared at understanding human
+ability to conduct tasks related to the perception of statistical charts
+such as differentiation, prediction, estimation, and extrapolation.
 
 \hypertarget{graph-perception}{%
 \subsection{Graph Perception}\label{graph-perception}}
 
-\begin{itemize}
-\tightlist
-\item
-  \citet{cleveland1984graphical}
-\item
-  \citet{cleveland1985graphical}
-\end{itemize}
+With the widespread use of graphics, work has been done to understand
+the effect of charts and graphs on human perception and higher cognitive
+processing such as learning and analysis \citep{green2009personal}.
+\citet{carpenter1998model} established the process of graph
+comprehension in which viewers interact with charts by first
+perceptually observing the visual features and later translating to
+cognitive processing of the information depicted by those features. Much
+of the research on the perception of visual features in charts has been
+conducted in psychophysics and test for accuracy and quantitative
+comparisons when understanding a plot. Cleveland and McGill conducted a
+series of cognitive tasks designed to establish a hierarchy of visual
+components for making comparisons \citep{cleveland1984graphical}. For
+example, it is more effective to display information on an \(x\) or
+\(y\) axis rather than using color in order to reduce the visual effort
+necessary to make numerical comparisons. Other early studies evaluated
+human perception of lines. For instance, \citet{cleveland1985graphical}
+found that assessing the position of points along an axis is easier than
+determining the slope of a line. The results of these cognitive tasks
+provide some consistent guidance for chart design; however, other
+methods of visual testing can further evaluate design choices and help
+us understand cognitive biases related to the evaluation of statistical
+charts.
 
 \hypertarget{testing-statistical-graphics}{%
 \subsection{Testing Statistical
@@ -266,7 +292,7 @@ rather than an ordinary least squares regression line.
 \subsection{Participants}\label{participants}}
 
 Participants were recruited through through Twitter, Reddit, and direct
-email in May 2021. A total of 39 individuals completed 256 unique `You
+email in May 2021. A total of 35 individuals completed 119 unique `You
 Draw It' task plots; all completed you draw it task plots were included
 in the analysis. All participants had normal or corrected to normal
 vision and signed an informed consent form. The experimental tasks took
@@ -507,7 +533,7 @@ perception''.
 
 }
 
-\caption{Eye Fitting Straight Lines in the Modern Era LMM results}\label{fig:eyefitting-lmer-residualplots}
+\caption{Estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS (blue) regression line and PCA (orange) regression line constrained to a linear fit modeled by a linear mixed model. Estimated residual trends with 95\% confidence bands are overlaid on the observed individual participant residuals.}\label{fig:eyefitting-lmer-residualplots}
 \end{figure}
 
 \hypertarget{smoothing-spline-trend}{%
@@ -586,7 +612,7 @@ set of points.
 
 }
 
-\caption{Eye Fitting Straight Lines in the Modern Era GAMM results}\label{fig:eyefitting-gamm-residualplots}
+\caption{Estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS (blue) regression line and PCA (orange) regression line determined by smoothing splines fit by a generalized additive mixed model. Estimated residual trends with 95\% confidence bands are overlaid on the observed individual participant residuals.}\label{fig:eyefitting-gamm-residualplots}
 \end{figure}
 
 \hypertarget{discussion-and-conclusion}{%
