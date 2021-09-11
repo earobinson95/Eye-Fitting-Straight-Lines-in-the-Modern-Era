@@ -4,5 +4,5 @@ Fitting lines by eye through a set of points has been explored since the 20th ce
 
 + Participate in study [HERE](https://emily-robinson.shinyapps.io/you-draw-it-pilot-app/)
 + Manuscript under preparation can be found [HERE](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/Eye-Fitting-Stright-Lines-in-the-Modern-Era.pdf)
-+ Presentation slides can be found [COMING]
++ Presentation slides can be found [HERE](https://earobinson95.github.io/presentations/Conferences/2021-MidwestWISC/index.html#1)
  
