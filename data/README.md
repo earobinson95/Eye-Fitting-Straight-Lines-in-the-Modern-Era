@@ -1,6 +1,6 @@
 ## Data Contents
 
-Download de-identified participant data: [youdrawit-eyefitting-model-data.csv](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/raw/main/data/youdrawit-eyefitting-model-data.csv)
+Download de-identified participant data: [youdrawit-eyefitting-model-data.csv](data/youdrawit-eyefitting-model-data.csv)
 
 + **participantID:** provides the unique participant identifier as a combination of nick_name and study_starttime
 + **nick_name:** (hashed for privacy): unique identifier combining the user's ip_address, screen resolution, etc.
