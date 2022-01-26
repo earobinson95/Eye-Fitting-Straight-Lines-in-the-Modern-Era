@@ -85,14 +85,9 @@ Visual representations are constructed through the use of “tidy data” which 
 Graphics are viewed as a mapping from variables in a data set (or statistics computed from the data) to visual attributes such as the axes, colors, shapes, or facets on the canvas in which the chart is displayed.
 Software, such as Hadley Wickham’s ggplot2 [@wickham2011ggplot2], aims to implement the framework of creating charts and graphics as the grammar of graphics recommends.
 
-Efforts in the field of statistical graphics have developed graphical testing tools and methods such as the lineup protocol [@buja2009statistical] to provide a framework for inferential testing.
-Through experimentation, methods such as the lineup protocol allow researchers to conduct studies geared at understanding human ability to conduct tasks related to the perception of statistical charts such as differentiation, prediction, estimation, and extrapolation [@vanderplas2017clusters; @vanderplas2015spatial; @hofmann2012graphical].
 One useful tool for testing statistical graphics is the concept of a lineup.
-@buja2009statistical introduced the lineup protocol in which data plots are depicted and interpreted as statistics.
-Supported by the grammar of graphics, a data plot can be characterized as a statistic, defined as, “a functional mapping of a variable or set of variables” [@vanderplas2020testing].
-This allows the data plot to be tested similar to other statistics, by comparing the actual data plot
-to a set of plots with the absence of any data structure we can test the likelihood of any perceived structure being significant.
-The construction of data plots as statistics allow for easy experimentation, granting researchers the ability to compare the effectiveness of and understand the perception of different types of charts [@vanderplas2017clusters; @vanderplas2015spatial; @hofmann2012graphical].
+@buja2009statistical introduced the lineup protocol to provide a framework for inferential testing.
+Through experimentation, methods such as the lineup protocol allow researchers to conduct studies geared at understanding human ability to conduct tasks related to the perception of statistical charts such as differentiation, prediction, estimation, and extrapolation [@vanderplas2017clusters; @vanderplas2015spatial; @hofmann2012graphical].
 The advancement of graphing software provides the tools necessary to develop new methods of testing statistical graphics. 
 
 ## Fitting Trends by Eye
