@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.24)  24 JAN 2022 14:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.1.24)  26 JAN 2022 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -391,39 +391,39 @@ File: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca
 <use Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-example-1.pdf>
 Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-example-1.pdf  used on input line 431.
 (pdftex.def)             Requested size: 369.8174pt x 184.91792pt.
-<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf, id=239, 289.08pt x 289.08pt>
+<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf, id=238, 289.08pt x 289.08pt>
 File: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf Graphic file (type pdf)
 <use Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf  used on input line 456.
+Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf  used on input line 454.
 (pdftex.def)             Requested size: 231.135pt x 231.13197pt.
 [10pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.472 PCA) is given by: \begin{equation}
+l.470 PCA) is given by: \begin{equation}
                                          <./Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-example-1.pdf>] [11pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.498   \(
-          \gamma_{2i}\) is the effect of the parameter choice on the slope <./Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf>]
-<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf, id=273, 650.43pt x 216.81pt>
+          x_{ijk}\) is the x-value for the \(i^{th}\) parameter choice, <./Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf>]
+<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf, id=272, 650.43pt x 216.81pt>
 File: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf Graphic file (type pdf)
 <use Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf  used on input line 526.
+Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf  used on input line 524.
 (pdftex.def)             Requested size: 462.26999pt x 154.09497pt.
 [12pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.546 \begin{equation}
+l.544 \begin{equation}
                        <./Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf>] [13]
-<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf, id=314, 650.43pt x 216.81pt>
+<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf, id=313, 650.43pt x 216.81pt>
 File: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf Graphic file (type pdf)
 <use Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf  used on input line 605.
+Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf  used on input line 603.
 (pdftex.def)             Requested size: 462.26999pt x 154.09497pt.
 [14pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.634 
+l.632 
        <./Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf>] (./Eye-Fitting-Straight-Lines-in-the-Modern-Era.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 5--9
 \OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 https://www.nytimes.com/interactive/2015/05/28/upshot/you-draw-it-how-
@@ -454,12 +454,12 @@ Here is how much of TeX's memory you used:
  29977 multiletter control sequences out of 15000+600000
  477320 words of font info for 56 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,12n,63p,704b,481s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,12n,63p,704b,479s stack positions out of 5000i,500n,10000p,200000b,80000s
  <c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Eye-Fitting-Straight-Lines-in-the-Modern-Era.pdf (18 pages, 650315 bytes).
+Output written on Eye-Fitting-Straight-Lines-in-the-Modern-Era.pdf (18 pages, 650626 bytes).
 PDF statistics:
- 419 PDF objects out of 1000 (max. 8388607)
- 362 compressed objects within 4 object streams
+ 421 PDF objects out of 1000 (max. 8388607)
+ 364 compressed objects within 4 object streams
  89 named destinations out of 1000 (max. 500000)
  159 words of extra memory for PDF output out of 10000 (max. 10000000)
 

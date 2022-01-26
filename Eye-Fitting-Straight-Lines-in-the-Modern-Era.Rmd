@@ -194,7 +194,7 @@ The y-axis range extended 10\% beyond (above and below) the range of the simulat
 
 ```{r eyefitting-simplot, fig.height = 3, fig.width = 9, fig.cap = "Example of simulated data points displayed in a scatter-plot illustrating the trends associated with the four selected parameter choices.", out.width="100%"}
           
-eyefitting_example_sim <- read.csv(here("data/youdrawit-eyefitting-simdata-example.csv"))
+eyefitting_example_sim <- read.csv(here("results/youdrawit-eyefitting-simdata-example.csv"))
 
 eyefitting_example_simplot <- eyefitting_example_sim %>%
   filter(data == "point_data") %>%
@@ -321,12 +321,12 @@ eyefitting_model_data <- read.csv("data/youdrawit-eyefitting-model-data.csv") %>
 
 For each participant, the final data set used for analysis contains $x_{ijk}, y_{ijk,drawn}, \hat y_{ijk,OLS}$, and $\hat y_{ijk,PCA}$ for parameter choice $i = 1,2,3,4$, j = $1,...N_{participant}$, and $x_{ijk}$ value $k = 1, ...,4 x_{max} + 1$. 
 Using both a linear mixed model and a generalized additive mixed model, comparisons of vertical residuals in relation to the OLS fitted values ($e_{ijk,OLS} = y_{ijk,drawn} - \hat y_{ijk,OLS}$) and PCA fitted values ($e_{ijk,PCA} = y_{ijk,drawn} - \hat y_{ijk,PCA}$) were made across the domain.
-\cref{fig:eyefitting-example-plot} displays an example of all three fitted trend lines for parameter choice F. Data used in the analyses are available to be downloaded from GitHub [here](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/raw/main/data/youdrawit-eyefitting-model-data.csv). 
+\cref{fig:eyefitting-example-plot} displays an example of all three fitted trend lines for parameter choice F. 
 
 ```{r eyefitting-example-plot, fig.height = 4, fig.width = 4, fig.cap = "Illustrates the data associated with and collected for one 'You Draw It' task plot. Trend-lines include the participant drawn line (dashed black), the OLS regression line (solid steelblue) and the PCA regression line based on the principal axis (solid orange).", out.width="50%"}
-trial.feedback <- read.csv("data/youdrawit-eyefitting-example-feedback.csv") %>%
+trial.feedback <- read.csv("results/youdrawit-eyefitting-example-feedback.csv") %>%
     mutate(`Parameter Choice` = "F")
-trial.sim <- read.csv("data/youdrawit-eyefitting-example-simulated.csv") %>%
+trial.sim <- read.csv("results/youdrawit-eyefitting-example-simulated.csv") %>%
     mutate(`Parameter Choice` = "F")
     
 trial.feedback %>%
@@ -382,7 +382,7 @@ In particular, this trend is more prominent in parameter choices with large vari
 These results are consistent to those found in @mosteller1981eye indicating participants fit a trend-line closer to the estimated regression line with the slope of based on the first principal axis than the estimated OLS regression line thus, providing support for "ensemble perception". 
 
 ```{r eyefitting-lmer-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS (blue) regression line and PCA (orange) regression line constrained to a linear fit modeled by a linear mixed model. Estimated residual trends with 95\\% confidence bands are overlaid on the observed individual participant residuals."}
-eyefitting.preds.lmer <- read.csv("data/youdrawit-eyefitting-lmerpred-data.csv")
+eyefitting.preds.lmer <- read.csv("results/youdrawit-eyefitting-lmerpred-data.csv")
 # Plot Predictions
 eyefitting.lmer.plot <- eyefitting.preds.lmer %>%
   filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
@@ -444,7 +444,7 @@ As participants continued their trend-line, they crossed through the OLS regress
 These results provide further insight into the curvature humans perceive in a set of points.
 
 ```{r eyefitting-gamm-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS (blue) regression line and PCA (orange) regression line determined by smoothing splines fit by a generalized additive mixed model. Estimated residual trends with 95\\% confidence bands are overlaid on the observed individual participant residuals."}
-eyefitting.grid.gamm <- read.csv("data/youdrawit-eyefitting-gammpred-data.csv")
+eyefitting.grid.gamm <- read.csv("results/youdrawit-eyefitting-gammpred-data.csv")
 eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
   filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
   mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
@@ -498,12 +498,8 @@ In the future, an R package designed for easy implementation of 'You Draw It' ta
 {\large\bf SUPPLEMENTARY MATERIAL}
 \end{center}
 
-\begin{description}
-
-\item[Participant Data:] De-identified participant data can be found at ...
-
-\item[Data Analysis Code:] 
-
-\end{description}
++ **Participant Data:** De-identified participant data collected in the study and used for analyses are available to be downloaded from GitHub [here](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
++ **Data Analysis Code:** The code used to replicate the analysis in this paper can be found [here](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
++ **Study Applet:** The shiny app used to conduct the study can be accessed [here](https://shiny.srvanderplas.com/you-draw-it/)
 
 
