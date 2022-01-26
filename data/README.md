@@ -1,6 +1,6 @@
 ## Data Contents
 
-Download de-identified participant data: [youdrawit-eyefitting-model-data.csv](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/blob/main/data/youdrawit-eyefitting-model-data.csv)
+Download de-identified participant data: [youdrawit-eyefitting-model-data.csv](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/raw/main/data/youdrawit-eyefitting-model-data.csv)
 
 + **participantID:** provides the unique participant identifier as a combination of nick_name and study_starttime
 + **nick_name:** (hashed for privacy): unique identifier combining the user's ip_address, screen resolution, etc.
@@ -9,7 +9,7 @@ Download de-identified participant data: [youdrawit-eyefitting-model-data.csv](h
 + **gender:** indicates the gender the participant identifies by.
 + **academic_study:** indicates the level of education the participant has completed.
 + **recruitment:** indicates how the participant was recruited for the study.
-+ **plotID*:** unique identifier for a specific 'You Draw It' plot (combination of participantID and parm_id).
++ **plotID**:** unique identifier for a specific 'You Draw It' plot (combination of participantID and parm_id).
 + **start_time:** time in which the participant began predicting that particular 'You Draw It' plot.
 + **end_time:** time in which the participant completed predicting that particular 'You Draw It' plot.
 + **parm_id:** provides the unique parameter combination ID `S, F, V, N`.
