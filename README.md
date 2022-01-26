@@ -3,6 +3,7 @@
 ### University of Nebraska - Lincoln
 
 <br> 
+
 Manuscript under preparation can be found [here](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/Eye-Fitting-Straight-Lines-in-the-Modern-Era.pdf).
 
 ### Abstract
