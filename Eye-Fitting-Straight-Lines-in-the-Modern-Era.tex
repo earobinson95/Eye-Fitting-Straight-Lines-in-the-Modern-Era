@@ -110,7 +110,7 @@ We all use statistical graphics, but how do we know that the graphics we
 use are communicating properly? When creating a graphic, we must
 consider the design choices most effective for conveying the intended
 result. For instance, we must decide to highlight the relationship
-between two variables in a scatterplot by including a trend line, or
+between two variables in a scatter-plot by including a trend line, or
 adding color to highlight clustering \citep{vanderplas2017clusters}.
 These design choices require that we understand the perception and
 visual biases that come into play when creating graphics, and as
@@ -229,13 +229,13 @@ items in a set
 In \citet{ciccione2021can}, participants were asked to judge trends,
 estimate slopes, and conduct extrapolation. To estimate slopes,
 participants were asked to report the slope of the best-fitting
-regression line using a trackpad to adjust the tilt of a line on screen.
-Results indicated the slopes participants reported were always in excess
-of the ideal slopes, both in the positive and in the negative direction,
-and those biases increase with noise and with number of points. This
-supports the results found in \citet{mosteller1981eye} and suggest that
-participants might use Deming regression when fitting a line to a noisy
-scatterplot.
+regression line using a track-pad to adjust the tilt of a line on
+screen. Results indicated the slopes participants reported were always
+in excess of the ideal slopes, both in the positive and in the negative
+direction, and those biases increase with noise and with number of
+points. This supports the results found in \citet{mosteller1981eye} and
+suggest that participants might use Deming regression when fitting a
+line to a noisy scatter-plot.
 
 In 2015, the New York Times introduced an interactive feature, called
 You Draw It
@@ -256,7 +256,7 @@ Times feature, as a tool for graphical testing. The `You Draw It' method
 is validated by replicating the study conducted by
 \citet{mosteller1981eye}. Based on previous research surrounding
 ``ensemble perception,'' we hypothesize that visual regression tends to
-mimic principle component regression rather than a ordinary least
+mimic principle component regression rather than an ordinary least
 squares regression. In order to assess this hypothesis, we introduce a
 method for statistically modeling the participant drawn lines using
 generalized additive mixed models.
@@ -286,17 +286,19 @@ was conducted and distributed through an RShiny application found
 \hypertarget{you-draw-it-task}{%
 \subsection{`You Draw It' Task}\label{you-draw-it-task}}
 
+In the study, participants are shown an interactive scatter-plot
+(\cref{fig:ydi-stimuli}) along with the prompt, ``Use your mouse to fill
+in the trend in the yellow box region.'' The yellow box region moves
+along as the user draws their trend-line, providing a visual cue which
+indicates where the user still needs to complete a trend line. After the
+entire domain has been visually estimated or predicted, the yellow
+region disappears, indicating the participant has completed the task.
 Data Driven Documents (D3), a JavaScript-based graphing framework that
-facilitates user interaction, is used to create the `You Draw It' task
-plots. Integrating this into RShiny using the \texttt{r2d3} package,
-participants are asked to draw a trend-line using their computer mouse
-through a scatter-plot shown on their screen. In the study, participants
-are shown an interactive scatter-plot (\cref{fig:ydi-stimuli}) along
-with the prompt, ``Use your mouse to fill in the trend in the yellow box
-region.'' The yellow box region moves along as the participant draws
-their trend-line until the yellow region disappears, indicating the
-participant has filled in the entire domain. Details of the development
-of the `You Draw It' task plots will be addressed in future work.
+facilitates user interaction, is used to create the `You Draw It'
+visual. In order to allow for user interaction and data collection, we
+integrate the D3 visual into RShiny using the \texttt{r2d3} package.
+Details of the development of the `You Draw It' task plots will be
+addressed in future work.
 
 \begin{figure}[tbp]
 
@@ -321,19 +323,22 @@ y_i & = \beta_0 + \beta_1 x_i + e_i \\
 
 Model equation parameters, \(\beta_0\) and \(\beta_1\), were selected to
 reflect the four data sets (F, N, S, and V) used in
-\citet{mosteller1981eye} (\cref{tab:eyefitting-parameters}). Parameter
-choices F, N, and S simulated data across a domain of 0 to 20. Parameter
-choice F produces a trend with a positive slope and a large variance
-while N has a negative slope and a large variance. In comparison, S
-shows a trend with a positive slope with a small variance and V yields a
-steep positive slope with a small variance over the domain of 4 to 16.
-\cref{fig:eyefitting-simplot} illustrates an example of simulated data
-for all four parameter choices intended to reflect the trends in
-\citet{mosteller1981eye}. Aesthetic design choices were made consistent
-across each of the interactive `You Draw It' task plots. The y-axis
-range extended 10\% beyond (above and below) the range of the simulated
-data points to allow for users to draw outside the simulated data set
-range.
+\citet{mosteller1981eye} (\cref{tab:eyefitting-parameters}). We obtain
+\(\beta_0\) from the point-slope equation of a line using the mean of
+the generated \(x\) values and the predefined \(y\) value at \(\bar x\),
+denoted \(y_{\bar x}\). Parameter choices F, N, and S simulated data
+across a domain of 0 to 20. Parameter choice F produces a trend with a
+positive slope and a large variance while N has a negative slope and a
+large variance. In comparison, S shows a trend with a positive slope
+with a small variance and V yields a steep positive slope with a small
+variance over the domain of 4 to 16. \cref{fig:eyefitting-simplot}
+illustrates an example of simulated data for all four parameter choices
+intended to reflect the trends in \citet{mosteller1981eye}. Aesthetic
+design choices were made consistent across each of the interactive `You
+Draw It' task plots. The y-axis range extended 10\% beyond (above and
+below) the range of the simulated data points to allow for users to draw
+outside the simulated data set range and avoid anchoring their lines to
+the corners of the plot.
 
 \begin{table}
 
@@ -366,16 +371,16 @@ N & 4.11 & -0.70 & 2.50\\
 This experiment was conducted as part of a larger study; for simplicity,
 we focus on the study design and methods related to the current study.
 Each scatter-plot was the graphical representation of a data set that
-was generated randomly, independently for each participant at the start
-of the experiment. Participants in the study are shown two `You Draw It'
-practice plots in order to train participants in the skills associated
-with executing the task. During the practice session, participants are
-provided with instruction prompts accompanied by a .gif and a practice
-plot. Instructions guide participants to start at the edge of the yellow
-box, to make sure the yellow region is moving along with their mouse as
-they draw, and that they can draw over their already drawn line.
-Practice plots are then followed by four `You Draw It' task plots
-associated with the current study. The order of the task plots was
+was generated randomly and independently for each participant at the
+start of the experiment. Participants in the study are shown two `You
+Draw It' practice plots in order to train participants in the skills
+associated with executing the task. During the practice session,
+participants are provided with instruction prompts accompanied by a .gif
+and a practice plot. Instructions guide participants to start at the
+edge of the yellow box, to make sure the yellow region is moving along
+with their mouse as they draw, and that they can draw over their already
+drawn line. Practice plots are then followed by four `You Draw It' task
+plots associated with the current study. The order of the task plots was
 randomly assigned for each individual in a completely randomized design.
 
 \hypertarget{results}{%
@@ -385,28 +390,28 @@ randomly assigned for each individual in a completely randomized design.
 \subsection{Fitted Regression Lines}\label{fitted-regression-lines}}
 
 We compare the participant drawn line to two regression lines determined
-by ordinary least squares regression and regression based on the
-principal axis (i.e.~Deming Regression). \cref{fig:ols-vs-pca-example}
-illustrates the difference between an OLS regression line which
-minimizes the vertical distance of points from the line and a regression
-line based on the principal axis which minimizes the Euclidean distance
-of points (orthogonal) from the line.
+by ordinary least squares (OLS) regression and regression based on the
+principal axis (PCA). \cref{fig:ols-vs-pca-example} illustrates the
+difference between an OLS regression line which minimizes the vertical
+distance of points from the line and a regression line based on the
+principal axis which minimizes the Euclidean distance of points
+(orthogonal) from the line.
 
 Due to the randomness in the data generation process, the actual slope
 of the linear regression line fit through the simulated points could
-differ from the predetermined slope. Therefore, we fit an ordinary least
-squares (OLS) regression to each scatter-plot to obtain estimated
-parameters \(\hat\beta_{0,OLS}\) and \(\hat\beta_{1,OLS}\). Fitted
-values, \(\hat y_{k,OLS}\), are then obtained every 0.25 increments
-across the domain from the OLS regression equation,
+differ from the predetermined slope. Therefore, we fit an OLS regression
+to each scatter-plot to obtain estimated parameters
+\(\hat\beta_{0,OLS}\) and \(\hat\beta_{1,OLS}\). Fitted values,
+\(\hat y_{k,OLS}\), are then obtained every 0.25 increments across the
+domain from the OLS regression equation,
 \(\hat y_{k,OLS} = \hat\beta_{0,OLS} + \hat\beta_{1,OLS} x_k\)., for
 \(k = 1, ..., 4 x_{max} +1\). The regression equation based on the
 principal axis was determined by using the \texttt{princomp} function in
 the stats package in base R to obtain the rotation of the coordinate
 axes from the first principal component (direction which captures the
 most variance). The estimated slope, \(\hat\beta_{1,PCA}\), is
-determined by the ratio of the axis rotation in y and axis rotation in x
-of the first principal component with the y-intercept,
+determined by the ratio of the axis rotation in \(y\) and axis rotation
+in \(x\) of the first principal component with the y-intercept,
 \(\hat\beta_{0,PCA}\) calculated by the point-slope equation of a line
 using the mean of of the simulated points, \((\bar x_i, \bar y_i)\).
 Fitted values, \(\hat y_{k,PCA}\), are then obtained every 0.25
@@ -442,7 +447,7 @@ example of all three fitted trend lines for parameter choice F.
 
 }
 
-\caption{Illustrates the data associated with and collected for one 'You Draw It' task plot. Trend-lines include the participant drawn line (dashed black), the OLS regression line (solid steelblue) and the PCA regression line based on the principal axis (solid orange).}\label{fig:eyefitting-example-plot}
+\caption{Illustrates the data associated with and collected for one `You Draw It' task plot. Trend-lines include the participant drawn line (dashed black), the OLS regression line (solid steelblue) and the PCA regression line based on the principal axis (solid orange).}\label{fig:eyefitting-example-plot}
 \end{figure}
 
 \hypertarget{linear-trend-constraint}{%
@@ -461,17 +466,18 @@ y_{ijk,drawn} - \hat y_{ijk,fit} = e_{ijk,fit} = \left[\gamma_0 + \alpha_i\right
 \begin{itemize}
 \tightlist
 \item
-  \(y_{ijk,drawn}\) is the drawn y-value for the \(i^{th}\) parameter
-  choice, \(j^{th}\) participant, and \(k^{th}\) increment of x-value
-\item
-  \(\hat y_{ijk,fit}\) is the fitted y-value for the \(i^{th}\)
+  \(y_{ijk,drawn}\) is the drawn \(y\) value for the \(i^{th}\)
   parameter choice, \(j^{th}\) participant, and \(k^{th}\) increment of
-  x-value corresponding to either the OLS or PCA fit
+  \(x\) value
 \item
-  \(e_{ijk,fit}\) is the residual between the drawn and fitted y-values
-  for the \(i^{th}\) parameter choice, \(j^{th}\) participant, and
-  \(k^{th}\) increment of x-value corresponding to either the OLS or PCA
-  fit
+  \(\hat y_{ijk,fit}\) is the fitted \(y\) value for the \(i^{th}\)
+  parameter choice, \(j^{th}\) participant, and \(k^{th}\) increment of
+  \(x\) value corresponding to either the OLS or PCA fit
+\item
+  \(e_{ijk,fit}\) is the residual between the drawn and fitted \(y\)
+  values for the \(i^{th}\) parameter choice, \(j^{th}\) participant,
+  and \(k^{th}\) increment of \(x\) value corresponding to either the
+  OLS or PCA fit
 \item
   \(\gamma_0\) is the overall intercept
 \item
@@ -482,7 +488,7 @@ y_{ijk,drawn} - \hat y_{ijk,fit} = e_{ijk,fit} = \left[\gamma_0 + \alpha_i\right
 \item
   \(\gamma_{2i}\) is the effect of the parameter choice on the slope
 \item
-  \(x_{ijk}\) is the x-value for the \(i^{th}\) parameter choice,
+  \(x_{ijk}\) is the \(x\) value for the \(i^{th}\) parameter choice,
   \(j^{th}\) participant, and \(k^{th}\) increment
 \item
   \(p_{j} \sim N(0, \sigma^2_{participant})\) is the random error due to
@@ -502,8 +508,8 @@ than the OLS residuals (blue). In particular, this trend is more
 prominent in parameter choices with large variances (F and N). These
 results are consistent to those found in \citet{mosteller1981eye}
 indicating participants fit a trend-line closer to the estimated
-regression line with the slope of based on the first principal axis than
-the estimated OLS regression line thus, providing support for ``ensemble
+regression line with a slope based on the first principal axis than the
+estimated OLS regression line thus, providing support for ``ensemble
 perception''.
 
 \begin{figure}[tbp]
@@ -535,23 +541,24 @@ y_{ijk, drawn} - \hat y_{ijk, fit} = e_{ijk,fit} = \alpha_i + s_{i}(x_{ijk}) + p
 \begin{itemize}
 \tightlist
 \item
-  \(y_{ijk,drawn}\) is the drawn y-value for the \(i^{th}\) parameter
-  choice, \(j^{th}\) participant, and \(k^{th}\) increment of x-value
-\item
-  \(\hat y_{ijk,fit}\) is the fitted y-value for the \(i^{th}\)
+  \(y_{ijk,drawn}\) is the drawn \(y\) value for the \(i^{th}\)
   parameter choice, \(j^{th}\) participant, and \(k^{th}\) increment of
-  x-value corresponding to either the OLS or PCA fit
+  \(x\) value
 \item
-  \(e_{ijk,fit}\) is the residual between the drawn and fitted y-values
-  for the \(i^{th}\) parameter choice, \(j^{th}\) participant, and
-  \(k^{th}\) increment of x-value corresponding to either the OLS or PCA
-  fit
+  \(\hat y_{ijk,fit}\) is the fitted \(y\) value for the \(i^{th}\)
+  parameter choice, \(j^{th}\) participant, and \(k^{th}\) increment of
+  \(x\) value corresponding to either the OLS or PCA fit
+\item
+  \(e_{ijk,fit}\) is the residual between the drawn and fitted \(y\)
+  values for the \(i^{th}\) parameter choice, \(j^{th}\) participant,
+  and \(k^{th}\) increment of \(x\) value corresponding to either the
+  OLS or PCA fit
 \item
   \(\alpha_i\) is the intercept for the parameter choice \(i\)
 \item
   \(s_{i}\) is the smoothing spline for the \(i^{th}\) parameter choice
 \item
-  \(x_{ijk}\) is the x-value for the \(i^{th}\) parameter choice,
+  \(x_{ijk}\) is the \(x\) value for the \(i^{th}\) parameter choice,
   \(j^{th}\) participant, and \(k^{th}\) increment
 \item
   \(p_{j} \sim N(0, \sigma^2_{participant})\) is the error due to
@@ -574,7 +581,7 @@ splines, we can determine whether participants naturally fit a straight
 trend-line to the set of points or whether they deviate throughout the
 domain. In particular, in scatter-plots with smaller variance (S and V),
 we can see that participants began at approximately the correct starting
-point then deviated away from the fitted regression lines and correcting
+point then deviated away from the fitted regression lines and corrected
 for their fit toward the end of their trend-line. In scatter-plots with
 larger variance (F and N), participants estimated their starting value
 in the extreme direction of the OLS regression line based on the
@@ -597,7 +604,7 @@ set of points.
 \hypertarget{discussion-and-conclusion}{%
 \section{Discussion and Conclusion}\label{discussion-and-conclusion}}
 
-The intent of research was to adapt `You Draw It' from the New York
+The intent of this research was to adapt `You Draw It' from the New York
 Times feature as a tool and method for testing graphics and introduce a
 method for statistically modeling the participant drawn lines. We
 provided support for the validity of the `You Draw It' method by
@@ -624,10 +631,11 @@ This study provided a basis for the use of `You Draw It' as a tool for
 testing statistical graphics and introduced a method for statistically
 modeling participant drawn lines using generalized additive mixed
 models. Further investigation is necessary to implement this method in
-non-linear settings and with real data. This tool could also be used to
-evaluate human ability to extrapolate data from trends. In the future,
-an R package designed for easy implementation of `You Draw It' task
-plots will help make this tool accessible to other researchers.
+non-linear settings and with real data in order to facilitate scientific
+communication. This tool could also be used to evaluate human ability to
+extrapolate data from trends. We intend to create an R package designed
+for easy implementation of `You Draw It' task plots in order to make
+this tool accessible to other researchers.
 
 \begin{center}
 {\large\bf SUPPLEMENTARY MATERIAL}
