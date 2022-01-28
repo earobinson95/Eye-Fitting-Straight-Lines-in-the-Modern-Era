@@ -135,7 +135,7 @@ All participants had normal or corrected to normal vision and signed an informed
 The experimental tasks took approximately 15 minutes to complete.
 While this study does utilize a convenience sample, as this is primarily a perceptual task, previous results have found few differences between expert and non-expert participants in this context [@vanderplas2015spatial].
 These data were collected to validate this method of graphical testing, with the hopes of providing a new tool to assess graphical perception interactively.
-Participants completed the experiment on their own computers in an environment of their choosing. The experiment was conducted and distributed through a Shiny application [@shinyPkg] \ear{xxx added citation} found [here](https://emily-robinson.shinyapps.io/you-draw-it-pilot-app/). \svp{We should probably make a rstudioconnect version that saves data to e.g. a google spreadsheet? Just in case my server goes down or something?} \ear{XXX currently linked to my shinyapps.io page but will get this updated to a new repository.}
+Participants completed the experiment on their own computers in an environment of their choosing. The experiment was conducted and distributed through a Shiny application [@shinyPkg] \ear{xxx added citation} found [here](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/). \svp{We should probably make a rstudioconnect version that saves data to e.g. a google spreadsheet? Just in case my server goes down or something?} \ear{XXX linked to updated shinyapps.io through new repository - does not currently write data anywhere.}
 
 ## 'You Draw It' Task
 
@@ -494,6 +494,6 @@ We intend to create an R package designed for easy implementation of 'You Draw I
 
 + **Participant Data:** De-identified participant data collected in the study and used for analyses are available to be downloaded from GitHub [here](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
 + **Data Analysis Code:** The code used to replicate the analysis in this paper can be found [here](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
-+ **Study Applet:** The shiny app used to conduct the study can be accessed [here](https://emily-robinson.shinyapps.io/you-draw-it-pilot-app/).
++ **Study Applet:** The shiny app used to conduct the study can be accessed [here](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
 + **\ear{RShiny Applet Code:}** \ear{The code used to create the RShiny Applet for data collection can be found} [\ear{here}](https://github.com/earobinson95/you-draw-it-validation-applet).
 
