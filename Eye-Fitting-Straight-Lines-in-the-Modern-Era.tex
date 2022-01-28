@@ -109,72 +109,82 @@ Testing, Linear Regression, Statistical Graphics
 We all use statistical graphics, but how do we know that the graphics we
 use are communicating properly? When creating a graphic, we must
 consider the design choices most effective for conveying the intended
-result. For instance, we must decide to highlight the relationship
+result. For instance, we may decide to highlight the relationship
 between two variables in a scatter-plot by including a trend line, or
 adding color to highlight clustering \citep{vanderplas2017clusters}.
-These design choices require that we understand the perception and
+These design choices require that we understand the perceptual and
 visual biases that come into play when creating graphics, and as
 graphics are evaluated visually, we must use human testing to ground our
 understanding in empiricism.
 
 Much of the research on the perception of visual features in charts has
-been conducted in psychophysics and test for accuracy and quantitative
+been conducted in psychophysics and tests for accuracy and quantitative
 comparisons when understanding a plot. Cleveland and McGill conducted a
 series of cognitive tasks designed to establish a hierarchy of visual
 components for making comparisons \citep{cleveland1984graphical}. For
 example, it is more effective to display information on an \(x\) or
 \(y\) axis rather than using color in order to reduce the visual effort
-necessary to make numerical comparisons. Other early studies evaluated
-human perception of lines. For instance, \citet{cleveland1985graphical}
+necessary to make numerical comparisons. \citet{cleveland1985graphical}
 found that assessing the position of points along an axis is easier than
-determining the slope of a line. The results of these cognitive tasks
-provide some consistent guidance for chart design; however, other
-methods of visual testing can further evaluate design choices and help
-us understand cognitive biases related to the evaluation of statistical
-charts.
+determining the slope of a line.
+{\textcolor{RedOrange}{XXX we probably could include a few more papers and discussions here - the Cleveland 1984 and 1985 papers are based on the same study and are basically duplicates.}}
+The results of these cognitive tasks provide some consistent guidance
+for chart design; however, other methods of visual testing can further
+evaluate design choices and help us understand cognitive biases related
+to the evaluation of statistical charts.
 
 \hypertarget{testing-statistical-graphics}{%
 \subsection{Testing Statistical
 Graphics}\label{testing-statistical-graphics}}
 
-Graphical tests are useful for studying the perception of statistical
-graphs. Studies might ask participants to identify differences in
+We need human testing of graphics in order to draw broad conclusions,
+develop guidelines for graphical design, and improve graphical
+communication. Studies might ask participants to identify differences in
 graphs, read information off of a chart accurately, use data to make
 correct real-world decisions, or predict the next few observations. All
 of these types of tests require different levels of use and manipulation
 of the information being presented in the chart. Early researchers
 studied graphs from a psychological perspective
-\citep{spence1990visual, lewandowsky1989perception}. These studies
-generally tested participants ability to detect a stimulus or a
-difference between two stimuli. In statistical graphics research,
-\citet{vanderplas2015signs} uses methods of psychophysics to estimate
-the effect of sign illusions by adjusting the sine illusion up and down.
+\citep{spence1990visual, lewandowsky1989perception}, testing
+participants' abilities to detect a stimulus or a difference between two
+stimuli. Psychophysical methods have been used to test graphical
+perception, as in \citet{vanderplas2015signs}, which used the method of
+adjustment to estimate the magnitude of the impact of the sine illusion.
+However, there are more modern testing methods that have been developed
+since the heyday of psychophysics.
 
-A major development in statistical graphics research is Wilkinson's
-Grammar of Graphics \citep{wilkinson2013grammar}. The grammar of
-graphics serves as the fundamental framework for data visualization with
-the notion that graphics are built from the ground up by specifying
-exactly how to create a particular graph from a given data set. Visual
-representations are constructed through the use of ``tidy data'' which
-is characterized as a data set in which each variable is in its own
-column, each observation is in its own row, and each value is in its own
-cell \citep{wickham2016r}. Graphics are viewed as a mapping from
-variables in a data set (or statistics computed from the data) to visual
-attributes such as the axes, colors, shapes, or facets on the canvas in
-which the chart is displayed. Software, such as Hadley Wickham's ggplot2
+One major development in statistical graphics which led to more advanced
+testing methods is Wilkinson's Grammar of Graphics
+\citep{wilkinson2013grammar}. The grammar of graphics serves as the
+fundamental framework for data visualization with the notion that
+graphics are built from the ground up by specifying exactly how to
+create a particular graph from a given data set. Visual representations
+are constructed through the use of ``tidy data'' which is characterized
+as a data set in which each variable is in its own column, each
+observation is in its own row, and each value is in its own cell
+\citep{wickham2016r}. Graphics are viewed as a mapping from variables in
+a data set (or statistics computed from the data) to visual attributes
+such as the axes, colors, shapes, or facets on the canvas in which the
+chart is displayed. Software, such as Hadley Wickham's ggplot2
 \citep{wickham2011ggplot2}, aims to implement the framework of creating
 charts and graphics as the grammar of graphics recommends.
 
-One useful tool for testing statistical graphics is the concept of a
-lineup. \citet{buja2009statistical} introduced the lineup protocol to
-provide a framework for inferential testing. Through experimentation,
-methods such as the lineup protocol allow researchers to conduct studies
-geared at understanding human ability to conduct tasks related to the
-perception of statistical charts such as differentiation, prediction,
-estimation, and extrapolation
+Combining the grammar of graphics with another tool for statistical
+graphics testing, the statistical lineup, yields interesting results.
+\citet{buja2009statistical} introduced the lineup protocol to provide a
+framework for inferential testing. Through experimentation, methods such
+as the lineup protocol allow researchers to conduct studies geared at
+understanding human ability to conduct tasks related to the perception
+of statistical charts such as differentiation, prediction, estimation,
+and extrapolation
 \citep{vanderplas2017clusters, vanderplas2015spatial, hofmann2012graphical}.
 The advancement of graphing software provides the tools necessary to
 develop new methods of testing statistical graphics.
+
+While these testing methods are excellent, there is one particular
+subset of statistical graphics testing methods which we intend to
+develop further in this paper: assessing graphics by fitting statistical
+models ``by eye''.
 
 \hypertarget{fitting-trends-by-eye}{%
 \subsection{Fitting Trends by Eye}\label{fitting-trends-by-eye}}
@@ -186,30 +196,33 @@ fitting trends by eye involved maneuvering a string, black thread, or
 ruler until the fit is suitable, then drawing the line through the set
 of points. Recently, \citet{ciccione2021can} conducted a comprehensive
 set of studies investigating human ability to detect trends in graphical
-representations from a psychophysical approach.
+representations
+{\textcolor{RedOrange}{using these types of manipulations.}}
+{\textcolor{blue}{XXX this study was conducted online, but asked users to use the arrows on their keyboard to adjust the slope or select whether the shown slope was positive or negative}}.
 
-In \citet{finney1951subjective}, it was of interest to determine the
-effect of stopping iterative maximum likelihood calculations after one
-iteration. Many techniques in statistical analysis are performed with
-the aid of iterative calculations such as Newton's method or Fisher's
-scoring. The author was interested in whether one iteration of
-calculations was sufficient in the estimation of parameters connected
-with dose-response relationships. One measure of interest is the
-relative potency between a test preparation of doses and standard
-preparation of does; relative potency is calculated as the ratio of two
-equally effective doses between the two preparation methods. In this
-study, twenty-one scientists were recruited via postal mail and asked to
-``rule two lines'' in order to judge by eye the positions for a pair of
-parallel probit regression lines in a biological assay. The author then
-computed one iterative calculation of the relative potency based on
-starting values as indicated by the pair of lines provided by each
-participant and compared these relative potency estimates to that which
-was estimated by the full probit technique (reaching convergence through
-multiple iterations). Results indicated that one cycle of iterations for
-calculating the relative potency was sufficient based on the starting
-values provided by eye from the participants.
+\citet{finney1951subjective} used graphical testing for computational
+purposes: to determine the effect of stopping iterative maximum
+likelihood calculations after one iteration. Many techniques in
+statistical analysis are performed with the aid of iterative
+calculations such as Newton's method or Fisher's scoring. The author was
+interested in whether one iteration of calculations was sufficient in
+the estimation of parameters connected with dose-response relationships.
+One measure of interest is the relative potency between a test
+preparation of doses and standard preparation of does; relative potency
+is calculated as the ratio of two equally effective doses between the
+two preparation methods. In this study, twenty-one scientists were
+recruited via postal mail and asked to ``rule two lines'' in order to
+judge by eye the positions for a pair of parallel probit regression
+lines in a biological assay. The author then computed one iterative
+calculation of the relative potency based on starting values as
+indicated by the pair of lines provided by each participant and compared
+these relative potency estimates to that which was estimated by the full
+probit technique (reaching convergence through multiple iterations).
+Results indicated that one cycle of iterations for calculating the
+relative potency was sufficient based on the starting values provided by
+eye from the participants.
 
-\citet{mosteller1981eye}, sought to understand the properties of least
+\citet{mosteller1981eye} sought to understand the properties of least
 squares and other computed lines by establishing one systematic method
 of fitting lines by eye. Participants were asked to fit lines by eye to
 four scatter-plots using an 8.5 x 11 inch transparency with a straight
@@ -235,25 +248,28 @@ in excess of the ideal slopes, both in the positive and in the negative
 direction, and those biases increase with noise and with number of
 points. This supports the results found in \citet{mosteller1981eye} and
 suggest that participants might use Deming regression when fitting a
-line to a noisy scatter-plot.
+line to a noisy scatter-plot
+\citep{deming1943statistical, linnet1998performance, martin2000general}
+{\textcolor{blue}{xxx added citation}}.
 
-In 2015, the New York Times introduced an interactive feature, called
-You Draw It
+While not explicitly intended for perceptual testing, in 2015, the New
+York Times introduced an interactive feature, called You Draw It
 \citep{aisch_cox_quealy_2015, buchanan_park_pearce_2017, katz_2017}.
 Readers are asked to input their own assumptions about various metrics
 and compare how these assumptions relate to reality. The New York Times
-team utilizes Data Driven Documents (D3) that allows readers to predict
+team utilizes Data Driven Documents (D3) \citep{bostock2011d3}
+{\textcolor{blue}{xxx added citation}} that allows readers to predict
 these metrics through the use of drawing a line on their computer screen
 with their computer mouse. After the reader has completed drawing the
 line, the actual observed values are revealed and the reader may check
-their estimated knowledge against the actual reported data.
-
-\hypertarget{research-objectives}{%
-\subsection{Research objectives}\label{research-objectives}}
+their estimated knowledge against the actual reported data. While this
+interactive feature is designed to get readers to confront their own
+intuitions about data in the news, we feel that the interactivity of
+this method may be useful for another purpose.
 
 In this paper, we establish `You Draw It', adapted from the New York
-Times feature, as a tool for graphical testing. The `You Draw It' method
-is validated by replicating the study conducted by
+Times feature, as a tool for graphical testing, validating the `You Draw
+It' method by replicating the study conducted by
 \citet{mosteller1981eye}. Based on previous research surrounding
 ``ensemble perception,'' we hypothesize that visual regression tends to
 mimic principle component regression rather than an ordinary least
@@ -272,16 +288,19 @@ email in May 2021. A total of 35 individuals completed 119 unique `You
 Draw It' task plots; all completed you draw it task plots were included
 in the analysis. All participants had normal or corrected to normal
 vision and signed an informed consent form. The experimental tasks took
-approximately 15 minutes to complete. While convenience sampling took
-place, this is primarily a perceptual task and previous results have
-found few differences between expert and non-expert participants in this
-context \citep{vanderplas2015spatial}. Data collected in this study
-serves the purpose of a pilot study intended to lay the foundation for
-future data collection and provides promising results for understanding
-the perception of regression. Participants completed the experiment on
-their own computers in an environment of their choosing. The experiment
-was conducted and distributed through an RShiny application found
-\href{https://shiny.srvanderplas.com/you-draw-it/}{here}.
+approximately 15 minutes to complete. While this study does utilize a
+convenience sample, as this is primarily a perceptual task, previous
+results have found few differences between expert and non-expert
+participants in this context \citep{vanderplas2015spatial}. These data
+were collected to validate this method of graphical testing, with the
+hopes of providing a new tool to assess graphical perception
+interactively. Participants completed the experiment on their own
+computers in an environment of their choosing. The experiment was
+conducted and distributed through a Shiny application \citep{shinyPkg}
+{\textcolor{blue}{xxx added citation}} found
+\href{https://emily-robinson.shinyapps.io/you-draw-it-pilot-app/}{here}.
+{\textcolor{RedOrange}{We should probably make a rstudioconnect version that saves data to e.g. a google spreadsheet? Just in case my server goes down or something?}}
+{\textcolor{blue}{XXX currently linked to my shinyapps.io page but will get this updated to a new repository.}}
 
 \hypertarget{you-draw-it-task}{%
 \subsection{`You Draw It' Task}\label{you-draw-it-task}}
@@ -296,9 +315,10 @@ region disappears, indicating the participant has completed the task.
 Data Driven Documents (D3), a JavaScript-based graphing framework that
 facilitates user interaction, is used to create the `You Draw It'
 visual. In order to allow for user interaction and data collection, we
-integrate the D3 visual into RShiny using the \texttt{r2d3} package.
-Details of the development of the `You Draw It' task plots will be
-addressed in future work.
+integrate the D3 visual into Shiny using the \texttt{r2d3} package.
+While the interface is highly customized to this particular task, we
+hope to generalize the code and provide a Shiny widget in an R package
+soon.
 
 \begin{figure}[tbp]
 
@@ -368,20 +388,24 @@ N & 4.11 & -0.70 & 2.50\\
 \hypertarget{study-design}{%
 \subsection{Study Design}\label{study-design}}
 
-This experiment was conducted as part of a larger study; for simplicity,
-we focus on the study design and methods related to the current study.
-Each scatter-plot was the graphical representation of a data set that
-was generated randomly and independently for each participant at the
-start of the experiment. Participants in the study are shown two `You
-Draw It' practice plots in order to train participants in the skills
-associated with executing the task. During the practice session,
-participants are provided with instruction prompts accompanied by a .gif
-and a practice plot. Instructions guide participants to start at the
-edge of the yellow box, to make sure the yellow region is moving along
-with their mouse as they draw, and that they can draw over their already
-drawn line. Practice plots are then followed by four `You Draw It' task
-plots associated with the current study. The order of the task plots was
-randomly assigned for each individual in a completely randomized design.
+This experiment was conducted as part of a larger study of the
+perception of log and linear scales; for simplicity, we focus on the
+study design and methods related to the current study. Each scatter-plot
+was the graphical representation of a data set that was generated
+randomly and independently for each participant at the start of the
+experiment. Participants in the study are shown two `You Draw It'
+practice plots in order to train participants in the skills associated
+with executing the task - in particular, the responsiveness of the
+applet requires that participants draw a line at a certain speed,
+ensuring that all of the evenly spaced points along the hand-drawn line
+are filled in. During the practice session, participants are provided
+with instruction prompts accompanied by a .gif and a practice plot.
+Instructions guide participants to start at the edge of the yellow box,
+to make sure the yellow region is moving along with their mouse as they
+draw, and that they can draw over their already drawn line. Practice
+plots are then followed by four `You Draw It' task plots associated with
+the current study. The order of the task plots was randomly assigned for
+each individual in a completely randomized design.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -618,11 +642,12 @@ regression. Data simulated with a larger variance provided strong
 support for a participants tendency to visually fit the first principle
 component regression. Our results indicate that participants minimized
 the distance from the their regression line over both the \(x\) and
-\(y\) axis simultaneously. These results provide support that humans
-perform ``ensemble perception'' in a statistical graphic setting. We
-allowed participants to draw trend lines that deviated from a straight
-line and gained an insight into the curvature the human eye perceives in
-a set of points.
+\(y\) axis simultaneously.
+{\textcolor{RedOrange}{XXX some sentance that says that our results are much stronger than the original results because our analysis methods allow for more sophistication (and we have a slight technological advantage on the original paper's authors as well, after 40 years).}}
+These results provide support that humans perform ``ensemble
+perception'' in a statistical graphic setting. We allowed participants
+to draw trend lines that deviated from a straight line and gained an
+insight into the curvature the human eye perceives in a set of points.
 
 \hypertarget{future-work}{%
 \section{Future Work}\label{future-work}}
@@ -654,7 +679,12 @@ this tool accessible to other researchers.
   \href{https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html}{here}.
 \item
   \textbf{Study Applet:} The shiny app used to conduct the study can be
-  accessed \href{https://shiny.srvanderplas.com/you-draw-it/}{here}.
+  accessed
+  \href{https://emily-robinson.shinyapps.io/you-draw-it-pilot-app/}{here}.
+\item
+  \textbf{{\textcolor{blue}{RShiny Applet Code:}}}
+  {\textcolor{blue}{The code used to create the RShiny Applet for data collection can be found}}
+  \href{https://github.com/earobinson95/you-draw-it-validation-applet}{{\textcolor{blue}{here}}}.
 \end{itemize}
 
 \bibliographystyle{agsm}
