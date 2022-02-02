@@ -68,6 +68,11 @@ Much of the research on the perception of visual features in charts has been con
 Cleveland and McGill conducted a series of cognitive tasks designed to establish a hierarchy of visual components for making comparisons [@cleveland1984graphical]. 
 For example, it is more effective to display information on an $x$ or $y$ axis rather than using color in order to reduce the visual effort necessary to make numerical comparisons.
 @cleveland1985graphical found that assessing the position of points along an axis is easier than determining the slope of a line. \svp{XXX we probably could include a few more papers and discussions here - the Cleveland 1984 and 1985 papers are based on the same study and are basically duplicates.}
+
++ \ear{Viewers often mentally exaggerate the magnitude of correlations in scatterplots when the data appear dense [@cleveland1982variable; @lauer1989density].}
++  \ear{Similarly, the aspect ratio of a graph can have an influence on the patterns that viewers identify. @cleveland1993visualizing, for example, argues that viewers can most easily detect cyclical patterns when an aspect ratio that makes the curve closest to 45◦ is used.}
++ \ear{Gestalt principles of perceptual organization play a crucial role in data extraction [@kosslyn2006graph]: for example, data points that are closer in space are more likely to be perceived as grouped [@ciccione2020grouping], and vertical and horizontal lines are easier to discriminate than oblique ones [@appelle1972perception].}
+
 The results of these cognitive tasks provide some consistent guidance for chart design; however, other methods of visual testing can further evaluate design choices and help us understand cognitive biases related to the evaluation of statistical charts.
 
 ## Testing Statistical Graphics
