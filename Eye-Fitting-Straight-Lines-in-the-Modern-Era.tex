@@ -127,20 +127,18 @@ example, it is more effective to display information on an \(x\) or
 necessary to make numerical comparisons. \citet{cleveland1985graphical}
 found that assessing the position of points along an axis is easier than
 determining the slope of a line.
-{\textcolor{blue}{The design choices we make can affect a viewers ability to judge relationships between $x$ and $y$ coordinates in a scatter plot. For instance, when the data appear dense, viewers tend to overestimate the magnitude of the correlation coefficient}}
+{\textcolor{blue}{Other studies focus on the viewers ability to perceive the strength of the relationship between $x$ and $y$ coordinates in a scatter-plot. For instance, when the data appear dense, viewers tend to overestimate the magnitude of the correlation coefficient}}
 \citep{cleveland1982variables, lauer1989density}.
 \citet{cleveland1993visualizing}.
 {\textcolor{blue}{provides an argument for displaying cyclical patterns with an aspect ratio which sets the curve closet to 45$^{\circ}$.}}
-
-\begin{itemize}
-\item
-  {\textcolor{blue}{Gestalt principles of perceptual organization play a crucial role in data extraction [@kosslyn2006graph]: for example, data points that are closer in space are more likely to be perceived as grouped [@ciccione2020grouping], and vertical and horizontal lines are easier to discriminate than oblique ones [@appelle1972perception].}}
-\end{itemize}
-
-The results of these cognitive tasks provide some consistent guidance
-for chart design; however, other methods of visual testing can further
-evaluate design choices and help us understand cognitive biases related
-to the evaluation of statistical charts.
+\citet{kosslyn2006graph}
+{\textcolor{blue}{examines how Gestalt principles of perceptual organization are instrumental in extracting data from a chart. For example, data points that are closer in space are more likely to be perceived as grouped}}
+\citep{ciccione2020grouping}{\textcolor{blue}{, and vertical and horizontal lines are easier to discriminate than oblique ones}}
+\citep{appelle1972perception}. The results of these cognitive tasks
+provide some consistent guidance for chart design; however, other
+methods of visual testing can further evaluate design choices and help
+us understand cognitive biases related to the evaluation of statistical
+charts.
 
 \hypertarget{testing-statistical-graphics}{%
 \subsection{Testing Statistical
@@ -206,8 +204,7 @@ ruler until the fit is suitable, then drawing the line through the set
 of points. Recently, \citet{ciccione2021can} conducted a comprehensive
 set of studies investigating human ability to detect trends in graphical
 representations
-{\textcolor{RedOrange}{using these types of manipulations.}}
-{\textcolor{blue}{XXX this study was conducted online, but asked users to use the arrows on their keyboard to adjust the slope or select whether the shown slope was positive or negative}}.
+{\textcolor{blue}{using manual adjustment and manipulation methods.}}
 
 \citet{finney1951subjective} used graphical testing for computational
 purposes: to determine the effect of stopping iterative maximum
@@ -258,23 +255,21 @@ direction, and those biases increase with noise and with number of
 points. This supports the results found in \citet{mosteller1981eye} and
 suggest that participants might use Deming regression when fitting a
 line to a noisy scatter-plot
-\citep{deming1943statistical, linnet1998performance, martin2000general}
-{\textcolor{blue}{xxx added citation}}.
+\citep{deming1943statistical, linnet1998performance, martin2000general}.
 
 While not explicitly intended for perceptual testing, in 2015, the New
 York Times introduced an interactive feature, called You Draw It
 \citep{aisch_cox_quealy_2015, buchanan_park_pearce_2017, katz_2017}.
 Readers are asked to input their own assumptions about various metrics
 and compare how these assumptions relate to reality. The New York Times
-team utilizes Data Driven Documents (D3) \citep{bostock2011d3}
-{\textcolor{blue}{xxx added citation}} that allows readers to predict
-these metrics through the use of drawing a line on their computer screen
-with their computer mouse. After the reader has completed drawing the
-line, the actual observed values are revealed and the reader may check
-their estimated knowledge against the actual reported data. While this
-interactive feature is designed to get readers to confront their own
-intuitions about data in the news, we feel that the interactivity of
-this method may be useful for another purpose.
+team utilizes Data Driven Documents (D3) \citep{bostock2011d3} that
+allows readers to predict these metrics through the use of drawing a
+line on their computer screen with their computer mouse. After the
+reader has completed drawing the line, the actual observed values are
+revealed and the reader may check their estimated knowledge against the
+actual reported data. While this interactive feature is designed to get
+readers to confront their own intuitions about data in the news, we feel
+that the interactivity of this method may be useful for another purpose.
 
 In this paper, we establish `You Draw It', adapted from the New York
 Times feature, as a tool for graphical testing, validating the `You Draw
@@ -306,10 +301,8 @@ hopes of providing a new tool to assess graphical perception
 interactively. Participants completed the experiment on their own
 computers in an environment of their choosing. The experiment was
 conducted and distributed through a Shiny application \citep{shinyPkg}
-{\textcolor{blue}{xxx added citation}} found
+found
 \href{https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/}{here}.
-{\textcolor{RedOrange}{We should probably make a rstudioconnect version that saves data to e.g. a google spreadsheet? Just in case my server goes down or something?}}
-{\textcolor{blue}{XXX linked to updated shinyapps.io through new repository - does not currently write data anywhere.}}
 
 \hypertarget{you-draw-it-task}{%
 \subsection{`You Draw It' Task}\label{you-draw-it-task}}
@@ -652,7 +645,7 @@ support for a participants tendency to visually fit the first principle
 component regression. Our results indicate that participants minimized
 the distance from the their regression line over both the \(x\) and
 \(y\) axis simultaneously.
-{\textcolor{RedOrange}{XXX some sentance that says that our results are much stronger than the original results because our analysis methods allow for more sophistication (and we have a slight technological advantage on the original paper's authors as well, after 40 years).}}
+{\textcolor{blue}{We utilized modern technology to replicate a study conducted 40 years ago, and strengthend the original results with current analysis methods which allow for more flexibility and sophistication.}}
 These results provide support that humans perform ``ensemble
 perception'' in a statistical graphic setting. We allowed participants
 to draw trend lines that deviated from a straight line and gained an
@@ -671,6 +664,7 @@ extrapolate data from trends. We intend to create an R package designed
 for easy implementation of `You Draw It' task plots in order to make
 this tool accessible to other researchers.
 
+\newpage
 \begin{center}
 {\large\bf SUPPLEMENTARY MATERIAL}
 \end{center}
@@ -691,9 +685,9 @@ this tool accessible to other researchers.
   accessed
   \href{https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/}{here}.
 \item
-  \textbf{{\textcolor{blue}{RShiny Applet Code:}}}
-  {\textcolor{blue}{The code used to create the RShiny Applet for data collection can be found}}
-  \href{https://github.com/earobinson95/you-draw-it-validation-applet}{{\textcolor{blue}{here}}}.
+  \textbf{RShiny Applet Code:} The code used to create the RShiny Applet
+  for data collection can be found
+  \href{https://github.com/earobinson95/you-draw-it-validation-applet}{here}.
 \end{itemize}
 
 \bibliographystyle{agsm}
