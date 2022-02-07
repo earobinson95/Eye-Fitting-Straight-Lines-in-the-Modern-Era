@@ -95,7 +95,7 @@ While these testing methods are excellent, there is one particular subset of sta
 ## Fitting Trends by Eye
 
 Initial studies in the 20th century explored the use of fitting lines by eye through a set of points [@finney1951subjective; @mosteller1981eye]. 
-Common methods of fitting trends by eye involved maneuvering a string, black thread, or ruler until the fit is suitable, then drawing the line through the set of points. Recently, @ciccione2021can conducted a comprehensive set of studies investigating human ability to detect trends in graphical representations \ear{using manual adjustment and manipulation methods.}
+Common methods of fitting trends by eye involved maneuvering a string, black thread, or ruler until the fit is suitable, then drawing the line through the set of points. Recently, @ciccione2021can conducted a comprehensive set of studies investigating human ability to detect trends in graphical representations \ear{using physical adjustment and manipulation methods.}
 <!-- \svp{using these types of manipulations.}  -->
 <!-- \ear{XXX this study was conducted online, but asked users to use the arrows on their keyboard to adjust the slope or select whether the shown slope was positive or negative}. -->
 
