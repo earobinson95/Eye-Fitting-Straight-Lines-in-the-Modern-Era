@@ -8,13 +8,13 @@ authors:
 - name: Emily A. Robinson 1
   # thanks: The authors gratefully acknowledge ...
   affiliation: Department of Statistics, University of Nebraska - Lincoln
-  
-- name: Susan VanderPlas 2
-  affiliation: Department of Statistics, University of Nebraska - Lincoln
-  
-- name: Reka Howard 3
-  affiliation: Department of Statistics, University of Nebraska - Lincoln
 
+- name: Reka Howard 2
+  affiliation: Department of Statistics, University of Nebraska - Lincoln
+  
+- name: Susan VanderPlas 3
+  affiliation: Department of Statistics, University of Nebraska - Lincoln
+  
 keywords:
 - Cognitive Bias
 - Graph Perception
@@ -67,8 +67,7 @@ These design choices require that we understand the perceptual and visual biases
 Much of the research on the perception of visual features in charts has been conducted in psychophysics and tests for accuracy and quantitative comparisons when understanding a plot. 
 Cleveland and McGill conducted a series of cognitive tasks designed to establish a hierarchy of visual components for making comparisons [@cleveland1984graphical]. 
 For example, it is more effective to display information on an $x$ or $y$ axis rather than using color in order to reduce the visual effort necessary to make numerical comparisons.
-@cleveland1985graphical found that assessing the position of points along an axis is easier than determining the slope of a line. \ear{Other studies focus on the viewers ability to perceive the strength of the relationship between $x$ and $y$ coordinates in a scatter-plot. For instance, when the data appear dense, viewers tend to overestimate the magnitude of the correlation coefficient} [@cleveland1982variables; @lauer1989density]. @cleveland1993visualizing. \ear{provides an argument for displaying cyclical patterns with an aspect ratio which sets the curve closet to 45$^{\circ}$.} @kosslyn2006graph \ear{examines how Gestalt principles of perceptual organization are instrumental in extracting data from a chart. For example, data points that are closer in space are more likely to be perceived as grouped} [@ciccione2020grouping]\ear{, and vertical and horizontal lines are easier to discriminate than oblique ones} [@appelle1972perception].
-<!-- \svp{XXX we probably could include a few more papers and discussions here - the Cleveland 1984 and 1985 papers are based on the same study and are basically duplicates.} -->
+@cleveland1985graphical found that assessing the position of points along an axis is easier than determining the slope of a line. Other studies focus on the viewers ability to perceive the strength of the relationship between $x$ and $y$ coordinates in a scatter-plot. For instance, when the data appear dense, viewers tend to overestimate the magnitude of the correlation coefficient [@cleveland1982variables; @lauer1989density]. @cleveland1993visualizing. provides an argument for displaying cyclical patterns with an aspect ratio which sets the curve closet to 45$^{\circ}$. @kosslyn2006graph examines how Gestalt principles of perceptual organization are instrumental in extracting data from a chart. For example, data points that are closer in space are more likely to be perceived as grouped [@ciccione2020grouping], and vertical and horizontal lines are easier to discriminate than oblique ones [@appelle1972perception].
 The results of these cognitive tasks provide some consistent guidance for chart design; however, other methods of visual testing can further evaluate design choices and help us understand cognitive biases related to the evaluation of statistical charts.
 
 ## Testing Statistical Graphics
@@ -95,9 +94,7 @@ While these testing methods are excellent, there is one particular subset of sta
 ## Fitting Trends by Eye
 
 Initial studies in the 20th century explored the use of fitting lines by eye through a set of points [@finney1951subjective; @mosteller1981eye]. 
-Common methods of fitting trends by eye involved maneuvering a string, black thread, or ruler until the fit is suitable, then drawing the line through the set of points. Recently, @ciccione2021can conducted a comprehensive set of studies investigating human ability to detect trends in graphical representations \ear{using physical adjustment and manipulation methods.}
-<!-- \svp{using these types of manipulations.}  -->
-<!-- \ear{XXX this study was conducted online, but asked users to use the arrows on their keyboard to adjust the slope or select whether the shown slope was positive or negative}. -->
+Common methods of fitting trends by eye involved maneuvering a string, black thread, or ruler until the fit is suitable, then drawing the line through the set of points. Recently, @ciccione2021can conducted a comprehensive set of studies investigating human ability to detect trends in graphical representations using physical adjustment and manipulation methods.
 
 @finney1951subjective used graphical testing for computational purposes: to determine the effect of stopping iterative maximum likelihood calculations after one iteration. 
 Many techniques in statistical analysis are performed with the aid of iterative calculations such as Newton's method or Fisher's scoring.
@@ -139,7 +136,6 @@ The experimental tasks took approximately 15 minutes to complete.
 While this study does utilize a convenience sample, as this is primarily a perceptual task, previous results have found few differences between expert and non-expert participants in this context [@vanderplas2015spatial].
 These data were collected to validate this method of graphical testing, with the hopes of providing a new tool to assess graphical perception interactively.
 Participants completed the experiment on their own computers in an environment of their choosing. The experiment was conducted and distributed through a Shiny application [@shinyPkg] found [here](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/). 
-<!-- \svp{We should probably make a rstudioconnect version that saves data to e.g. a google spreadsheet? Just in case my server goes down or something?} \ear{XXX linked to updated shinyapps.io through new repository - does not currently write data anywhere.} -->
 
 ## 'You Draw It' Task
 
@@ -481,8 +477,7 @@ Using generalized additive mixed models, we assessed the deviation of the partic
 Our results found that when shown points following a linear trend, participants visually fit a regression line that mimics the first principle component regression as opposed to ordinary least squares regression. 
 Data simulated with a larger variance provided strong support for a participants tendency to visually fit the first principle component regression.
 Our results indicate that participants minimized the distance from the their regression line over both the $x$ and $y$ axis simultaneously. 
-\ear{We utilized modern technology to replicate a study conducted 40 years ago, and strengthend the original results with current analysis methods which allow for more flexibility and sophistication.}
-<!-- \svp{XXX some sentance that says that our results are much stronger than the original results because our analysis methods allow for more sophistication (and we have a slight technological advantage on the original paper's authors as well, after 40 years).} -->
+We utilized modern technology to replicate a study conducted 40 years ago, and strengthened the original results with current analysis methods which allow for more flexibility and sophistication.
 These results provide support that humans perform "ensemble perception" in a statistical graphic setting.
 We allowed participants to draw trend lines that deviated from a straight line and gained an insight into the curvature the human eye perceives in a set of points. 
 
