@@ -190,12 +190,10 @@ tasks related to the perception of statistical charts such as
 differentiation, prediction, estimation, and extrapolation
 \citep{vanderplas2017clusters, vanderplas2015spatial, hofmann2012graphical}.
 The advancement of graphing software provides the tools necessary to
-develop new methods of testing statistical graphics.
-
-While these testing methods are excellent, there is one particular
-subset of statistical graphics testing methods which we intend to
-develop further in this paper: assessing graphics by fitting statistical
-models ``by eye''.
+develop new methods of testing statistical graphics. While these testing
+methods are excellent, there is one particular subset of statistical
+graphics testing methods which we intend to develop further in this
+paper: assessing graphics by fitting statistical models ``by eye''.
 
 \hypertarget{fitting-trends-by-eye}{%
 \subsection{Fitting Trends by Eye}\label{fitting-trends-by-eye}}
@@ -281,15 +279,16 @@ In this paper, we establish `You Draw It', adapted from the New York
 Times feature, as a tool for graphical testing. Our visual system is
 naturally built to look for structure and identify patterns. For
 instance, points going down from left to right indicates a negative
-correlation between the x and y variables. Our research is intended to
-implement the `You Draw It' feature as a way to measure the patterns we
-see in data. We validate the `You Draw It' method by replicating the
-less technological study conducted by \citet{mosteller1981eye}. Based on
-previous research surrounding ``ensemble perception,'' we hypothesize
-that visual regression tends to mimic principle component regression
-rather than an ordinary least squares regression. In order to assess
-this hypothesis, we introduce a method for statistically modeling the
-participant drawn lines using generalized additive mixed models.
+correlation between the \(x\) and \(y\) variables. Our research is
+intended to implement the `You Draw It' feature as a way to measure the
+patterns we see in data. We validate the `You Draw It' method by
+replicating the less technological study conducted by
+\citet{mosteller1981eye}. Based on previous research surrounding
+``ensemble perception,'' we hypothesize that visual regression tends to
+mimic principle component regression rather than an ordinary least
+squares regression. In order to assess this hypothesis, we introduce a
+method for statistically modeling the participant drawn lines using
+generalized additive mixed models.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -319,13 +318,13 @@ The experiment was conducted and distributed through a Shiny application
 
 In the study, participants were shown an interactive scatter-plot
 (\cref{fig:ydi-stimuli}) along with the prompt, ``Use your mouse to fill
-in the trend in the yellow box region.'' The yellow box region moves
-along as the user draws their trend-line, providing a visual cue which
-indicates where the user still needs to complete a trend line. After the
-entire domain has been visually estimated or predicted, the yellow
-shaded region disappears, indicating the participant has completed the
+in the trend in the yellow box region.'' The yellow box region moved
+along as the user drew their trend-line, providing a visual cue which
+indicates where the user still needed to complete a trend line. After
+the entire domain had been visually estimated or predicted, the yellow
+shaded region disappeared, indicating the participant had completed the
 task. Data Driven Documents (D3), a JavaScript-based graphing framework
-that facilitates user interaction, is used to create the `You Draw It'
+that facilitates user interaction, was used to create the `You Draw It'
 visual. In order to allow for user interaction and data collection, we
 integrated the D3 visual into Shiny using the \texttt{r2d3} package.
 While the interface is highly customized to this particular task, we
@@ -338,7 +337,7 @@ soon.
 
 }
 
-\caption{'You Draw It' task plot as shown to particpants during the study. The first frame (left) illustrates what particpants first see with the prompt “Use your mouse to fill in the trend in the yellow box region.” The second frame (middle), illustrates what the particpant sees while completing the task; the yellow shaded region provides a visual cue for participants indicating where the participant still needs to complete a trend-line. The last frame (right) illustrates the participants finished trend-line before submission.}\label{fig:ydi-stimuli}
+\caption{'You Draw It' task plot as shown to particpants during the study. The first frame (left) illustrates what particpants first saw with the prompt “Use your mouse to fill in the trend in the yellow box region.” The second frame (middle), illustrates what the particpant saw while completing the task; the yellow shaded region provided a visual cue for participants indicating where the participant still needed to complete a trend-line. The last frame (right) illustrates the participants finished trend-line before submission.}\label{fig:ydi-stimuli}
 \end{figure}
 
 \hypertarget{data-generation}{%
@@ -355,14 +354,14 @@ y_i & = \beta_0 + \beta_1 x_i + e_i \\
 
 Model equation parameters, \(\beta_0\) and \(\beta_1\), were selected to
 reflect the four data sets (F, N, S, and V) used in
-\citet{mosteller1981eye} (\cref{tab:eyefitting-parameters}). We obtain
+\citet{mosteller1981eye} (\cref{tab:eyefitting-parameters}). We obtained
 \(\beta_0\) from the point-slope equation of a line using the mean of
 the generated \(x\) values and the predefined \(y\) value at \(\bar x\),
 denoted \(y_{\bar x}\). Parameter choices F, N, and S simulated data
-across a domain of 0 to 20. Parameter choice F produces a trend with a
-positive slope and a large variance while N has a negative slope and a
-large variance. In comparison, S shows a trend with a positive slope
-with a small variance and V yields a steep positive slope with a small
+across a domain of 0 to 20. Parameter choice F produced a trend with a
+positive slope and a large variance while N had a negative slope and a
+large variance. In comparison, S showed a trend with a positive slope
+and a small variance while V yielded a steep positive slope with a small
 variance over the domain of 4 to 16. \cref{fig:eyefitting-simplot}
 illustrates an example of simulated data for all four parameter choices
 intended to reflect the trends in \citet{mosteller1981eye}. Aesthetic
@@ -413,8 +412,8 @@ ensuring that all of the evenly spaced points along the hand-drawn line
 are filled in. During the practice session, participants were provided
 with instruction prompts accompanied by a .gif and a practice plot.
 Instructions guided participants to start at the edge of the yellow box,
-to make sure the yellow shaded region is moving along with their mouse
-as they draw, and that they can draw over their already drawn line.
+to make sure the yellow shaded region was moving along with their mouse
+as they drew, and that they could draw over their already drawn line.
 Practice plots were then followed by four `You Draw It' task plots
 associated with the current study. The order of the task plots was
 randomly assigned for each individual in a completely randomized design.
@@ -425,13 +424,13 @@ randomly assigned for each individual in a completely randomized design.
 \hypertarget{fitted-regression-lines}{%
 \subsection{Fitted Regression Lines}\label{fitted-regression-lines}}
 
-We compare the participant drawn line to two regression lines determined
-by ordinary least squares (OLS) regression and regression based on the
-principal axis (PCA). \cref{fig:ols-vs-pca-example} illustrates the
-difference between an OLS regression line which minimizes the vertical
-distance of points from the line and a regression line based on the
-principal axis which minimizes the Euclidean distance of points
-(orthogonal) from the line.
+We compared the participant drawn line to two regression lines
+determined by ordinary least squares (OLS) regression and regression
+based on the principal axis (PCA). \cref{fig:ols-vs-pca-example}
+illustrates the difference between an OLS regression line which
+minimizes the vertical distance of points from the line and a regression
+line based on the principal axis which minimizes the Euclidean distance
+of points (orthogonal) from the line.
 
 Due to the randomness in the data generation process, the actual slope
 of the linear regression line fit through the simulated points could
@@ -445,7 +444,7 @@ domain from the OLS regression equation,
 principal axis was determined by using the \texttt{princomp} function in
 the stats package in base R to obtain the rotation of the coordinate
 axes from the first principal component (direction which captures the
-most variance). The estimated slope, \(\hat\beta_{1,PCA}\), is
+most variance). The estimated slope, \(\hat\beta_{1,PCA}\), was
 determined by the ratio of the axis rotation in \(y\) and axis rotation
 in \(x\) of the first principal component with the y-intercept,
 \(\hat\beta_{0,PCA}\) calculated by the point-slope equation of a line
@@ -490,12 +489,12 @@ example of all three fitted trend lines for parameter choice F.
 \subsubsection{Linear Trend Constraint}\label{linear-trend-constraint}}
 
 Using the \texttt{lmer} function in the lme4 package \citep{lme4}, a
-linear mixed model (LMM) is fit separately to the OLS residuals and PCA
+linear mixed model (LMM) was fit separately to the OLS residuals and PCA
 residuals, constraining the fit to a linear trend. Parameter choice,
 \(x\), and the interaction between \(x\) and the parameter choice were
-treated as fixed effects with a random participant effect accounting for
-variation due to participant. The LMM equation for each fit (OLS and
-PCA) is given by: \begin{equation}
+treated as fixed effects with a random participant effect included to
+account for variation due to participant. The LMM equation for each fit
+(OLS and PCA) is given by: \begin{equation}
 y_{ijk,drawn} - \hat y_{ijk,fit} = e_{ijk,fit} = \left[\gamma_0 + \alpha_i\right] + \left[\gamma_{1} x_{ijk} + \gamma_{2i} x_{ijk}\right] + p_{j} + \epsilon_{ijk}
 \end{equation} \noindent where
 
@@ -561,16 +560,16 @@ perception''.
 \subsubsection{Smoothing Spline Trend}\label{smoothing-spline-trend}}
 
 Eliminating the linear trend constraint, the \texttt{bam} function in
-the mgcv package \citep{mgcv1, mgcv2, mgcv3, mgcv4, mgcv5} is used to
+the mgcv package \citep{mgcv1, mgcv2, mgcv3, mgcv4, mgcv5} was used to
 fit a generalized additive mixed model (GAMM) separately to the OLS
 residuals and PCA residuals to allow for estimation of smoothing
 splines. Parameter choice was treated as a fixed effect with no
 estimated intercept and a separate smoothing spline for \(x\) was
-estimated for each parameter choice. A random participant effect
-accounting for variation due to participant and a random spline for each
-participant accounted for variation in spline for each participant. The
-GAMM equation for each fit (OLS and PCA) residuals is given by:
-\begin{equation}
+estimated for each parameter choice. A random participant effect was
+included to account for variation due to participant and a random spline
+for each participant accounted for variation in spline for each
+participant. The GAMM equation for each fit (OLS and PCA) residuals is
+given by: \begin{equation}
 y_{ijk, drawn} - \hat y_{ijk, fit} = e_{ijk,fit} = \alpha_i + s_{i}(x_{ijk}) + p_{j} + s_{j}(x_{ijk})
 \end{equation} \noindent where
 
@@ -609,11 +608,11 @@ of the residuals between the participant drawn points and fitted values
 for both the OLS regression line and PCA regression line. Estimated
 residual trends were overlaid on the observed individual participant
 residuals. The results of the GAMM align with those shown in
-\cref{fig:eyefitting-lmer-residualplots} providing support that for
-scatter-plots with more noise (F and N), estimated trends of PCA
-residuals (orange) appear to align closer to the \(y=0\) horizontal
-(dashed) line than the OLS residuals (blue). By fitting smoothing
-splines, we can determine whether participants naturally fit a straight
+\cref{fig:eyefitting-lmer-residualplots} providing support that
+estimated trends of PCA residuals (orange) appear to align closer to the
+\(y=0\) horizontal (dashed) line than the OLS residuals (blue) for
+scatter-plots with more noise (F and N). By fitting smoothing splines,
+we can determine whether participants naturally fit a straight
 trend-line to the set of points or whether they deviate throughout the
 domain. In particular, in scatter-plots with smaller variance (S and V),
 we can see that participants began at approximately the correct starting
@@ -652,12 +651,12 @@ participants visually fit a regression line that mimics the first
 principle component regression as opposed to ordinary least squares
 regression. Data simulated with a larger variance provided strong
 support for a participants tendency to visually fit the first principle
-component regression. Our results indicate that participants minimized
-the distance from their drawn regression line over both the \(x\) and
-\(y\) axis simultaneously. We utilized modern technology to replicate a
-study conducted 40 years ago, and strengthened the original results with
+component regression. We utilized modern technology to replicate a study
+conducted 40 years ago, and strengthened the original results with
 current analysis methods which allow for more flexibility and
-sophistication. These results provide support that humans perform
+sophistication. Our results indicate that participants minimized the
+distance from their drawn regression line over both the \(x\) and \(y\)
+axis simultaneously. These results provide support that humans perform
 ``ensemble perception'' in a statistical graphic setting. We allowed
 participants to draw trend lines that deviated from a straight line and
 gained an insight into the curvature the human eye perceives in a set of
