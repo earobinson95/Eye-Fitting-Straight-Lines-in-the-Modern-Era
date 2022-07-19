@@ -62,14 +62,14 @@ library(here)
 ```
 
 # Introduction
-We all use statistical graphics, but how do we know that the graphics we use are communicating properly? When creating a graphic, we must consider the design choices most effective for conveying the intended result. For instance, we may decide to highlight the relationship between two variables in a scatter-plot by including a trend line, or adding color to highlight clustering [@vanderplas2017clusters].
+We all use statistical graphics, but how do we know that the graphics we use are communicating properly? When creating a graphic, we must consider the design choices most effective for conveying the intended result. For instance, we may decide to highlight the relationship between two variables in a scatterplot by including a trend line, or adding color to highlight clustering [@vanderplas2017clusters].
 These design choices require that we understand the perceptual and visual biases that come into play when creating graphics, and as graphics are evaluated visually, we must use human testing to ground our understanding in empiricism.
 
 Much of the research on the perception of visual features in charts has been conducted in psychophysics and tests for accuracy and quantitative comparisons when understanding a plot. 
 @cleveland1984graphical conducted a series of cognitive tasks designed to establish a hierarchy of visual components for making comparisons. 
 For example, it is more effective to display information on an $x$ or $y$ axis rather than using color in order to reduce the visual effort necessary to make numerical comparisons.
-@cleveland1985graphical found that assessing the position of points along an axis is easier than determining the slope of a line. Other studies focus on the viewers ability to perceive the strength of the relationship between $x$ and $y$ coordinates in a scatter-plot. For instance, when the data appear dense, viewers tend to overestimate the magnitude of the correlation coefficient [@cleveland1982variables; @lauer1989density]. @cleveland1993visualizing provides an argument for displaying cyclical patterns with an aspect ratio which sets the curve close to 45$^{\circ}$. @kosslyn2006graph examines how Gestalt principles of perceptual organization are instrumental in extracting data from a chart. For example, data points that are closer in space are more likely to be perceived as grouped [@ciccione2020grouping], and vertical and horizontal lines are easier to discriminate than oblique ones [@appelle1972perception].
-The results of these cognitive tasks provide some consistent guidance for chart design; however, other methods of visual testing can further evaluate design choices and help us understand cognitive biases related to the evaluation of statistical charts.
+@cleveland1985graphical found that assessing the position of points along an axis is easier than determining the slope of a line. Other studies focused on the viewers' ability to perceive the strength of the relationship between $x$ and $y$ coordinates in a scatterplot. For instance, when the data appear dense, viewers tend to overestimate the magnitude of the correlation coefficient [@cleveland1982variables; @lauer1989density]. @cleveland1993visualizing provided an argument for displaying cyclical patterns with an aspect ratio which sets the curve close to 45$^{\circ}$. @kosslyn2006graph examined how Gestalt principles of perceptual organization are instrumental in extracting data from a chart. For example, data points that are closer in space are more likely to be perceived as grouped [@ciccione2020grouping], and vertical and horizontal lines are easier to discriminate than oblique ones [@appelle1972perception].
+The results of these cognitive tasks provided some consistent guidance for chart design; however, other methods of visual testing can further evaluate design choices and help us understand cognitive biases related to the evaluation of statistical charts.
 
 ## Testing Statistical Graphics
 
@@ -80,12 +80,12 @@ Early research studies considered graphs from a psychological perspective [@spen
 However, there are more modern testing methods that have been developed since the heyday of psychophysics.
 
 One major development in statistical graphics which led to more advanced testing methods is Wilkinson’s Grammar of Graphics [@wilkinson2013grammar].
-The grammar of graphics serves as the fundamental framework for data visualization with the notion that graphics are built from the ground up by specifying exactly how to create a particular graph from a given data set.
+The Grammar of Graphics serves as the fundamental framework for data visualization with the notion that graphics are built from the ground up by specifying exactly how to create a particular graph from a given data set.
 Visual representations are constructed through the use of “tidy data” which is characterized as a data set in which each variable is in its own column, each observation is in its own row, and each value is in its own cell [@wickham2016r].
 Graphics are viewed as a mapping from variables in a data set (or statistics computed from the data) to visual attributes such as the axes, colors, shapes, or facets on the canvas in which the chart is displayed.
-Software, such as Hadley Wickham’s ggplot2 [@wickham2011ggplot2], aims to implement the framework of creating charts and graphics as the grammar of graphics recommends.
+Software, such as Hadley Wickham’s ggplot2 [@wickham2011ggplot2], aims to implement the framework of creating charts and graphics as the Grammar of Graphics recommends.
 
-Combining the grammar of graphics with another tool for statistical graphics testing, the statistical lineup, yields a method for evaluating graphical design choices.
+Combining the Grammar of Graphics with another tool for statistical graphics testing, the statistical lineup, yields a method for evaluating graphical design choices.
 @buja2009statistical introduced the lineup protocol to provide a framework for inferential testing.
 Through experimentation, methods such as the lineup protocol allow researchers to conduct studies geared at understanding human ability to conduct tasks related to the perception of statistical charts such as differentiation, prediction, estimation, and extrapolation [@vanderplas2017clusters; @vanderplas2015spatial; @hofmann2012graphical].
 The advancement of graphing software provides the tools necessary to develop new methods of testing statistical graphics.
@@ -93,7 +93,7 @@ While these testing methods are excellent, there is one particular subset of sta
 
 ## Fitting Trends by Eye
 
-Initial studies in the 20th century explored the use of fitting lines by eye through a set of points [@finney1951subjective; @mosteller1981eye]. 
+Initial studies in the 20th century explored the use of fitting lines by eye through a set of points [@unwin1988eyeballing; @finney1951subjective; @mosteller1981eye]. 
 Common methods of fitting trends by eye involved maneuvering a string, black thread, or ruler until the fit is suitable, then drawing the line through the set of points. Recently, @ciccione2021can conducted a comprehensive set of studies investigating human ability to detect trends in graphical representations using physical adjustment and manipulation methods.
 
 @finney1951subjective used graphical testing for computational purposes: to determine the effect of stopping iterative maximum likelihood calculations after one iteration. 
@@ -105,7 +105,7 @@ The author then computed one iterative calculation of the relative potency based
 Results of the study indicated that one cycle of iterations for calculating the relative potency was sufficient based on the starting values provided by eye from the participants.
 
 @mosteller1981eye sought to understand the properties of least squares and other computed lines by establishing one systematic method of fitting lines by eye. 
-Participants were asked to fit lines by eye to four scatter-plots using an 8.5 x 11 inch transparency with a straight line etched completely across the middle. 
+Participants were asked to fit lines by eye to four scatterplots using an 8.5 x 11 inch transparency with a straight line etched completely across the middle. 
 A latin square design with packets of the set of points stapled together in four different sequences was used to determine if there is an effect of order of presentation.
 It was found that order of presentation had no effect and that participants tended to fit the slope of the principal axis (error minimized orthogonally, both horizontal and vertical, to the regression line) over the slope of the least squares regression line (error minimized vertically to the regression line).
 These results support previous research on "ensemble perception" indicating the visual system can compute averages of various features in parallel across the items in a set [@chong2003representation; @chong2005statistical; @van2011rapid].
@@ -113,9 +113,9 @@ These results support previous research on "ensemble perception" indicating the 
 In @ciccione2021can, participants were asked to judge trends, estimate slopes, and conduct extrapolation.
 To estimate slopes, participants were asked to report the slope of the best-fitting regression line using a track-pad to adjust the tilt of a line on the screen.
 Results indicated the slopes participants reported were always in excess of the ideal slopes, both in the positive and in the negative direction, and those biases increase with noise and with number of points. 
-This supports the results found in @mosteller1981eye and suggest that participants might use Deming regression [@deming1943statistical; @linnet1998performance; @martin2000general], which minimizes the Euclidean distance of points from the line, when fitting a line to a noisy scatter-plot.
+This supports the results found in @mosteller1981eye and suggest that participants might use Deming regression [@deming1943statistical; @linnet1998performance; @martin2000general], which minimizes the Euclidean distance of points from the line, when fitting a line to a noisy scatterplot.
 
-While not explicitly intended for perceptual testing, in 2015, the New York Times introduced an interactive feature, called You Draw It [@aisch_cox_quealy_2015; @buchanan_park_pearce_2017; @katz_2017].
+While not explicitly intended for perceptual testing, in 2015, the New York Times introduced an interactive feature, called 'You Draw It' [@aisch_cox_quealy_2015; @buchanan_park_pearce_2017; @katz_2017].
 Readers were asked to input their own assumptions about various metrics and compare how these assumptions relate to reality.
 The New York Times team utilizes Data Driven Documents (D3) [@bostock2011d3] that allows readers to predict these metrics through the use of drawing a line on their computer screen with their computer mouse. 
 After the reader has completed drawing the line, the actual observed values are revealed and the reader may check their estimated knowledge against the actual reported data.
@@ -136,14 +136,14 @@ All participants had normal or corrected to normal vision and signed an informed
 The experimental tasks took approximately 15 minutes to complete.
 While this study does utilize a convenience sample, as this is primarily a perceptual task, previous results have found few differences between expert and non-expert participants in this context [@vanderplas2015spatial].
 These data were collected to validate this method of graphical testing, with the hopes of providing a new tool to assess graphical perception interactively.
-Participants completed the experiment on their own computers in an environment of their choosing. The experiment was conducted and distributed through a Shiny application [@shinyPkg] found [here](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
+Participants completed the experiment on their own computers in an environment of their choosing. The experiment was conducted and distributed through a Shiny application [@shinyPkg] found at [emily-robinson.shinyapps.io/you-draw-it-validation-applet](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
 
 ## 'You Draw It' Task
 
-In the study, participants were shown an interactive scatter-plot \pcref{fig:ydi-stimuli} along with the prompt, “Use your mouse to fill in the trend in the yellow box region.”
+In the study, participants were shown an interactive scatterplot \pcref{fig:ydi-stimuli} along with the prompt, “Use your mouse to fill in the trend in the yellow box region.”
 The yellow box region moved along as the user drew their trend-line, providing a visual cue which indicates where the user still needed to complete a trend line. After the entire domain had been visually estimated or predicted, the yellow shaded region disappeared, indicating the participant had completed the task.
 Data Driven Documents (D3), a JavaScript-based graphing framework that facilitates user interaction, was used to create the 'You Draw It' visual. 
-In order to allow for user interaction and data collection, we integrated the D3 visual into Shiny using the `r2d3` package.
+In order to allow for user interaction and data collection, we integrated the D3 visual into Shiny using the `r2d3` package [@r2d3].
 While the interface is highly customized to this particular task, we hope to generalize the code and provide a Shiny widget in an R package soon.
 
 ```{r ydi-stimuli, include = T, fig.cap = "'You Draw It' task plot as shown to particpants during the study. The first frame (left) illustrates what particpants first saw with the prompt “Use your mouse to fill in the trend in the yellow box region.” The second frame (middle), illustrates what the particpant saw while completing the task; the yellow shaded region provided a visual cue for participants indicating where the participant still needed to complete a trend-line. The last frame (right) illustrates the participants finished trend-line before submission.", out.width="100%"}
@@ -152,15 +152,15 @@ knitr::include_graphics("images/ydi-stimuli.png")
 
 ## Data Generation
 
-All data processing was conducted in R statistical software. 
-A total of $N = 30$ points $(x_i, y_i), i = 1,...N$ were generated for $x_i \in [x_{min}, x_{max}]$ where $x$ and $y$ have a linear relationship.
+All data processing was conducted in R software environment for statistical computing and graphics [@Rsoftware]. 
+A total of $N = 30$ points $(x_i, y_i), i = 1,...,N$ were generated for $x_i \in [x_{min}, x_{max}]$ where $x$ and $y$ have a linear relationship.
 Data were simulated based on a linear model with additive errors: 
 \begin{align}
 y_i & = \beta_0 + \beta_1 x_i + e_i \\
 \text{with } e_i & \sim N(0, \sigma^2). \nonumber
 \end{align} 
 
-Model equation parameters, $\beta_0$ and $\beta_1$, were selected to reflect the four data sets (F, N, S, and V) used in @mosteller1981eye \pcref{tab:eyefitting-parameters}. We obtained $\beta_0$ from the point-slope equation of a line using the mean of the generated $x$ values and the predefined $y$ value at $\bar x$, denoted $y_{\bar x}$.
+Model equation parameters, $\beta_0$ and $\beta_1$, were selected to reflect the four data sets (F, N, S, and V) used in @mosteller1981eye \pcref{tab:eyefitting-parameters}. We computed $\beta_0$ from the point-slope equation of a line using the mean of the generated $x$ values and the predefined $y$ value at $\bar x$, denoted $y_{\bar x}$.
 Parameter choices F, N, and S simulated data across a domain of 0 to 20. 
 Parameter choice F produced a trend with a positive slope and a large variance while N had a negative slope and a large variance. 
 In comparison, S showed a trend with a positive slope and a small variance while V yielded a steep positive slope with a small variance over the domain of 4 to 16. 
@@ -187,7 +187,7 @@ The y-axis range extended 10\% beyond (above and below) the range of the simulat
                          caption = "Designated model equation parameters for simulated data.")
 ```
 
-```{r eyefitting-simplot, fig.height = 3, fig.width = 9, fig.cap = "Example of simulated data points displayed in a scatter-plot illustrating the trends associated with the four selected parameter choices.", out.width="100%"}
+```{r eyefitting-simplot, fig.height = 3, fig.width = 9, fig.cap = "Example of simulated data points displayed in a scatterplot illustrating the trends associated with the four selected parameter choices.", out.width="100%"}
           
 eyefitting_example_sim <- read.csv(here("results/youdrawit-eyefitting-simdata-example.csv"))
 
@@ -217,7 +217,7 @@ eyefitting_example_simplot
 
 ## Study Design
 
-This experiment was conducted as part of a larger study of the perception of log and linear scales; for simplicity, we focused on the study design and methods related to the current study. Each scatter-plot was the graphical representation of a data set that was generated randomly and independently for each participant at the start of the experiment.
+This experiment was conducted as part of a larger study of the perception of log and linear scales; for simplicity, we focused on the study design and methods related to the current study. Each scatterplot was the graphical representation of a data set that was generated randomly and independently for each participant at the start of the experiment.
 Participants in the study were shown two 'You Draw It' practice plots in order to train participants in the skills associated with executing the task - in particular, the responsiveness of the applet requires that participants draw a line at a certain speed, ensuring that all of the evenly spaced points along the hand-drawn line are filled in. 
 During the practice session, participants were provided with instruction prompts accompanied by a .gif and a practice plot.
 Instructions guided participants to start at the edge of the yellow box, to make sure the yellow shaded region was moving along with their mouse as they drew, and that they could draw over their already drawn line.
@@ -231,7 +231,7 @@ The order of the task plots was randomly assigned for each individual in a compl
 We compared the participant drawn line to two regression lines determined by ordinary least squares (OLS) regression and regression based on the principal axis (PCA). \cref{fig:ols-vs-pca-example} illustrates the difference between an OLS regression line which minimizes the vertical distance of points from the line and a regression line based on the principal axis which minimizes the Euclidean distance of points (orthogonal) from the line. 
 
 Due to the randomness in the data generation process, the actual slope of the linear regression line fit through the simulated points could differ from the predetermined slope.
-Therefore, we fit an OLS regression to each scatter-plot to obtain estimated parameters $\hat\beta_{0,OLS}$ and $\hat\beta_{1,OLS}$. 
+Therefore, we fit an OLS regression to each scatterplot to obtain estimated parameters $\hat\beta_{0,OLS}$ and $\hat\beta_{1,OLS}$. 
 Fitted values, $\hat y_{k,OLS}$, were then obtained every 0.25 increments across the domain from the OLS regression equation, $\hat y_{k,OLS} = \hat\beta_{0,OLS} + \hat\beta_{1,OLS} x_k$., for $k = 1, ..., 4 x_{max} +1$. 
 The regression equation based on the principal axis was determined by using the `princomp` function in the stats package in base R to obtain the rotation of the coordinate axes from the first principal component (direction which captures the most variance).
 The estimated slope, $\hat\beta_{1,PCA}$, was determined by the ratio of the axis rotation in $y$ and axis rotation in $x$ of the first principal component with the y-intercept, $\hat\beta_{0,PCA}$ calculated by the point-slope equation of a line using the mean of the simulated points, $(\bar x_i, \bar y_i)$.
@@ -313,7 +313,7 @@ eyefitting_model_data <- read.csv("data/youdrawit-eyefitting-model-data.csv") %>
   dplyr::rename(`Parameter Choice` = parm_id)
 ```
 
-For each participant, the final data set used for analysis contained $x_{ijk}, y_{ijk,drawn}, \hat y_{ijk,OLS}$, and $\hat y_{ijk,PCA}$ for parameter choice $i = 1,2,3,4$, j = $1,...N_{participant}$, and $x_{ijk}$ value for increment $k = 1, ...,4 x_{max} + 1$. 
+For each participant, the final data set used for analysis contained $x_{ijk}, y_{ijk,drawn}, \hat y_{ijk,OLS}$, and $\hat y_{ijk,PCA}$ for parameter choice $i = 1,2,3,4$, j = $1,...,N_{participant}$, and $x_{ijk}$ value for increment $k = 1, ...,4 x_{max} + 1$. 
 Using both a linear mixed model and a generalized additive mixed model, comparisons of vertical residuals in relation to the OLS fitted values ($e_{ijk,OLS} = y_{ijk,drawn} - \hat y_{ijk,OLS}$) and PCA fitted values ($e_{ijk,PCA} = y_{ijk,drawn} - \hat y_{ijk,PCA}$) were made across the domain.
 \cref{fig:eyefitting-example-plot} displays an example of all three fitted trend lines for parameter choice F. 
 
@@ -431,9 +431,9 @@ y_{ijk, drawn} - \hat y_{ijk, fit} = e_{ijk,fit} = \alpha_i + s_{i}(x_{ijk}) + p
 
 Allowing for flexibility in the residual trend, \cref{fig:eyefitting-gamm-residualplots} shows the estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS regression line and PCA regression line. 
 Estimated residual trends were overlaid on the observed individual participant residuals. 
-The results of the GAMM align with those shown in \cref{fig:eyefitting-lmer-residualplots} providing support that estimated trends of PCA residuals (orange) appear to align closer to the $y=0$ horizontal (dashed) line than the OLS residuals (blue) for scatter-plots with more noise (F and N).
-By fitting smoothing splines, we can determine whether participants naturally fit a straight trend-line to the set of points or whether they deviate throughout the domain. In particular, in scatter-plots with smaller variance (S and V), we can see that participants began at approximately the correct starting point then deviated away from the fitted regression lines and corrected for their fit toward the end of their trend-line.
-In scatter-plots with larger variance (F and N), participants estimated their starting value in the extreme direction of the OLS regression line based on the increasing or decreasing trend but more accurately represented the starting value of the PCA regression line. 
+The results of the GAMM align with those shown in \cref{fig:eyefitting-lmer-residualplots} providing support that estimated trends of PCA residuals (orange) appear to align closer to the $y=0$ horizontal (dashed) line than the OLS residuals (blue) for scatterplots with more noise (F and N).
+By fitting smoothing splines, we can determine whether participants naturally fit a straight trend-line to the set of points or whether they deviate throughout the domain. In particular, in scatterplots with smaller variance (S and V), we can see that participants began at approximately the correct starting point then deviated away from the fitted regression lines and corrected for their fit toward the end of their trend-line.
+In scatterplots with larger variance (F and N), participants estimated their starting value in the extreme direction of the OLS regression line based on the increasing or decreasing trend but more accurately represented the starting value of the PCA regression line. 
 As participants continued their trend-line, they crossed through the OLS regression line indicating they estimated the slope in the extreme direction.
 These results provide further insight into the curvature humans perceive in a set of points.
 
@@ -493,8 +493,8 @@ In the future, we intend to create an R package designed for easy implementation
 {\large\bf SUPPLEMENTARY MATERIAL}
 \end{center}
 
-+ **Participant Data:** De-identified participant data collected in the study and used for analyses are available to be downloaded from GitHub [here](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
-+ **Data Analysis Code:** The code used to replicate the analysis in this paper can be found [here](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
-+ **Study Applet:** The shiny app used to conduct the study can be accessed [here](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
-+ **RShiny Applet Code:** The code used to create the RShiny Applet for data collection can be found [here](https://github.com/earobinson95/you-draw-it-validation-applet).
++ **Participant Data:** De-identified participant data collected in the study and used for analyses are available to be downloaded from GitHub at  [github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
++ **Data Analysis Code:** The code used to replicate the analysis in this paper can be found at [earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
++ **Study Applet:** The shiny app used to conduct the study can be accessed at  [emily-robinson.shinyapps.io/you-draw-it-validation-applet](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
++ **RShiny Applet Code:** The code used to create the RShiny Applet for data collection can be found at [github.com/earobinson95/you-draw-it-validation-applet](https://github.com/earobinson95/you-draw-it-validation-applet).
 
