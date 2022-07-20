@@ -10,10 +10,6 @@ format:
       - revision-edits.tex
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ## Reviewer(s)' Comments to Author
 
 All responses to reviewers' comments are written in \response{blue}.
@@ -40,8 +36,7 @@ I have a series of minor comments, though - see below. Specific minor comments:
   + \response{Capitalized all "grammar of graphics" to "Grammar of Graphics".}
 + p.6, l.42: use single quotes for `You Draw It` as in the abstract
   + \response{Added single quotes to 'You Draw It'.}
-+ \todo{p.7, top: be specific and indicate in which of the sections of your paper each of these points is being addressed, in other words, provide a specific overview what can be found in Sections 2 - 5 of your paper (and also mention
-the supplementary materials in 1 or 2 sentences)}
++ \todo{p.7, top: be specific and indicate in which of the sections of your paper each of these points is being addressed, in other words, provide a specific overview what can be found in Sections 2 - 5 of your paper (and also mention the supplementary materials in 1 or 2 sentences)}
 + \todo{p.7, l.34: you had 35 participants and got 119 plots; later (p.10, l.38) you state that each particpant had to evaluate 4 plots; provide this information here immediately; can you summarize why there are 21 plots missing, e.g., some plots were incomplete, some participants were dropping out after just 1 or 2 plots, etc.}
 + p.7, l.51 & p.17, l.27 & l.32: "here" is meaningless for printed materials; list the full URLs (but still make them clickable)
   + \response{All URLs have been changed from "here" to show URL text.}
@@ -51,30 +46,31 @@ the supplementary materials in 1 or 2 sentences)}
   + \response{Changed wording for use of R software and included typical reference for R.}
 + p.8, l.55: "i = 1, ...N" -> "i = 1, ..., N,"
   + \response{Added "," into indexing on p11, l34 and p7, l55}
-+ \check{p.9, top: y_x-bar in Table 1 and beta_0 in (1) are not properly defined / used; are they the same?}
-  + \response{We aimed to replicate the trends from Mosteller et al. (1981). This original manuscript gives vague descriptions of the coefficients used to describe their trends. The way they defined their paramters was by using the y-value at the mean of the x-values (y_x-bar) and the slope. When simulated our data, we first generate and jitter x-values across the domain, therefore, x-bar may differ for each unique data set due to the random jitter. In turn, the actual y-intercept (beta_0) will vary slightly from data set to data set, but each trend will go through the same (x-bar, y_x-bar) point. We changed "obtained" to "computed" to clarify that the intercept was computed using the point-slope form of a linear equation.}
-+ p.9, l.25-37: can you further describe these four models with some more details and extend the table, e.g., list the domains in the table as well (and not only in the text); also indicate how many points were used in each scatterplot (e.g., was this random or fixed?; plot V in Fig 2 seems to have much fewer points than the other three); do the 4 letters have a certain meaning?
-  + \response{}
++ \dubcheck{p.9, top: $y_{\bar{x}}$ in Table 1 and $\beta_0$ in (1) are not properly defined and used; are they the same?}
+  + \response{We aimed to replicate the trends from Mosteller et al. (1981). This original manuscript gives vague descriptions of the coefficients used to describe their trends. The way they defined their parameters was by using the y-value at the mean of the x-values $(y_{\bar{x}})$ and the slope. When simulated our data, we first generate and jitter x-values across the domain, therefore, x-bar may differ for each unique data set due to the random jitter. In turn, the actual y-intercept $(beta_0)$ will vary slightly from data set to data set, but each trend will go through the same $(\bar{x}, y_{\bar{x}})$ point. We changed "obtained" to "computed" to clarify that the intercept was computed using the point slope form of a linear equation.}
++ \dubcheck{p.9, l.25-37: can you further describe these four models with some more details and extend the table, e.g., list the domains in the table as well (and not only in the text); also indicate how many points were used in each scatterplot (e.g., was this random or fixed?; plot V in Fig 2 seems to have much fewer points than the other three); do the 4 letters have a certain meaning?}
+  + \response{We double checked the data simulation process based on the shiny applet code. There was an extra line of code in the manuscript file that incorrrectly filtered points out. There are were 30 points simulated for each parameter choice which is stated on p7 l53. A new "set" of data was simulated randomly for each participant with the same underlying parameters and a fixed number of points. We added the domain for each parameter choice to the table. The parameter choice names were selected to reflect the labels used in Mosteller et al. (1981). We clarified this on p8 l25 with "Model equation parameters, $beta_0$ and $beta_1$, and parameter choice letter names (S, F, V, N) and V), were selected to reflect the four data sets used and labeled in Mosteller et al..." See analysis in supplementary material for code on the data simulation procedure.}
 + p.10, l.38-39: I suppose each participant got one plot of type S, F, V, N ? - say so
-+ p.10-p.11: use PCA or PC and then use these consistently; if "principal axis" is the full term, I would even use PA as abbreviation as PCA is a widely used abbreviation for principal component analysis and could confuse readers here; if you switch to PA, also adjust the main text below
+  + \response{We clarified that each participant gote one of each of the plot types.}
++ \todo{p.10-p.11: use PCA or PC and then use these consistently; if "principal axis" is the full term, I would even use PA as abbreviation as PCA is a widely used abbreviation for principal component analysis and could confuse readers here; if you switch to PA, also adjust the main text below}
 + p.11, l.35 & l.48: be consistent, e.g., "increment" vs. "increments" and missing specification of k
 in the 2nd part
-+ p.12, l.50: it is not clear to me what you mean by "constraining the fit to a linear trend", even after reading the following part; provide some additional explanations
+  + \response{Changed to "increment" for both to be consistent and added specification of k in l.48.}
++ \todo{p.12, l.50: it is not clear to me what you mean by "constraining the fit to a linear trend", even after reading the following part; provide some additional explanations}
 + p.13, l.26: keep the same order of F, S, V, N as before, i.e., S F V N from Table 1 to avoid confusing the reader
 + p.14, Fig 5: this uses even another order (F N S V); stay with the same order (S F V N from Table 1) in all consecutive models and figures to avoid confusing the reader (same for Fig. 6)
 + p.14, l.28: use one single Wood reference for the R package and the most important one that describes the method; leave out the three other Wood references here 
 + p.14, bottom - p.15, top: this model is very similar to the previous one; simply state y_i,j,k,drawn etc. are the same as for model (2) and only specify what is new/different here, e.g., the s_i
-+ p.16, Discussion: Add some references from cognitive/human movement sciences that human arm movement is a
-complex task. Drawing a straight line is not as easy as it sounds. Could this lead to the large residuals when x approaches 20 ?!? Here are some candidate articles (based on the abstracts). Do some further reading and find additional related references. 
++ \todo{p.16, Discussion:} Add some references from cognitive/human movement sciences that human arm movement is a complex task. Drawing a straight line is not as easy as it sounds. Could this lead to the large residuals when x approaches 20 ?!? Here are some candidate articles (based on the abstracts). Do some further reading and find additional related references.
   + https://doi.org/10.1007/BF00241501
   + https://doi.org/10.1145/2820619.2820633
-+ p.17, Future work: 
++ \todo{p.17, Future work:} 
   + I worked through the 12 plots at https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/
 and had considerable problems to draw a straight line with a mouse, even when I intended to do so. Similarly, I fail in the classroom when I try to add a regression line to points sketched out on a blackboard. My best solution is to visually estimate the point of means (x-bar, y-bar), use a long ruler, and rotate it so that it goes through the point of means and most of the points in the scatterplot. 
   + This leads to a modified version of this study: Give the participants a horizontal line segment at the bottom of the graph and let them shift and rotate this line segment until they think they have found the best fit for the point cloud. This likely would remove some of the big errors we see in Figs 5 & 6 as x approaches 20.
   + A second option for future work that goes beyond Mosteller et al. (1981) is to create scatterplots with one (or multiple) extreme outliers. What would humans fit then? Still, the PCA line or rather a robust regression line that ignores the outliers (likely not the OLS line that may be totally off from a line that goes through most of the data). [Apparently, this will also depend on the instructions and the feedback that is provided in the training part of such a study.]
   + Neither of these has to be implemented in the current study, but listing both options as natural extensions for the straight line assessment seems to be worthwhile.
-+ p.17-21, References:
++ \todo{p.17-21, References:}
   + capitalize journal names, e.g., Psychological bulletin & IEEE transactions on visualization and computer graphics
   + capitalize proper names, e.g., in obama’s presidency
   + for books, include the city/state or city/country, e.g., in Cleveland (1993)

@@ -170,6 +170,107 @@ predict_gamm <- function(
 }
 ```
 
+## DATA SIMULATION PROCEDURE
+
+```{r}
+
+eyefitting_parameter_details <- read_csv("eyefitting_parameter_details.csv")
+eyefitting_parameter_details %>% knitr::kable()
+
+linearDataGen <-
+  function(y_xbar,
+           slope,
+           sigma,
+           N = 30,
+           x_min = 0,
+           x_max = 20,
+           x_by  = 0.25){
+    
+    # Set up x values
+    xVals <- seq(x_min, x_max, length.out = floor(N*1))
+    xVals <- sample(xVals, N, replace = FALSE)
+    xVals <- jitter(xVals)
+    xVals <- ifelse(xVals < x_min, x_min, xVals)
+    xVals <- ifelse(xVals > x_max, x_max, xVals)
+    
+    # From slope intercept form
+    # y-y_xbar = m(x-xbar)
+    # y = m(x-xbar) + y_xbar = mx - mxbar + y_xbar
+    yintercept = y_xbar - slope*mean(xVals)
+    
+    # Generate "good" errors
+    repeat{
+      errorVals <- rnorm(N, 0, sigma)
+      if(mean(errorVals[floor(N/3)]) < 2*sigma & mean(errorVals[floor(N/3)] > -2*sigma)){
+        break
+      }
+    }
+    
+    # Simulate point data
+    point_data <- tibble(dataset = "point_data",
+                         x = xVals,
+                         y = yintercept + slope*x + errorVals) %>%
+      arrange(x)
+    
+    # Obtain least squares regression coefficients
+    lm.fit <- lm(y ~ x, data = point_data)
+    yintercepthat <- coef(lm.fit)[1] %>% as.numeric()
+    slopehat <- coef(lm.fit)[2] %>% as.numeric()
+    
+    # Simulate best fit line data
+    line_data <- tibble(dataset = "line_data",
+                        x = seq(x_min, x_max, x_by),
+                        y = yintercepthat + slopehat*x)
+    
+    data <- list(point_data = point_data, line_data = line_data)
+    
+    return(data)
+  }
+
+set.seed(68505)
+eyefitting_sim_data <- eyefitting_parameter_details %>%
+  mutate(data = purrr::pmap(list(y_xbar = y_xbar,
+                                 slope = slope,
+                                 sigma = sigma,
+                                 x_min = x_min,
+                                 x_max = x_max,
+                                 x_by = x_by), linearDataGen)) %>%
+  expand_grid(linear = "true",
+              draw_start = 5,
+              free_draw = TRUE) %>%
+  unnest(data) %>%
+  unnest(data)
+
+npoints_data <- eyefitting_sim_data %>%
+  filter(dataset == "point_data")
+table(npoints_data$parm_id)
+
+# write.csv(eyefitting_sim_data, "eyefitting-simulated-data.csv", row.names = F, na = "")
+
+eyefitting_example_simplot <- eyefitting_sim_data %>%
+  filter(dataset == "point_data") %>%
+  # filter(dataset %in% c("F", "N", "S") | (x < 16 & x > 4)) %>%
+  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
+  dplyr::rename(`Parameter Choice` = parm_id) %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(size = 1) +
+  facet_wrap(~`Parameter Choice`, ncol = 4) +
+  theme_bw(base_size = 14) +
+  theme(aspect.ratio = 1,
+  legend.position = "none",
+  plot.title   = element_text(size = 12, hjust = 0),
+  axis.text    = element_text(size = 12),
+  axis.title   = element_text(size = 12),
+  legend.title = element_text(size = 12),
+  legend.text  = element_text(size = 12),
+  # strip.text = element_text(size = 5, margin = margin(0.05,0,0.05,0, "cm")),
+  # strip.background = element_rect(size = 0.5),
+  legend.key.size = unit(1, "line")
+) +
+  scale_y_continuous(breaks = seq(-10, 20, 5))
+eyefitting_example_simplot
+```
+
 ## COMPUTE DEMING REGRESSION
 
 This section only needed to be run once to compute the fitted values based on the principal axis (Deming regression). The ordinary least squares fitted values were computed in the original data simulation step. The resulting data set is the `eyefitting-model-data.csv` used for analysis.
@@ -376,7 +477,7 @@ eyefitting.lmer.plot <- eyefitting.preds.lmer %>%
   geom_ribbon(aes(ymin = asymp.LCL.pca, ymax = asymp.UCL.pca, fill = "PA"), color = NA, alpha = 0.4) +
   geom_line(aes(y = emmean.pca, color = "PCA")) +
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
-  facet_wrap(~`Parameter Choice`, ncol = 2) +
+  facet_wrap(~`Parameter Choice`, ncol = 1) +
   theme_bw(base_size = 14) +
   theme(aspect.ratio = 1,
         legend.position = "right",
@@ -478,7 +579,7 @@ eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
   geom_ribbon(aes(ymin = pca.lower, ymax = pca.upper, fill = "PA"), color = NA, alpha = 0.4) +
   geom_line(aes(y = pca.pred, color = "PA")) +
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
-  facet_wrap(~`Parameter Choice`, ncol = 2) +
+  facet_wrap(~`Parameter Choice`, ncol = 1) +
   theme_bw(base_size = 14) +
   theme(aspect.ratio = 1,
         legend.position = "right",

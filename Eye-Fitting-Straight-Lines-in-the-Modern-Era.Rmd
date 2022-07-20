@@ -160,8 +160,8 @@ y_i & = \beta_0 + \beta_1 x_i + e_i \\
 \text{with } e_i & \sim N(0, \sigma^2). \nonumber
 \end{align} 
 
-Model equation parameters, $\beta_0$ and $\beta_1$, were selected to reflect the four data sets (F, N, S, and V) used in @mosteller1981eye \pcref{tab:eyefitting-parameters}. We computed $\beta_0$ from the point-slope equation of a line using the mean of the generated $x$ values and the predefined $y$ value at $\bar x$, denoted $y_{\bar x}$.
-Parameter choices F, N, and S simulated data across a domain of 0 to 20. 
+Model equation parameters, $\beta_0$ and $\beta_1$, and parameter choice letter names (S, F, V, N), were selected to reflect the four data sets used and labeled in @mosteller1981eye \pcref{tab:eyefitting-parameters}. We computed $\beta_0$ from the point-slope equation of a line using the mean of the generated $x$ values and the predefined $y$ value at $\bar x$, denoted $y_{\bar x}$.
+Parameter choices S, F, and N simulated data across a domain of 0 to 20. 
 Parameter choice F produced a trend with a positive slope and a large variance while N had a negative slope and a large variance. 
 In comparison, S showed a trend with a positive slope and a small variance while V yielded a steep positive slope with a small variance over the domain of 4 to 16. 
 \cref{fig:eyefitting-simplot} illustrates an example of simulated data for all four parameter choices intended to reflect the trends in @mosteller1981eye.
@@ -172,7 +172,8 @@ The y-axis range extended 10\% beyond (above and below) the range of the simulat
           data.frame(Parm = c("F", "N", "S", "V"),
                      y_xbar = c(3.9, 4.11, 3.88, 3.89),
                      slope = c(0.66, -0.70, 0.66, 1.98),
-                     sigma = c(1.98, 2.5, 1.3, 1.5)
+                     sigma = c(1.98, 2.5, 1.3, 1.5),
+                     x_range = c("(0,20)", "(0,20)", "(0,20)", "(4,16)")
           ) %>%
             mutate(Parm = factor(Parm, levels = c("S", "F", "V", "N"))) %>%
             arrange(Parm) %>%
@@ -183,19 +184,18 @@ The y-axis range extended 10\% beyond (above and below) the range of the simulat
                          linesep = "", 
                          align = "c", 
                          label = "eyefitting-parameters",
-                         col.names = c("Parameter Choice", "$y_{\\bar{x}}$", "$\\beta_1$", "$\\sigma$"),
+                         col.names = c("Parameter Choice", "$y_{\\bar{x}}$", "$\\beta_1$", "$\\sigma$", "Domain"),
                          caption = "Designated model equation parameters for simulated data.")
 ```
 
 ```{r eyefitting-simplot, fig.height = 3, fig.width = 9, fig.cap = "Example of simulated data points displayed in a scatterplot illustrating the trends associated with the four selected parameter choices.", out.width="100%"}
           
-eyefitting_example_sim <- read.csv(here("results/youdrawit-eyefitting-simdata-example.csv"))
+eyefitting_example_sim <- read.csv(here("analysis/eyefitting-simulated-data.csv"))
 
 eyefitting_example_simplot <- eyefitting_example_sim %>%
-  filter(data == "point_data") %>%
-  filter(dataset %in% c("F", "N", "S") | (x < 16 & x > 4)) %>%
-  mutate(dataset = factor(dataset, levels = c("S", "F", "V", "N"))) %>%
-  dplyr::rename(`Parameter Choice` = dataset) %>%
+  filter(dataset == "point_data") %>%
+  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
+  dplyr::rename(`Parameter Choice` = parm_id) %>%
   ggplot(aes(x = x, y = y)) +
   geom_point(size = 1) +
   facet_wrap(~`Parameter Choice`, ncol = 4) +
@@ -221,7 +221,7 @@ This experiment was conducted as part of a larger study of the perception of log
 Participants in the study were shown two 'You Draw It' practice plots in order to train participants in the skills associated with executing the task - in particular, the responsiveness of the applet requires that participants draw a line at a certain speed, ensuring that all of the evenly spaced points along the hand-drawn line are filled in. 
 During the practice session, participants were provided with instruction prompts accompanied by a .gif and a practice plot.
 Instructions guided participants to start at the edge of the yellow box, to make sure the yellow shaded region was moving along with their mouse as they drew, and that they could draw over their already drawn line.
-Practice plots were then followed by four 'You Draw It' task plots associated with the current study.
+Practice plots were then followed by one of each of the four 'You Draw It' task plots associated with the current study (S, F, V, and N).
 The order of the task plots was randomly assigned for each individual in a completely randomized design.
 
 # Results
@@ -232,10 +232,10 @@ We compared the participant drawn line to two regression lines determined by ord
 
 Due to the randomness in the data generation process, the actual slope of the linear regression line fit through the simulated points could differ from the predetermined slope.
 Therefore, we fit an OLS regression to each scatterplot to obtain estimated parameters $\hat\beta_{0,OLS}$ and $\hat\beta_{1,OLS}$. 
-Fitted values, $\hat y_{k,OLS}$, were then obtained every 0.25 increments across the domain from the OLS regression equation, $\hat y_{k,OLS} = \hat\beta_{0,OLS} + \hat\beta_{1,OLS} x_k$., for $k = 1, ..., 4 x_{max} +1$. 
+Fitted values, $\hat y_{k,OLS}$, were then obtained every 0.25 increment across the domain from the OLS regression equation, $\hat y_{k,OLS} = \hat\beta_{0,OLS} + \hat\beta_{1,OLS} x_k$, for $k = 1, ..., 4 x_{max} +1$. 
 The regression equation based on the principal axis was determined by using the `princomp` function in the stats package in base R to obtain the rotation of the coordinate axes from the first principal component (direction which captures the most variance).
 The estimated slope, $\hat\beta_{1,PCA}$, was determined by the ratio of the axis rotation in $y$ and axis rotation in $x$ of the first principal component with the y-intercept, $\hat\beta_{0,PCA}$ calculated by the point-slope equation of a line using the mean of the simulated points, $(\bar x_i, \bar y_i)$.
-Fitted values, $\hat y_{k,PCA}$, were then obtained every 0.25 increment across the domain from the PCA regression equation, $\hat y_{k,PCA} = \hat\beta_{0,PCA} + \hat\beta_{1,PCA} x_k$.
+Fitted values, $\hat y_{k,PCA}$, were then obtained every 0.25 increment across the domain from the PCA regression equation, $\hat y_{k,PCA} = \hat\beta_{0,PCA} + \hat\beta_{1,PCA} x_k$, for $k = 1, ..., 4 x_{max} +1$.
 
 ```{r ols-vs-pca-example, fig.height = 3, fig.width = 6, fig.cap=" Comparison between an OLS regression line which minimizes the vertical distance of points from the line and a regression line based on the principal axis which minimizes the Euclidean distance of points (orthogonal) from the line.", message=FALSE, warning=FALSE, out.width="80%"}
 library(ggplot2)
