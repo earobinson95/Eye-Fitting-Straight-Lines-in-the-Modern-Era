@@ -170,11 +170,76 @@ predict_gamm <- function(
 }
 ```
 
+<!-- ## GET DATA FROM DATABASE -->
+
+<!-- ```{r db} -->
+<!-- library(RSQLite) -->
+<!-- library(DBI) -->
+<!-- library(digest) -->
+<!-- library(lubridate) -->
+
+<!-- last_date <- as.numeric(as_datetime("2021-05-18 18:00:00 CDT")) -->
+
+<!-- # Connect to database -->
+<!-- filename <- "you_draw_it_data.db" -->
+<!-- sqlite.driver <- dbDriver("SQLite") -->
+<!-- db_con <- dbConnect(sqlite.driver, dbname = filename) -->
+<!-- # dbListTables(db_con) -->
+
+<!-- # Import eyefitting parameter details -->
+<!-- eyefitting_parameter_details <- dbReadTable(db_con,"eyefitting_parameter_details") %>% -->
+<!--   mutate(parm_id = as.factor(as.character(parm_id))) -->
+
+<!-- # Import user data -->
+<!-- users <- dbReadTable(db_con,"users") %>% -->
+<!--   filter(study_starttime > 1620152231, study_starttime < last_date) %>% -->
+<!--   select(-ip_address) %>% -->
+<!--   rowwise() %>% -->
+<!--   mutate(participant_id = as.factor(digest(paste(nick_name, study_starttime)))) -->
+
+<!-- # Import exponential prediction feedback data -->
+<!-- eyefitting_feedback_data <- dbReadTable(db_con,"feedback") %>% -->
+<!--   filter(study_starttime > 1620152231, study_starttime < last_date) %>% -->
+<!--   filter(parm_id %in% c("S", "F", "V", "N")) %>% -->
+<!--   rename(yols = y) %>% -->
+<!--   rowwise() %>% -->
+<!--   mutate(participant_id = as.factor(digest(paste(nick_name, study_starttime)))) %>% -->
+<!--   left_join(users, by = c("participant_id", "nick_name", "study_starttime")) %>% -->
+<!--   filter(recruitment != "I am the researcher") %>% -->
+<!--   rowwise() %>% -->
+<!--   mutate(plot_id = as.factor(digest(paste(nick_name, start_time, end_time)))) %>% -->
+<!--   select(study_starttime, participant_id, nick_name, plot_id, start_time, end_time, parm_id, x, yols, ydrawn, age, gender, academic_study, recruitment) -->
+
+<!-- factorCols <- c("nick_name", "study_starttime", "age", "gender", "academic_study", -->
+<!--                 "recruitment", "participant_id", "parm_id", "plot_id") -->
+<!-- eyefitting_feedback_data[,factorCols] <- lapply(eyefitting_feedback_data[,factorCols], factor) -->
+<!-- # write.csv(eyefitting_feedback_data, file = "eyefitting-feedback-data.csv", row.names = F, na = "") -->
+
+<!-- # Import exponential prediction simulated data -->
+<!-- eyefitting_simulated_data <- dbReadTable(db_con,"simulated_data") %>% -->
+<!--   filter(study_starttime > 1620152231, study_starttime < last_date) %>% -->
+<!--   filter(parm_id %in% c("S", "F", "V", "N")) %>% -->
+<!--   rowwise() %>% -->
+<!--   mutate(participant_id = as.factor(digest(paste(nick_name, study_starttime)))) %>% -->
+<!--   left_join(users, by = c("participant_id", "nick_name", "study_starttime")) %>% -->
+<!--   filter(recruitment != "I am the researcher") -->
+
+<!-- factorCols <- c("nick_name", "dataset", "study_starttime", "age", "gender", "academic_study", -->
+<!--                 "recruitment", "participant_id", "parm_id") -->
+<!-- eyefitting_simulated_data[,factorCols] <- lapply(eyefitting_simulated_data[,factorCols], factor) -->
+<!-- # write.csv(eyefitting_simulated_data, file = "eyefitting-simulated-data.csv", row.names = F, na = "") -->
+
+<!-- # Disconnect from database -->
+<!-- dbDisconnect(db_con) -->
+<!-- length(unique(eyefitting_feedback_data$participant_id)) -->
+<!-- length(unique(eyefitting_feedback_data$plot_id)) -->
+<!-- ``` -->
+
 ## DATA SIMULATION PROCEDURE
 
 ```{r}
 
-eyefitting_parameter_details <- read_csv("eyefitting_parameter_details.csv")
+eyefitting_parameter_details <- read_csv("eyefitting-parameter-details.csv")
 eyefitting_parameter_details %>% knitr::kable()
 
 linearDataGen <-
@@ -245,7 +310,7 @@ npoints_data <- eyefitting_sim_data %>%
   filter(dataset == "point_data")
 table(npoints_data$parm_id)
 
-# write.csv(eyefitting_sim_data, "eyefitting-simulated-data.csv", row.names = F, na = "")
+write.csv(eyefitting_sim_data, "eyefitting-simulated-data.csv", row.names = F, na = "")
 
 eyefitting_example_simplot <- eyefitting_sim_data %>%
   filter(dataset == "point_data") %>%
@@ -322,7 +387,7 @@ factorCols <- c("nick_name", "study_starttime", "age", "gender", "academic_study
 eyefitting_model_data[,factorCols] <- lapply(eyefitting_model_data[,factorCols], factor)
 ```
 
-There are a total of `length(unique(eyefitting_model_data$participant_id))` participants and `length(unique(eyefitting_model_data$participant_id))` 'You Draw It' plots completed.
+There are a total of `r length(unique(eyefitting_model_data$participant_id))` participants and `r length(unique(eyefitting_model_data$participant_id))` 'You Draw It' plots completed.
 
 ```{r data-table, echo = F}
 eyefitting_model_data[1:10,] %>%
@@ -477,7 +542,7 @@ eyefitting.lmer.plot <- eyefitting.preds.lmer %>%
   geom_ribbon(aes(ymin = asymp.LCL.pca, ymax = asymp.UCL.pca, fill = "PA"), color = NA, alpha = 0.4) +
   geom_line(aes(y = emmean.pca, color = "PCA")) +
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
-  facet_wrap(~`Parameter Choice`, ncol = 1) +
+  facet_wrap(~`Parameter Choice`, ncol = 4) +
   theme_bw(base_size = 14) +
   theme(aspect.ratio = 1,
         legend.position = "right",
@@ -566,6 +631,7 @@ eyefitting.grid.gamm$pca.upper <- eyefitting.pca.preds$prediction + (1.96 * eyef
 
 # write.csv(eyefitting.grid.gamm, "youdrawit-eyefitting-gammpred-data.csv", row.names = F, na = "")
 
+
 # Plot Predictions
 eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
   filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
@@ -579,7 +645,7 @@ eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
   geom_ribbon(aes(ymin = pca.lower, ymax = pca.upper, fill = "PA"), color = NA, alpha = 0.4) +
   geom_line(aes(y = pca.pred, color = "PA")) +
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
-  facet_wrap(~`Parameter Choice`, ncol = 1) +
+  facet_wrap(~`Parameter Choice`, ncol = 4) +
   theme_bw(base_size = 14) +
   theme(aspect.ratio = 1,
         legend.position = "right",

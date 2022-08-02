@@ -14,6 +14,8 @@ format:
 
 All responses to reviewers' comments are written in \response{blue}.
 
+\todo{Need to address yet.} \dubcheck{Double check / review.}
+
 ### Reviewer: 1
 
 Summary:
@@ -47,20 +49,25 @@ I have a series of minor comments, though - see below. Specific minor comments:
 + p.8, l.55: "i = 1, ...N" -> "i = 1, ..., N,"
   + \response{Added "," into indexing on p11, l34 and p7, l55}
 + \dubcheck{p.9, top: $y_{\bar{x}}$ in Table 1 and $\beta_0$ in (1) are not properly defined and used; are they the same?}
-  + \response{We aimed to replicate the trends from Mosteller et al. (1981). This original manuscript gives vague descriptions of the coefficients used to describe their trends. The way they defined their parameters was by using the y-value at the mean of the x-values $(y_{\bar{x}})$ and the slope. When simulated our data, we first generate and jitter x-values across the domain, therefore, x-bar may differ for each unique data set due to the random jitter. In turn, the actual y-intercept $(beta_0)$ will vary slightly from data set to data set, but each trend will go through the same $(\bar{x}, y_{\bar{x}})$ point. We changed "obtained" to "computed" to clarify that the intercept was computed using the point slope form of a linear equation.}
+  + \response{We aimed to replicate the trends from Mosteller et al. (1981). This original manuscript gives vague descriptions of the coefficients used to describe their trends. The way they defined their parameters was by using the y-value at the mean of the x-values $(y_{\bar{x}})$ and the slope. When simulated our data, we first generate and jitter x-values across the domain, therefore, x-bar may differ for each unique data set due to the random jitter. In turn, the actual y-intercept $(beta_0)$ will vary slightly from data set to data set, but each trend will go through the same $(\bar{x}, y_{\bar{x}})$ point. We changed the equation notation to follow the point-slope equation rather than changing notation.}
 + \dubcheck{p.9, l.25-37: can you further describe these four models with some more details and extend the table, e.g., list the domains in the table as well (and not only in the text); also indicate how many points were used in each scatterplot (e.g., was this random or fixed?; plot V in Fig 2 seems to have much fewer points than the other three); do the 4 letters have a certain meaning?}
   + \response{We double checked the data simulation process based on the shiny applet code. There was an extra line of code in the manuscript file that incorrrectly filtered points out. There are were 30 points simulated for each parameter choice which is stated on p7 l53. A new "set" of data was simulated randomly for each participant with the same underlying parameters and a fixed number of points. We added the domain for each parameter choice to the table. The parameter choice names were selected to reflect the labels used in Mosteller et al. (1981). We clarified this on p8 l25 with "Model equation parameters, $beta_0$ and $beta_1$, and parameter choice letter names (S, F, V, N) and V), were selected to reflect the four data sets used and labeled in Mosteller et al..." See analysis in supplementary material for code on the data simulation procedure.}
 + p.10, l.38-39: I suppose each participant got one plot of type S, F, V, N ? - say so
-  + \response{We clarified that each participant gote one of each of the plot types.}
-+ \todo{p.10-p.11: use PCA or PC and then use these consistently; if "principal axis" is the full term, I would even use PA as abbreviation as PCA is a widely used abbreviation for principal component analysis and could confuse readers here; if you switch to PA, also adjust the main text below}
+  + \response{We clarified that each participant got one of each of the plot types.}
++ p.10-p.11: use PCA or PC and then use these consistently; if "principal axis" is the full term, I would even use PA as abbreviation as PCA is a widely used abbreviation for principal component analysis and could confuse readers here; if you switch to PA, also adjust the main text below
+  + \response{Notation was changed to "PA" to indicate the principal axis.}
 + p.11, l.35 & l.48: be consistent, e.g., "increment" vs. "increments" and missing specification of k
 in the 2nd part
   + \response{Changed to "increment" for both to be consistent and added specification of k in l.48.}
 + \todo{p.12, l.50: it is not clear to me what you mean by "constraining the fit to a linear trend", even after reading the following part; provide some additional explanations}
 + p.13, l.26: keep the same order of F, S, V, N as before, i.e., S F V N from Table 1 to avoid confusing the reader
+  + \response{The order of the parameter choices has been changed to be consistent (F, S, V, N) for all tables, text, and figures.}
 + p.14, Fig 5: this uses even another order (F N S V); stay with the same order (S F V N from Table 1) in all consecutive models and figures to avoid confusing the reader (same for Fig. 6)
-+ p.14, l.28: use one single Wood reference for the R package and the most important one that describes the method; leave out the three other Wood references here 
+  + \response{The order of the parameter choices has been changed to be consistent (F, S, V, N) for all tables, text, and figures.}
++ p.14, l.28: use one single Wood reference for the R package and the most important one that describes the method; leave out the three other Wood references here
+  + \response{Selected one reference (book) which we used for the analysis.}
 + p.14, bottom - p.15, top: this model is very similar to the previous one; simply state y_i,j,k,drawn etc. are the same as for model (2) and only specify what is new/different here, e.g., the s_i
+  + \response{Clarified similarities between the linear mixed model equation and the generalized additive mixed model equation by stating "Defining $e_{ijk,fit}$ the same as in equation (2) above, the GAMM equation...".}
 + \todo{p.16, Discussion:} Add some references from cognitive/human movement sciences that human arm movement is a complex task. Drawing a straight line is not as easy as it sounds. Could this lead to the large residuals when x approaches 20 ?!? Here are some candidate articles (based on the abstracts). Do some further reading and find additional related references.
   + https://doi.org/10.1007/BF00241501
   + https://doi.org/10.1145/2820619.2820633
@@ -94,13 +101,20 @@ statistically confirmed and formalized. If such a major revision is undertaken b
 Below I provide a series of other aspects that should also be considered.
 
 + Authors should avoid any form of plagiarism: for example, lines 43 to 46 (page 2) and line 55 (page 8) and line 22 (page 9) are identical excerpts from Ciccione & Dehaene.
+  + \response{Thank you for catching this. Amongst literature review and edits, we did not realize we had directly quoted. We have rephrased the information in each of the indicated locations as they are important points to include.}
 + Page 3, line 20. The method of adjustment is introduced but not explained, leaving the reader wondering what it refers to.
+  + \response{We describe the method of adjustment and added a reference.}
 + Page 3, line 50. The line-up protocol is introduced but, again, no clear explanation is provided.
+  + \response{We added a couple sentences to describe the lineup protocol in addition to the Buja (2009) reference. "A statistical lineup is a plot consisting of smaller panels where the viewer is asked to identify the target panel containing the real data from among a set of decoy null plots which display data under the assumption there is no relationship. If the viewer can identify the target panel randomly embedded within the set of null panels, this suggests that the real data is visually distinct from data generated under the null model."}
 + Page 5, line 21. The concept of “ensemble perception” is not clearly related to what is described just before: how can the finding itself of human fitting a principal axis on scatterplot “support” (as the authors say) the work on ensemble perception? The link needs to be clarified or avoided.
+  + \response{We removed the sentence discussing "ensemble perception" in relation to the Mosteller (1981) paper.}
 + Page 8, table 1. I think it’s a little bit confusing to see that the intercept parameter is called yx whereas in the equation in the text is called b0. The authors should choose one notation or
 the other and stay consistent through the text.
+  + \response{We aimed to replicate the trends from Mosteller et al. (1981). This original manuscript gives vague descriptions of the coefficients used to describe their trends. The way they defined their parameters was by using the y-value at the mean of the x-values $(y_{\bar{x}})$ and the slope. When simulated our data, we first generate and jitter x-values across the domain, therefore, x-bar may differ for each unique data set due to the random jitter. In turn, the actual y-intercept $(beta_0)$ will vary slightly from data set to data set, but each trend will go through the same $(\bar{x}, y_{\bar{x}})$ point. We changed the equation notation to follow the point-slope equation rather than changing notation.}
 + Page 10, line 39. The reader is invited to refer to an R function for the description of the regression equation based on the principal component axis. Authors should provide an actual formalization of the equation.
+  + \response{We reran the analysis using the mcreg function in the mcr package which implements Deming regression (equivalent to the principal axis regression). We clarified and provided a reference for this in the "Fitted Regressions" Results section.}
 + Page 12, line 48 and page 15, line 45. Again (as in page 5, line 21), the authors’ work is directly presented as providing support for ensemble perception. Ensemble perception simply states that human perception tends to average, in parallel, the information coming from various items/locations in the visual field. Evidence for a principal axis component extraction does not provide a direct piece of evidence for ensemble perception. Authors should better clarify this link or avoid introducing the concept of ensemble perception.
+  + \response{We agree that ensemble perception is not necessarily the focus of this paper and have removed introducing the concept.}
 
 ### Editor's Comments to Author
 
@@ -111,3 +125,4 @@ Thank you for your submission and interesting work. Two reviewers have provided 
 the method of estimation. In other words, what are the R functions doing to estimate the model?
 3. Could you clarify if the participants were known to be experts in statistics or related fields?
 4. Throughout the manuscript, references to “principle components” should be “principal components.”
+  + \response{Based on a reviewer's suggestion, we have changed terminology to principal axis.}
