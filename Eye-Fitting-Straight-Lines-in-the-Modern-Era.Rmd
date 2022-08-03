@@ -41,7 +41,7 @@ header-includes:
 
 ```{r setup, include = F}
 knitr::opts_chunk$set(
-  echo = F, eval = T, messages = F, warnings = F,
+  echo = F, eval = T, message = F, warning = F,
   fig.width = 6, fig.height = 4,  fig.align = 'center',
   out.width = "\\linewidth", dpi = 300, 
   tidy = T, tidy.opts=list(width.cutoff=45),
@@ -59,6 +59,16 @@ library(patchwork)
 library(cowplot)
 library(ggforce)
 library(here)
+```
+
+```{r eyefitting-data}
+eyefitting_simulated_data <- read_csv("analysis/eyefitting-simulated-data.csv")
+
+eyefitting_model_data <- read.csv("data/eyefitting-model-data.csv")
+
+factorCols <- c("nick_name", "study_starttime", "age", "gender", "academic_study",
+                "recruitment", "participant_id", "parm_id", "plot_id")
+eyefitting_model_data[,factorCols] <- lapply(eyefitting_model_data[,factorCols], factor)
 ```
 
 # Introduction
@@ -123,19 +133,30 @@ The New York Times team utilizes Data Driven Documents (D3) [@bostock2011d3] tha
 After the reader has completed drawing the line, the actual observed values are revealed and the reader may check their estimated knowledge against the actual reported data.
 While this interactive feature is designed to get readers to confront their own intuitions about data in the news, we feel that the interactivity of this method may be useful for the purpose of graphical testing and measuring the patterns humans see in data.
 
-In this paper, we establish 'You Draw It', adapted from the New York Times feature, as a tool for graphical testing. Our visual system is naturally built to look for structure and identify patterns. For instance, points going down from left to right indicates a negative correlation between the $x$ and $y$ variables. Our research is intended to implement the 'You Draw It' feature as a way to measure the patterns we see in data.
+In this paper, we establish 'You Draw It', adapted from the New York Times feature, as a new tool for graphical testing. 
+Our visual system is naturally built to look for structure and identify patterns. 
+For instance, points going down from left to right indicates a negative correlation between the $x$ and $y$ variables. 
+Our research is intended to implement the 'You Draw It' feature as a way to measure the patterns we see in data.
+The graphical testing method used in this study differs from prior methods found in @mosteller1981eye and @ciccione2021can by allowing participants to freely draw estimated trend lines - a method which extends nicely to a nonlinear setting.
 We validate the 'You Draw It' method by replicating the less technological study conducted by @mosteller1981eye.
+In [Section 2](#methods) we describe our participant sample, the graphical task to be completed, and the data generation process and study design.
+[Section 3](#results) describes the participant data collected and shares results from the analyses of the data using mixed models.
+Overall conclusions and discussion of results are presented in [Section 4](#conclusion-discussion) with extensions to the current work suggested in [Section 5](#future-work). 
+The RShiny applet to complete the study, participant data used for analysis, and code to replicate the analysis can be found in the [Supplementary Material](#supplementary-material).
 Based on previous research, we hypothesize that visual regression tends to mimic regression based on the principal axis rather than an ordinary least squares regression.
-In order to assess this hypothesis, we introduce a method for statistically modeling the participant drawn lines using generalized additive mixed models.
+In order to assess this hypothesis, we introduce a method for statistically modeling the participant drawn lines using generalized additive mixed models (GAMM).
+While the focus of this paper is to share the results from the validation study which uses the new 'You Draw It' method to evaluate visually fitted linear trends to statistical regression results, the intent of this work is to set the foundation and demonstrate the strength of the combination of the 'You Draw It' method and GAMM analyses for testing statistical graphics and to extend the use of the method beyond the linear setting.
 
-# Methods
+# Methods {#methods}
 
 ## Participants
 
 Participants were recruited through through Twitter, Reddit, and direct email in May 2021.
-A total of 35 individuals completed 119 unique 'You Draw It' task plots; data collected from all completed 'You Draw It' task plots were included in the analysis.
+A total of 35 individuals completed `r length(unique(eyefitting_model_data$plot_id))` unique 'You Draw It' task plots.
+Data were collected as a part of a pilot study meant to test the applet; therefore, either voluntary participant dropout or disconnection from a server not designed to accommodate large magnitudes of participants resulted in missing plots in our data set for analysis.
 All participants had normal or corrected to normal vision and signed an informed consent form.
 The experimental tasks took approximately 15 minutes to complete.
+As this is a pilot study, participants from Twitter and Reddit pages related to data visualization voluntarily completed the study and likely have an interest in fields related to statistics and want to help advance research in graphics.
 While this study does utilize a convenience sample, as this is primarily a perceptual task, previous results have found few differences between expert and non-expert participants in this context [@vanderplas2015spatial].
 These data were collected to validate this method of graphical testing, with the hopes of providing a new tool to assess graphical perception interactively.
 Participants completed the experiment on their own computers in an environment of their choosing. The experiment was conducted and distributed through a Shiny application [@shinyPkg] found at [emily-robinson.shinyapps.io/you-draw-it-validation-applet](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
@@ -192,7 +213,7 @@ The y-axis range extended 10\% beyond (above and below) the range of the simulat
 
 ```{r eyefitting-simplot, fig.height = 3, fig.width = 9, fig.cap = "Example of simulated data points displayed in a scatterplot illustrating the trends associated with the four selected parameter choices.", out.width="100%"}
           
-eyefitting_sim_data <- read_csv("analysis/eyefitting-simulated-data.csv")
+eyefitting_sim_data <- read_csv("analysis/eyefitting-simulated-data-example.csv")
 
 eyefitting_example_simplot <- eyefitting_sim_data %>%
   filter(dataset == "point_data") %>%
@@ -227,7 +248,7 @@ Instructions guided participants to start at the edge of the yellow box, to make
 Practice plots were then followed by one of each of the four 'You Draw It' task plots associated with the current study (S, F, V, and N).
 The order of the task plots was randomly assigned for each individual in a completely randomized design.
 
-# Results
+# Results {#results}
 
 ## Fitted Regression Lines
 
@@ -260,7 +281,7 @@ x1x2cor = bCor = v[2,1]/v[1,1]
 x1tox2 = coef(lm(x1~x2,dat))
 x2tox1 = coef(lm(x2~x1,dat))
 slopeData = data.frame(slope = c(x1x2cor,x2tox1[2]),
-                       type=c("PC", "OLS"))
+                       type=c("PA", "OLS"))
 
 # We want this to draw the neat orthogonal lines.
 pointOnLine = function(inp){
@@ -280,7 +301,7 @@ pointOnLine = function(inp){
 
 points = apply(dat,1,FUN=pointOnLine)
 
-segmeData = rbind(data.frame(x=dat[,1],y=dat[,2],xend=points[1,],yend=points[2,],type = "PC"),
+segmeData = rbind(data.frame(x=dat[,1],y=dat[,2],xend=points[1,],yend=points[2,],type = "PA"),
                   data.frame(x=dat[,1],y=dat[,2],yend=dat[,1]*x2tox1[2],xend=dat[,1],type="OLS"))
 
 dat %>%
@@ -310,58 +331,20 @@ ggplot(aes(x1,x2))+
 
 ## Residual Trends
 
-```{r eyefitting-plots}
-eyefitting_simulated_data <- read_csv("analysis/eyefitting-simulated-data.csv")
-
-eyefitting_model_data <- read.csv("analysis/eyefitting-model-data.csv")
-
-factorCols <- c("nick_name", "study_starttime", "age", "gender", "academic_study",
-                "recruitment", "participant_id", "parm_id", "plot_id")
-eyefitting_model_data[,factorCols] <- lapply(eyefitting_model_data[,factorCols], factor)
-```
-
 For each participant, the final data set used for analysis contained $x_{ijk}, y_{ijk,drawn}, \hat y_{ijk,OLS}$, and $\hat y_{ijk,PA}$ for parameter choice $i = 1,2,3,4$, j = $1,...,N_{participant}$, and $x_{ijk}$ value for increment $k = 1, ...,4 x_{max} + 1$. 
 Using both a linear mixed model and a generalized additive mixed model, comparisons of vertical residuals in relation to the OLS fitted values ($e_{ijk,OLS} = y_{ijk,drawn} - \hat y_{ijk,OLS}$) and PA fitted values ($e_{ijk,PA} = y_{ijk,drawn} - \hat y_{ijk,PA}$) were made across the domain.
 \cref{fig:eyefitting-example-plot} displays an example of all three fitted trend lines for parameter choice F. 
 
 ```{r eyefitting-example-plot, fig.height = 4, fig.width = 4, fig.cap = "Illustrates the data associated with and collected for one `You Draw It' task plot. Trend-lines include the participant drawn line (dashed black), the OLS regression line (solid steelblue) and the PA regression line based on the principal axis (solid orange).", out.width="50%"}
-# trial.feedback <- read.csv("results/youdrawit-eyefitting-example-feedback.csv") %>%
-#     mutate(`Parameter Choice` = "F")
-# trial.sim <- read.csv("results/youdrawit-eyefitting-example-simulated.csv") %>%
-#     mutate(`Parameter Choice` = "F")
-#     
-# trial.feedback %>%
-#   ggplot(aes(x = x)) +
-#   geom_point(data = trial.sim, aes(y = y), alpha = 0.7) +
-#   geom_line(aes(y = y, color = "OLS", linetype = "OLS")) +
-#   geom_line(aes(y = ypca, color = "PA", linetype = "PA")) +
-#   geom_line(aes(y = ydrawn, color = "Drawn", linetype = "Drawn")) +
-#   facet_wrap(~`Parameter Choice`) +
-#   theme_bw(base_size = 14) +
-#   theme(aspect.ratio = 1,
-#         legend.position = "bottom",
-#         axis.text    = element_text(size = 12),
-#         axis.title   = element_text(size = 12),
-#         legend.title = element_text(size = 12),
-#         legend.text  = element_text(size = 12),
-#         # strip.text = element_text(size = 8, margin = margin(0.1,0,0.1,0, "cm")),
-#         # strip.background = element_rect(size = 0.8),
-#         legend.key.size = unit(1, "line")
-#         ) +
-#   scale_x_continuous(limits = c(0,20)) +
-#   scale_y_continuous(limits = c(-5, 17), breaks = seq(-5, 15, 5)) +
-#   scale_color_manual("", values = c("black", "steelblue", "orange")) +
-#   scale_linetype_manual("", values = c("dashed", "solid", "solid"))
-
 eyefitting_model_data %>%
   filter(participant_id == "60f510d6896cddc508ea6d3de4b58234", parm_id == "F") %>%
-  rename(`Parameter Choice` = parm_id) %>%
+  dplyr::rename(`Parameter Choice` = parm_id) %>%
   ggplot(aes(x = x)) +
   geom_line(aes(y = yols, color = "OLS", linetype = "OLS")) +
   geom_line(aes(y = ypca, color = "PA", linetype = "PA")) +
   geom_line(aes(y = ydrawn, color = "Drawn", linetype = "Drawn")) +
   geom_point(data = eyefitting_simulated_data %>%
-               filter(dataset == "point_data", participant_id == "60f510d6896cddc508ea6d3de4b58234", parm_id == "F")  %>% rename(`Parameter Choice` = parm_id),
+               filter(dataset == "point_data", participant_id == "60f510d6896cddc508ea6d3de4b58234", parm_id == "F") %>% dplyr::rename(`Parameter Choice` = parm_id),
              aes(x = x, y = y)) +
   facet_wrap(~ `Parameter Choice`, labeller = label_both) +
   theme_bw() +
@@ -373,8 +356,11 @@ eyefitting_model_data %>%
 
 
 ### Linear Trend Constraint
+<!-- https://cran.r-project.org/web/packages/lme4/vignettes/lmer.pdf -->
 
-Using the `lmer` function in the lme4 package [@lme4], a linear mixed model (LMM) was fit separately to the OLS residuals and PA residuals, constraining the fit to a linear trend. 
+The 'You Draw It' method does not restrict participants to draw a straight line as other methods would, such as using a ruler. Instead, participants are allowed to freely draw a line with potential curvature.
+Using the `lmer` function in the lme4 package [@lme4], a linear mixed model (LMM) was fit separately to the OLS residuals and PA residuals, emulating the effect of constraining participants to draw a linear trend.
+Both fixed and random parameter estimates in the LMM were determined by optimizing the restricted maximum likelihood (REML) through penalized least squares.
 Parameter choice, $x$, and the interaction between $x$ and the parameter choice were treated as fixed effects with a random participant effect included to account for variation due to participant.
 The LMM equation for each fit (OLS and PA) is given by:
 \begin{equation}
@@ -440,6 +426,7 @@ eyefitting.lmer.plot
 ### Smoothing Spline Trend
 
 Eliminating the linear trend constraint, the `bam` function in the mgcv package [@mgcv_pkg] was used to fit a generalized additive mixed model (GAMM) separately to the OLS residuals and PA residuals to allow for estimation of smoothing splines.
+The `bam` function is used to fit GAMM's to very large data sets and use lower memory than the `gam` function.
 Parameter choice was treated as a fixed effect with no estimated intercept and a separate smoothing spline for $x$ was estimated for each parameter choice. A random participant effect was included to account for variation due to participant and a random spline for each participant accounted for variation in spline for each participant.
 Defining e_{ijk,fit} the same as in equation (2) above, the GAMM equation for each fit (OLS and PA) residuals is given by:
 \begin{equation}
@@ -496,7 +483,7 @@ eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
 eyefitting.gamm.plot
 ```
 
-# Discussion and Conclusion
+# Discussion and Conclusion {#conclusion-discussion}
 
 The intent of this research was to adapt 'You Draw It' from the New York Times feature as a tool and method for testing graphics and introduce a method for statistically modeling the participant drawn lines.
 We provided support for the validity of the 'You Draw It' method by replicating the study found in @mosteller1981eye.
@@ -506,12 +493,25 @@ Data simulated with a larger variance provided strong support for a participants
 We utilized modern technology to replicate a study conducted 40 years ago, and strengthened the original results with current analysis methods which allow for more flexibility and sophistication.
 Our results indicate that participants minimized the distance from their drawn regression line over both the $x$ and $y$ axis simultaneously. 
 <!-- These results provide support that humans perform "ensemble perception" in a statistical graphic setting. -->
-We allowed participants to draw trend lines that deviated from a straight line and gained an insight into the curvature the human eye perceives in a set of points. 
+We allowed participants to draw trend lines that deviated from a straight line and gained an insight into the curvature the human eye perceives in a set of points.
+Researchers in cognitive and human movement sciences have found that human arm movement is a complex task [@miall1995curvature; @rousset2015study].
+The 'You Draw It' method described in this paper uses *indirect interaction* in which the mouse position and resulting visual line on the screen are dissociated.
+Therefore, curvature found in participant drawn lines from a straight lines could potentially be explained by the lack of coordination which results from the eye-hand dissociation from indirect drawing and the distortion of visual perception affecting the curvature of movements.
+Additionally, there is a training effect related to the completion of the 'You Draw It' task - the movement of the line must be slow so that the visual representation on the screen can accurately capture each movement. 
+@de1991misdirections conducted a study in which participants moved their hand slowly from an initial position in front of them to a visual target (movement task); they were then asked to repeat the task using different sizes of pointers (perceptual task).
+Their results indicated that deviations from the shortest pointers were comparable to those of the movement task, but that bias increased as the length of the pointer increased.
+While we suggested participants use a mouse to complete the study, we could not require the use; therefore, some participants may have used a track-pad and results may have been influenced by the pressure placed on their track-pad [@easton1978finger].
 
-# Future Work
+
+# Future Work {#future-work}
 
 This study provided a basis for the use of 'You Draw It' as a tool for testing statistical graphics and introduced a method for statistically modeling participant drawn lines using generalized additive mixed models.
-Further investigation is necessary to implement this method in non-linear settings and with real data in order to facilitate scientific communication.
+Additional studies related to the validation and use of the tool would be useful for providing insight into explanations of biases introduced by the task such as the deviation from a straight line.
+For instance, a variation on the current study could compare manual adjustment methods such as shifting and rotating a horizontal line segment until the fit is suitable to the 'You Draw It' method on the same set of data. This might explain the large deviation from the participant drawn line as $x$ approaches 20.
+Another useful extension study would be to compare the 'You Draw It' method as conducted by direct interaction - using a digital pen on a tablet - to indirect interaction - using a computer mouse to relate to a pointer on the screen. 
+Further extensions to this work might ask participants to draw a trend-line through scatterplots with one (or multiple) extreme outliers in order to evaluate the perceptual system's resistance to outliers.
+
+While the focus of this study was on drawing linear trend-lines, further investigation is necessary to implement this method in non-linear settings and with real data in order to facilitate scientific communication - a strength of the combination of the flexible 'You Draw It' method and GAMM analysis method.
 This tool could also be used to evaluate human ability to extrapolate data from trends. 
 In the future, we intend to create an R package designed for easy implementation of 'You Draw It' task plots in order to make this tool accessible to other researchers. 
 
@@ -519,8 +519,10 @@ In the future, we intend to create an R package designed for easy implementation
 {\large\bf SUPPLEMENTARY MATERIAL}
 \end{center}
 
-+ **Participant Data:** De-identified participant data collected in the study and used for analyses are available to be downloaded from GitHub at  [github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
-+ **Data Analysis Code:** The code used to replicate the analysis in this paper can be found at [earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
+{#supplementary-material}
+
 + **Study Applet:** The shiny app used to conduct the study can be accessed at  [emily-robinson.shinyapps.io/you-draw-it-validation-applet](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
 + **RShiny Applet Code:** The code used to create the RShiny Applet for data collection can be found at [github.com/earobinson95/you-draw-it-validation-applet](https://github.com/earobinson95/you-draw-it-validation-applet).
++ **Participant Data:** De-identified participant data collected in the study and used for analyses are available to be downloaded from GitHub at  [github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
++ **Data Analysis Code:** The code used to replicate the analysis in this paper can be found at [earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
 
