@@ -29,7 +29,7 @@ users <- dbReadTable(db_con,"users") %>%
 eyefitting_feedback_data <- dbReadTable(db_con,"feedback") %>%
   filter(study_starttime > 1620152231, study_starttime < last_date) %>%
   filter(parm_id %in% c("S", "F", "V", "N")) %>%
-  rename(yols = y) %>%
+  dplyr::rename(yols = y) %>%
   rowwise() %>%
   mutate(participant_id = as.factor(digest(paste(nick_name, study_starttime)))) %>%
   left_join(users, by = c("participant_id", "nick_name", "study_starttime")) %>%
