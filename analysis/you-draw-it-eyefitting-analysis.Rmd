@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 <br>
 
-**Rmd file containing code can be accessed [here](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/analysis).**
+**Rmd file containing code can be accessed [here](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/blob/main/analysis/you-draw-it-eyefitting-analysis.Rmd).**
 
 ## SETUP
 
@@ -170,74 +170,9 @@ predict_gamm <- function(
 }
 ```
 
-<!-- ## GET DATA FROM DATABASE -->
-
-<!-- ```{r db} -->
-<!-- library(RSQLite) -->
-<!-- library(DBI) -->
-<!-- library(digest) -->
-<!-- library(lubridate) -->
-
-<!-- last_date <- as.numeric(as_datetime("2021-05-18 18:00:00 CDT")) -->
-
-<!-- # Connect to database -->
-<!-- filename <- "you_draw_it_data.db" -->
-<!-- sqlite.driver <- dbDriver("SQLite") -->
-<!-- db_con <- dbConnect(sqlite.driver, dbname = filename) -->
-<!-- # dbListTables(db_con) -->
-
-<!-- # Import eyefitting parameter details -->
-<!-- eyefitting_parameter_details <- dbReadTable(db_con,"eyefitting_parameter_details") %>% -->
-<!--   mutate(parm_id = as.factor(as.character(parm_id))) -->
-
-<!-- # Import user data -->
-<!-- users <- dbReadTable(db_con,"users") %>% -->
-<!--   filter(study_starttime > 1620152231, study_starttime < last_date) %>% -->
-<!--   select(-ip_address) %>% -->
-<!--   rowwise() %>% -->
-<!--   mutate(participant_id = as.factor(digest(paste(nick_name, study_starttime)))) -->
-
-<!-- # Import exponential prediction feedback data -->
-<!-- eyefitting_feedback_data <- dbReadTable(db_con,"feedback") %>% -->
-<!--   filter(study_starttime > 1620152231, study_starttime < last_date) %>% -->
-<!--   filter(parm_id %in% c("S", "F", "V", "N")) %>% -->
-<!--   rename(yols = y) %>% -->
-<!--   rowwise() %>% -->
-<!--   mutate(participant_id = as.factor(digest(paste(nick_name, study_starttime)))) %>% -->
-<!--   left_join(users, by = c("participant_id", "nick_name", "study_starttime")) %>% -->
-<!--   filter(recruitment != "I am the researcher") %>% -->
-<!--   rowwise() %>% -->
-<!--   mutate(plot_id = as.factor(digest(paste(nick_name, start_time, end_time)))) %>% -->
-<!--   select(study_starttime, participant_id, nick_name, plot_id, start_time, end_time, parm_id, x, yols, ydrawn, age, gender, academic_study, recruitment) -->
-
-<!-- factorCols <- c("nick_name", "study_starttime", "age", "gender", "academic_study", -->
-<!--                 "recruitment", "participant_id", "parm_id", "plot_id") -->
-<!-- eyefitting_feedback_data[,factorCols] <- lapply(eyefitting_feedback_data[,factorCols], factor) -->
-<!-- # write.csv(eyefitting_feedback_data, file = "eyefitting-feedback-data.csv", row.names = F, na = "") -->
-
-<!-- # Import exponential prediction simulated data -->
-<!-- eyefitting_simulated_data <- dbReadTable(db_con,"simulated_data") %>% -->
-<!--   filter(study_starttime > 1620152231, study_starttime < last_date) %>% -->
-<!--   filter(parm_id %in% c("S", "F", "V", "N")) %>% -->
-<!--   rowwise() %>% -->
-<!--   mutate(participant_id = as.factor(digest(paste(nick_name, study_starttime)))) %>% -->
-<!--   left_join(users, by = c("participant_id", "nick_name", "study_starttime")) %>% -->
-<!--   filter(recruitment != "I am the researcher") -->
-
-<!-- factorCols <- c("nick_name", "dataset", "study_starttime", "age", "gender", "academic_study", -->
-<!--                 "recruitment", "participant_id", "parm_id") -->
-<!-- eyefitting_simulated_data[,factorCols] <- lapply(eyefitting_simulated_data[,factorCols], factor) -->
-<!-- # write.csv(eyefitting_simulated_data, file = "eyefitting-simulated-data.csv", row.names = F, na = "") -->
-
-<!-- # Disconnect from database -->
-<!-- dbDisconnect(db_con) -->
-<!-- length(unique(eyefitting_feedback_data$participant_id)) -->
-<!-- length(unique(eyefitting_feedback_data$plot_id)) -->
-<!-- ``` -->
-
 ## DATA SIMULATION PROCEDURE
 
-```{r}
+```{r, fig.width = 12, fig.height = 4}
 
 eyefitting_parameter_details <- read_csv("eyefitting-parameter-details.csv")
 eyefitting_parameter_details %>% knitr::kable()
@@ -310,12 +245,12 @@ npoints_data <- eyefitting_sim_data %>%
   filter(dataset == "point_data")
 table(npoints_data$parm_id)
 
-write.csv(eyefitting_sim_data, "eyefitting-simulated-data.csv", row.names = F, na = "")
+# write.csv(eyefitting_sim_data, "eyefitting-simulated-data-example.csv", row.names = F, na = "")
 
 eyefitting_example_simplot <- eyefitting_sim_data %>%
   filter(dataset == "point_data") %>%
   # filter(dataset %in% c("F", "N", "S") | (x < 16 & x > 4)) %>%
-  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
+  mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>%
   dplyr::rename(`Parameter Choice` = parm_id) %>%
   ggplot(aes(x = x, y = y)) +
   geom_point(size = 1) +
@@ -372,15 +307,15 @@ eyefitting_model_data <- eyefitting_feedback_data %>%
   dplyr::select(nick_name, study_starttime, age, gender, academic_study, recruitment, participant_id, parm_id, plot_id, x, yols, ypca, ydrawn, residual_ols_drawn, residual_pca_drawn)
   
 # save data to csv - already run once and pushed to GitHub.
-# write.csv(eyefitting_model_data, file = "eyefitting-model-data.csv", row.names = F, na = "")
+# write.csv(eyefitting_model_data, file = "../data/eyefitting-model-data.csv", row.names = F, na = "")
 ```
 
 ## PARTICIPANT DATA
 
-De-identified participant data collected in the study and used for analyses are available to be downloaded from GitHub at [here](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/raw/main/analysis/eyefitting-model-data.csv).
+De-identified participant data collected in the study and used for analyses are available to be viewed and downloaded from GitHub at [here](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/raw/main/data).
 
 ```{r data}
-eyefitting_model_data  <- read_csv("https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/raw/main/analysis/eyefitting-model-data.csv")
+eyefitting_model_data  <- read_csv("https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/raw/main/data/eyefitting-model-data.csv")
 
 factorCols <- c("nick_name", "study_starttime", "age", "gender", "academic_study",
                 "recruitment", "participant_id", "parm_id", "plot_id")
@@ -400,7 +335,7 @@ eyefitting_model_data[1:10,] %>%
 
 ### EXAMPLE
 
-```{r}
+```{r, fig.height = 4, fig.width = 4}
 # Example
 eyefitting_model_data %>%
   filter(participant_id == "60f510d6896cddc508ea6d3de4b58234", parm_id == "F") %>%
@@ -421,13 +356,13 @@ eyefitting_model_data %>%
 
 ### OLS Spaghetti Plot
 
-```{r y-ols-plot}
+```{r y-ols-plot, fig.width = 12, fig.height = 4}
 
 eyefitting_model_data %>%
   ggplot(aes(x = x)) +
   geom_line(aes(y = ydrawn, group = plot_id), alpha = 0.5, color = "steelblue") +
   geom_line(alpha = 0.2, aes(y = yols, group = participant_id)) +
-  facet_wrap(~ parm_id) +
+  facet_wrap(~ parm_id, ncol = 4) +
   theme_bw() +
   theme(aspect.ratio = 1) +
   scale_x_continuous(limits = c(0, 20)) +
@@ -436,12 +371,12 @@ eyefitting_model_data %>%
 
 ### Principal Axis Spaghetti Plot
 
-```{r y-pca-plot}
+```{r y-pca-plot, fig.width = 12, fig.height = 4}
 eyefitting_model_data %>%
   ggplot(aes(x = x)) +
   geom_line(aes(y = ydrawn, group = plot_id), alpha = 0.5, color = "steelblue") +
   geom_line(alpha = 0.2, aes(y = ypca, group = participant_id)) +
-  facet_wrap(~ parm_id) +
+  facet_wrap(~ parm_id, ncol = 4) +
   theme_bw() +
   theme(aspect.ratio = 1) +
   scale_x_continuous(limits = c(0, 20)) +
@@ -453,13 +388,13 @@ eyefitting_model_data %>%
 + residualols = ydrawn - yols, denoted $e_{ols}$
 + residualpca = ydrawn - ypca, denoted $e_{pca}$
 
-```{r residual-plot}
+```{r residual-plot, fig.width = 12, fig.height = 4}
 eyefitting_model_data %>%
   ggplot(aes(x = x)) +
   geom_line(aes(y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.3) +
   geom_line(aes(y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.3) +
   geom_hline(yintercept = 0, linetype = "dashed") +
-  facet_wrap(~parm_id) +
+  facet_wrap(~parm_id, ncol = 4) +
   theme_bw() +
   theme(aspect.ratio = 1) +
   scale_x_continuous(limits = c(0, 20)) +
@@ -470,7 +405,7 @@ eyefitting_model_data %>%
 
 **Treatments:**
 
-+ parm_ID (S, F, V, N)
++ parm_ID (F, S, V, N)
 + x (0, 20)
 
 **Response:** raw residuals
@@ -501,7 +436,7 @@ $$y_{drawn} - y_{ols} = e_{ij,ols} = \left[\gamma_0 + \alpha_i\right] + \left[\g
 + $p_{j} \sim N(0, \sigma^2_{participant})$ is the participant error due to participant variation
 + $\epsilon_{ij} \sim N(0, \sigma^2)$ is the residual error.
 
-```{r lmer, fig.height = 9}
+```{r lmer, fig.width = 12, fig.height = 4}
 # OLS
 eyefitting.ols.lmer <- lmer(residual_ols_drawn ~ -1 + parm_id + x:parm_id + (1|participant_id),
                        data = eyefitting_model_data)
@@ -530,12 +465,12 @@ eyefitting.preds.lmer <- eyefitting.ols.preds.lmer %>%
 # Plot Predictions
 eyefitting.lmer.plot <- eyefitting.preds.lmer %>%
   filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
-  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
+  mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>%
   dplyr::rename(`Parameter Choice` = parm_id) %>%
   ggplot(aes(x = x)) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), 
+  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), 
             aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.2) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), 
+  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), 
             aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PCA"), alpha = 0.2) +
   geom_ribbon(aes(ymin = asymp.LCL.ols, ymax = asymp.UCL.ols, fill = "OLS"), color = NA, alpha = 0.4) +
   geom_line(aes(y = emmean.ols, color = "OLS")) +
@@ -566,7 +501,7 @@ eyefitting.lmer.plot
 
 **Treatments:**
 
-+ parm_ID (S, F, V, N)
++ parm_ID (F, S, V, N)
 + x (0, 20)
 
 **Response:** raw residuals
@@ -591,7 +526,7 @@ $$y_{ijk, drawn} - \hat y_{ijk, fit} = e_{ijk,fit} = \alpha_i + s_{i}(x_{ijk}) +
 + $p_{j} \sim N(0, \sigma^2_{participant})$ is the error due to participant variation
 + $s_{j}$ is the random smoothing spline for each participant.
 
-```{r gamm, fig.height = 9}
+```{r gamm, fig.width = 12, fig.height = 4}
 # OLS
 eyefitting.ols.gamm <- bam(residual_ols_drawn ~ parm_id + s(x, by = parm_id) + 
                              s(participant_id, bs = "re") +
@@ -635,11 +570,11 @@ eyefitting.grid.gamm$pca.upper <- eyefitting.pca.preds$prediction + (1.96 * eyef
 # Plot Predictions
 eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
   filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
-  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
+  mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>%
   dplyr::rename(`Parameter Choice` = parm_id) %>%
   ggplot(aes(x = x)) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.2) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.2) +
+  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.2) +
+  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.2) +
   geom_ribbon(aes(ymin = ols.lower, ymax = ols.upper, fill = "OLS"), color = NA, alpha = 0.4) +
   geom_line(aes(y = ols.pred, color = "OLS")) +
   geom_ribbon(aes(ymin = pca.lower, ymax = pca.upper, fill = "PA"), color = NA, alpha = 0.4) +

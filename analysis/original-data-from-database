@@ -1,4 +1,4 @@
-## ORIGINAL DATA
+## GET DATA FROM DATABASE
 
 ```{r db}
 library(RSQLite)
@@ -41,7 +41,7 @@ eyefitting_feedback_data <- dbReadTable(db_con,"feedback") %>%
 factorCols <- c("nick_name", "study_starttime", "age", "gender", "academic_study",
                 "recruitment", "participant_id", "parm_id", "plot_id")
 eyefitting_feedback_data[,factorCols] <- lapply(eyefitting_feedback_data[,factorCols], factor)
-write.csv(eyefitting_feedback_data, file = "eyefitting-feedback-data.csv", row.names = F, na = "")
+# write.csv(eyefitting_feedback_data, file = "eyefitting-feedback-data.csv", row.names = F, na = "")
 
 # Import exponential prediction simulated data
 eyefitting_simulated_data <- dbReadTable(db_con,"simulated_data") %>%
@@ -55,7 +55,7 @@ eyefitting_simulated_data <- dbReadTable(db_con,"simulated_data") %>%
 factorCols <- c("nick_name", "dataset", "study_starttime", "age", "gender", "academic_study",
                 "recruitment", "participant_id", "parm_id")
 eyefitting_simulated_data[,factorCols] <- lapply(eyefitting_simulated_data[,factorCols], factor)
-write.csv(eyefitting_simulated_data, file = "eyefitting-simulated-data.csv", row.names = F, na = "")
+# write.csv(eyefitting_simulated_data, file = "eyefitting-simulated-data.csv", row.names = F, na = "")
 
 # Disconnect from database
 dbDisconnect(db_con)
