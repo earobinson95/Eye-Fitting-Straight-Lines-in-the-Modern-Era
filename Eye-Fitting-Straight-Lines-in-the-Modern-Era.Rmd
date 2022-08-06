@@ -183,7 +183,7 @@ y_i = \beta_1(x_i-\bar{x}) + y_{\bar{x}} + e_i \\
 \text{with } e_i & \sim N(0, \sigma^2). \nonumber
 \end{align} 
 
-Model equation parameters, $\beta_1$, $y_{\bar{x}}$, and parameter choice letter names (F, S, V, N), were selected to reflect the four data sets used and labeled in @mosteller1981eye \pcref{tab:eyefitting-parameters}. The mean of the generated $x$ values and the predefined $y$ value at $\bar x$, denoted $y_{\bar x}$ were used in the point-slope equation of a line.
+Model equation parameters, $\beta_1$, $y_{\bar{x}}$, and parameter choice letter names (S, F, V, N), were selected to reflect the four data sets used and labeled in @mosteller1981eye \pcref{tab:eyefitting-parameters}. The mean of the generated $x$ values and the predefined $y$ value at $\bar x$, denoted $y_{\bar x}$ were used in the point-slope equation of a line.
 Parameter choices S, F, and N simulated data across a domain of 0 to 20. 
 Parameter choice F produced a trend with a positive slope and a large variance while N had a negative slope and a large variance. 
 In comparison, S showed a trend with a positive slope and a small variance while V yielded a steep positive slope with a small variance over the domain of 4 to 16. 
@@ -198,7 +198,7 @@ The y-axis range extended 10\% beyond (above and below) the range of the simulat
                      sigma = c(1.98, 2.5, 1.3, 1.5),
                      x_range = c("(0,20)", "(0,20)", "(0,20)", "(4,16)")
           ) %>%
-            mutate(Parm = factor(Parm, levels = c("F", "S", "V", "N"))) %>%
+            mutate(Parm = factor(Parm, levels = c("S", "F", "V", "N"))) %>%
             arrange(Parm) %>%
             knitr::kable("latex", 
                          digits = 2, 
@@ -218,7 +218,7 @@ eyefitting_sim_data <- read_csv("analysis/eyefitting-simulated-data-example.csv"
 eyefitting_example_simplot <- eyefitting_sim_data %>%
   filter(dataset == "point_data") %>%
   # filter(dataset %in% c("F", "N", "S") | (x < 16 & x > 4)) %>%
-  mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>%
+  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
   dplyr::rename(`Parameter Choice` = parm_id) %>%
   ggplot(aes(x = x, y = y)) +
   geom_point(size = 1) +
@@ -372,7 +372,7 @@ y_{ijk,drawn} - \hat y_{ijk,fit} = e_{ijk,fit} = \left[\gamma_0 + \alpha_i\right
 + $\hat y_{ijk,fit}$ is the fitted $y$ value for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment of $x$ value corresponding to either the OLS or PA fit
 + $e_{ijk,fit}$ is the residual between the drawn and fitted $y$ values for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment of $x$ value corresponding to either the OLS or PA fit
 + $\gamma_0$ is the overall intercept
-+ $\alpha_i$ is the effect of the $i^{th}$ parameter choice (F, S, V, N) on the intercept
++ $\alpha_i$ is the effect of the $i^{th}$ parameter choice (S, F, V, N) on the intercept
 + $\gamma_1$ is the overall slope for $x$
 + $\gamma_{2i}$ is the effect of the parameter choice on the slope
 + $x_{ijk}$ is the $x$ value for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment
@@ -391,17 +391,17 @@ eyefitting.preds.lmer <- read.csv("analysis/youdrawit-eyefitting-lmerpred-data.c
 # Plot Predictions
 eyefitting.lmer.plot <- eyefitting.preds.lmer %>%
   filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
-  mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>%
+  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
   dplyr::rename(`Parameter Choice` = parm_id) %>%
   ggplot(aes(x = x)) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), 
+  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), 
             aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.2) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), 
-            aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PCA"), alpha = 0.2) +
+  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), 
+            aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.2) +
   geom_ribbon(aes(ymin = asymp.LCL.ols, ymax = asymp.UCL.ols, fill = "OLS"), color = NA, alpha = 0.4) +
   geom_line(aes(y = emmean.ols, color = "OLS")) +
   geom_ribbon(aes(ymin = asymp.LCL.pca, ymax = asymp.UCL.pca, fill = "PA"), color = NA, alpha = 0.4) +
-  geom_line(aes(y = emmean.pca, color = "PCA")) +
+  geom_line(aes(y = emmean.pca, color = "PA")) +
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
   facet_wrap(~`Parameter Choice`, ncol = 4, labeller = label_both) +
   theme_bw(base_size = 14) +
@@ -417,7 +417,7 @@ eyefitting.lmer.plot <- eyefitting.preds.lmer %>%
         legend.key.size = unit(1, "line")
         ) +
   scale_y_continuous("Residual") +
-  scale_color_manual("Individual participant \nresiduals", values = c("steelblue", "orange"), labels = c("OLS", "PCA")) +
+  scale_color_manual("Individual participant \nresiduals", values = c("steelblue", "orange"), labels = c("OLS", "PA")) +
   scale_fill_manual("LMER fitted trend", values = c("steelblue", "orange"), labels = c("OLS", "PA")) 
 
 eyefitting.lmer.plot
@@ -454,11 +454,11 @@ eyefitting.grid.gamm <- read_csv("analysis/youdrawit-eyefitting-gammpred-data.cs
 # Plot Predictions
 eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
   filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
-  mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>%
+  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
   dplyr::rename(`Parameter Choice` = parm_id) %>%
   ggplot(aes(x = x)) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.2) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("F", "S", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.2) +
+  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.2) +
+  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.2) +
   geom_ribbon(aes(ymin = ols.lower, ymax = ols.upper, fill = "OLS"), color = NA, alpha = 0.4) +
   geom_line(aes(y = ols.pred, color = "OLS")) +
   geom_ribbon(aes(ymin = pca.lower, ymax = pca.upper, fill = "PA"), color = NA, alpha = 0.4) +
@@ -478,8 +478,8 @@ eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
         legend.key.size = unit(1, "line")
         ) +
   scale_y_continuous("Residual") +
-  scale_color_manual("Individual participant \nresiduals", values = c("steelblue", "orange"), labels = c("OLS", "PCA")) +
-  scale_fill_manual("GAMM fitted trend", values = c("steelblue", "orange"), labels = c("OLS", "PCA")) 
+  scale_color_manual("Individual participant \nresiduals", values = c("steelblue", "orange"), labels = c("OLS", "PA")) +
+  scale_fill_manual("GAMM fitted trend", values = c("steelblue", "orange"), labels = c("OLS", "PA")) 
 eyefitting.gamm.plot
 ```
 
