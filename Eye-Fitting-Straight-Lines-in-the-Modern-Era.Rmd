@@ -426,7 +426,7 @@ eyefitting.lmer.plot
 ### Smoothing Spline Trend
 
 Eliminating the linear trend constraint, the `bam` function in the mgcv package [@mgcv_pkg] was used to fit a generalized additive mixed model (GAMM) separately to the OLS residuals and PA residuals to allow for estimation of smoothing splines.
-The `bam` function is used to fit GAMM's to very large data sets and use lower memory than the `gam` function.
+The `bam` function is used to fit GAMM's to very large data sets and use lower memory than the `gam` function; REML is used to estimate parameters and smoothing splines.
 Parameter choice was treated as a fixed effect with no estimated intercept and a separate smoothing spline for $x$ was estimated for each parameter choice. A random participant effect was included to account for variation due to participant and a random spline for each participant accounted for variation in spline for each participant.
 Defining e_{ijk,fit} the same as in equation (2) above, the GAMM equation for each fit (OLS and PA) residuals is given by:
 \begin{equation}

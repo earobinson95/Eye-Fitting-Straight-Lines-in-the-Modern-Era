@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.7.26)  10 AUG 2022 07:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.10)  10 AUG 2022 08:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Eye-Fitting-Straight-Lines-in-the-Modern-Era.tex
-(./Eye-Fitting-Straight-Lines-in-the-Modern-Era.tex
+**diff.tex
+(./diff.tex
 LaTeX2e <2022-06-01> patch level 5
-L3 programming layer <2022-07-15> (c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
+L3 programming layer <2022-08-05> (c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
 (c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
@@ -320,175 +320,294 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count296
 \@lastruleclass=\count297
 \@thisrulewidth=\dimen174
-) (c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-07-01 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count298
-\l__pdf_internal_box=\box55
-) (./Eye-Fitting-Straight-Lines-in-the-Modern-Era.aux)
-\openout1 = `Eye-Fitting-Straight-Lines-in-the-Modern-Era.aux'.
+) (c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box55
+\UL@hyphenbox=\box56
+\UL@skip=\skip58
+\UL@hook=\toks26
+\UL@height=\dimen175
+\UL@pe=\count298
+\UL@pixel=\dimen176
+\ULC@box=\box57
+Package: ulem 2019/11/18
+\ULdepth=\dimen177
+) (c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/oberdiek/settobox.sty
+Package: settobox 2016/05/16 v1.5 Assign box dimensions to length registers (HO)
+)
+\DIFdelgraphicsbox=\box58
+\DIFdelgraphicswidth=\skip59
+\DIFdelgraphicsheight=\skip60
+LaTeX Info: Redefining \DIFaddbegin on input line 94.
+LaTeX Info: Redefining \DIFaddend on input line 95.
+LaTeX Info: Redefining \DIFdelbegin on input line 96.
+LaTeX Info: Redefining \DIFdelend on input line 97.
+LaTeX Info: Redefining \DIFaddbeginFL on input line 102.
+LaTeX Info: Redefining \DIFaddendFL on input line 103.
+LaTeX Info: Redefining \DIFdelbeginFL on input line 104.
+LaTeX Info: Redefining \DIFdelendFL on input line 105.
+(c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count299
+\lst@gtempboxa=\box59
+\lst@token=\toks27
+\lst@length=\count300
+\lst@currlwidth=\dimen178
+\lst@column=\count301
+\lst@pos=\count302
+\lst@lostspace=\dimen179
+\lst@width=\dimen180
+\lst@newlines=\count303
+\lst@lineno=\count304
+\lst@maxwidth=\dimen181
+(c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count305
+\lst@skipnumbers=\count306
+\lst@framebox=\box60
+) (c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+(c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-08-05 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count307
+\l__pdf_internal_box=\box61
+)
+No file diff.aux.
+\openout1 = `diff.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
 (c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 (c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 40.
-(./Eye-Fitting-Straight-Lines-in-the-Modern-Era.out) (./Eye-Fitting-Straight-Lines-in-the-Modern-Era.out)
+Package hyperref Info: Link coloring OFF on input line 124.
 \@outlinefile=\write4
-\openout4 = `Eye-Fitting-Straight-Lines-in-the-Modern-Era.out'.
+\openout4 = `diff.out'.
+
+\c@lstlisting=\count308
+
+Package natbib Warning: Citation `mosteller1981eye' on page 1 undefined on input line 171.
 
 [1
 Non-PDF special ignored!
 <special> header=psfrag.pro
 
-{c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7]
-<images/ydi-stimuli.png, id=235, 713.94pt x 196.662pt>
+{c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+Package natbib Warning: Citation `vanderplas2017clusters' on page 2 undefined on input line 198.
+
+
+Package natbib Warning: Citation `cleveland1984graphical' on page 2 undefined on input line 206.
+
+
+Package natbib Warning: Citation `cleveland1985graphical' on page 2 undefined on input line 211.
+
+
+Package natbib Warning: Citation `cleveland1982variables' on page 2 undefined on input line 217.
+
+
+Package natbib Warning: Citation `lauer1989density' on page 2 undefined on input line 217.
+
+
+Package natbib Warning: Citation `cleveland1993visualizing' on page 2 undefined on input line 218.
+
+
+Package natbib Warning: Citation `kosslyn2006graph' on page 2 undefined on input line 220.
+
+
+Package natbib Warning: Citation `ciccione2020grouping' on page 2 undefined on input line 225.
+
+
+Package natbib Warning: Citation `ciccione2020grouping' on page 2 undefined on input line 228.
+
+
+Package natbib Warning: Citation `appelle1972perception' on page 2 undefined on input line 231.
+
+
+Package natbib Warning: Citation `appelle1972perception' on page 2 undefined on input line 235.
+
+
+Package natbib Warning: Citation `spence1990visual' on page 2 undefined on input line 253.
+
+
+Package natbib Warning: Citation `lewandowsky1989perception' on page 2 undefined on input line 253.
+
+
+Package natbib Warning: Citation `vanderplas2015signs' on page 2 undefined on input line 256.
+
+
+Package natbib Warning: Citation `gescheider_1997' on page 2 undefined on input line 260.
+
+[2]
+
+Package natbib Warning: Citation `wilkinson2013grammar' on page 3 undefined on input line 267.
+
+
+Package natbib Warning: Citation `wickham2016r' on page 3 undefined on input line 274.
+
+
+Package natbib Warning: Citation `wickham2011ggplot2' on page 3 undefined on input line 278.
+
+
+Package natbib Warning: Citation `buja2009statistical' on page 3 undefined on input line 283.
+
+
+Package natbib Warning: Citation `vanderplas2017clusters' on page 3 undefined on input line 296.
+
+
+Package natbib Warning: Citation `vanderplas2015spatial' on page 3 undefined on input line 296.
+
+
+Package natbib Warning: Citation `hofmann2012graphical' on page 3 undefined on input line 296.
+
+[3]
+
+Package natbib Warning: Citation `finney1951subjective' on page 4 undefined on input line 310.
+
+
+Package natbib Warning: Citation `mosteller1981eye' on page 4 undefined on input line 310.
+
+
+Package natbib Warning: Citation `unwin1988eyeballing' on page 4 undefined on input line 312.
+
+
+Package natbib Warning: Citation `finney1951subjective' on page 4 undefined on input line 312.
+
+
+Package natbib Warning: Citation `mosteller1981eye' on page 4 undefined on input line 312.
+
+
+Package natbib Warning: Citation `ciccione2021can' on page 4 undefined on input line 315.
+
+
+Package natbib Warning: Citation `finney1951subjective' on page 4 undefined on input line 320.
+
+[4]
+
+Package natbib Warning: Citation `mosteller1981eye' on page 5 undefined on input line 343.
+
+
+Package natbib Warning: Citation `chong2003representation' on page 5 undefined on input line 362.
+
+
+Package natbib Warning: Citation `chong2005statistical' on page 5 undefined on input line 362.
+
+
+Package natbib Warning: Citation `van2011rapid' on page 5 undefined on input line 362.
+
+
+Package natbib Warning: Citation `ciccione2021can' on page 5 undefined on input line 364.
+
+
+Package natbib Warning: Citation `mosteller1981eye' on page 5 undefined on input line 371.
+
+
+Package natbib Warning: Citation `deming1943statistical' on page 5 undefined on input line 373.
+
+
+Package natbib Warning: Citation `linnet1998performance' on page 5 undefined on input line 373.
+
+
+Package natbib Warning: Citation `martin2000general' on page 5 undefined on input line 373.
+
+
+Package natbib Warning: Citation `aisch_cox_quealy_2015' on page 5 undefined on input line 379.
+
+
+Package natbib Warning: Citation `buchanan_park_pearce_2017' on page 5 undefined on input line 379.
+
+
+Package natbib Warning: Citation `katz_2017' on page 5 undefined on input line 379.
+
+
+Package natbib Warning: Citation `bostock2011d3' on page 5 undefined on input line 382.
+
+[5]
+
+Package natbib Warning: Citation `mosteller1981eye' on page 6 undefined on input line 406.
+
+
+Package natbib Warning: Citation `ciccione2021can' on page 6 undefined on input line 406.
+
+
+Package natbib Warning: Citation `mosteller1981eye' on page 6 undefined on input line 407.
+
+
+Package natbib Warning: Citation `vanderplas2015spatial' on page 6 undefined on input line 456.
+
+
+Package natbib Warning: Citation `shinyPkg' on page 6 undefined on input line 461.
+
+[6]
+
+LaTeX Warning: Reference `fig:ydi-stimuli' on page 1 undefined on input line 469.
+
+
+Package natbib Warning: Citation `r2d3' on page 7 undefined on input line 481.
+
+[7]
+<images/ydi-stimuli.png, id=64, 713.94pt x 196.662pt>
 File: images/ydi-stimuli.png Graphic file (type png)
 <use images/ydi-stimuli.png>
-Package pdftex.def Info: images/ydi-stimuli.png  used on input line 368.
+Package pdftex.def Info: images/ydi-stimuli.png  used on input line 487.
 (pdftex.def)             Requested size: 462.26999pt x 127.33664pt.
+
+Package natbib Warning: Citation `Rsoftware' on page 8 undefined on input line 500.
+
+
+Overfull \hbox (10.75298pt too wide) in paragraph at lines 497--504
+\OT1/cmr/m/n/12 All data pro-cess-ing was con-ducted in R []|   []   |   []   [][]|   []   |   []   |   []   |   []
+ []
+
+
+Package natbib Warning: Citation `mosteller1981eye' on page 8 undefined on input line 512.
+
+
+LaTeX Warning: Reference `tab:eyefitting-parameters' on page 1 undefined on input line 513.
+
+
+LaTeX Warning: Reference `fig:eyefitting-simplot' on page 1 undefined on input line 522.
+
+
+Package natbib Warning: Citation `mosteller1981eye' on page 8 undefined on input line 524.
+
 [8
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.407 
+l.530 
        <./images/ydi-stimuli.png>]
-<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-simplot-1.pdf, id=259, 650.43pt x 216.81pt>
-File: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-simplot-1.pdf Graphic file (type pdf)
-<use Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-simplot-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-simplot-1.pdf  used on input line 426.
-(pdftex.def)             Requested size: 462.26999pt x 154.09497pt.
-[9
-pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.454 
-      
-pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.454 
-       <./Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-simplot-1.pdf>]
-
-Package natbib Warning: Citation `mcr_pkg' on page 10 undefined on input line 480.
-
-[10]
-<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-example-1.pdf, id=278, 433.62pt x 216.81pt>
-File: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-example-1.pdf Graphic file (type pdf)
-<use Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-example-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-example-1.pdf  used on input line 489.
-(pdftex.def)             Requested size: 369.8174pt x 184.91792pt.
-<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf, id=280, 289.08pt x 289.08pt>
-File: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf Graphic file (type pdf)
-<use Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf  used on input line 512.
-(pdftex.def)             Requested size: 231.135pt x 231.13197pt.
-[11
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.534 is given by: \begin{equation}
-                                    <./Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/ols-vs-pca-example-1.pdf>] [12
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.554   \(
-          \gamma_0\) is the overall intercept <./Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-example-plot-1.pdf>]
-<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf, id=311, 650.43pt x 216.81pt>
-File: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf Graphic file (type pdf)
-<use Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf  used on input line 588.
-(pdftex.def)             Requested size: 462.26999pt x 154.09497pt.
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 609.
-(c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 609.
-[13] [14
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.656 
-       <./Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-lmer-residualplots-1.pdf>]
-<Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf, id=341, 650.43pt x 216.81pt>
-File: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf Graphic file (type pdf)
-<use Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf>
-Package pdftex.def Info: Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf  used on input line 659.
-(pdftex.def)             Requested size: 462.26999pt x 154.09497pt.
-[15
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.711 
-       <./Eye-Fitting-Straight-Lines-in-the-Modern-Era_files/figure-latex/eyefitting-gamm-residualplots-1.pdf>] [16]
-Overfull \hbox (7.5057pt too wide) in paragraph at lines 760--765
-\OT1/cmr/m/n/12 anal-y-ses are avail-able to be down-loaded from GitHub at []github.com/earobinson95/Eye-
- []
-
-[17]
-Overfull \hbox (42.24425pt too wide) in paragraph at lines 765--768
-\OT1/cmr/m/n/12 found at []earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-
- []
-
-(./Eye-Fitting-Straight-Lines-in-the-Modern-Era.bbl
-Underfull \hbox (badness 10000) in paragraph at lines 5--9
-\OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 https://www.nytimes.com/interactive/2015/05/28/upshot/you-draw-it-how-
- []
-
-
-Underfull \hbox (badness 2865) in paragraph at lines 29--33
-\OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 https://www.nytimes.com/interactive/2017/01/15/us/politics/you-draw-obama-
- []
-
-[18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 116--119
-\OT1/cmr/bx/n/12 URL: \OT1/cmr/m/it/12 https://www.nytimes.com/interactive/2017/04/14/upshot/drug-overdose-
- []
-
-[20])
-
-Package natbib Warning: There were undefined citations.
-
-[21] (./Eye-Fitting-Straight-Lines-in-the-Modern-Era.aux)
-Package rerunfilecheck Info: File `Eye-Fitting-Straight-Lines-in-the-Modern-Era.out' has not changed.
-(rerunfilecheck)             Checksum: E95F4A87CB484F9D334F145068689FE9;2126.
- ) 
+! Misplaced \noalign.
+\toprule ->\noalign 
+                    {\ifnum 0=`}\fi \@aboverulesep =\abovetopsep \global \@b...
+l.538 \DIFaddendFL \toprule
+                            
 Here is how much of TeX's memory you used:
- 12394 strings out of 479983
- 214510 string characters out of 5886392
- 520763 words of memory out of 5000000
- 30333 multiletter control sequences out of 15000+600000
- 477320 words of font info for 56 fonts, out of 8000000 for 9000
+ 13599 strings out of 479638
+ 226195 string characters out of 5877192
+ 582954 words of memory out of 5000000
+ 31957 multiletter control sequences out of 15000+600000
+ 477089 words of font info for 56 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 72i,12n,77p,711b,604s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,14n,77p,600b,439s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-pdfTeX warning (dest): name{supplementary-material} has been referenced but does not exist, replaced by a fixed one
-
- <c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/ERobi/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Eye-Fitting-Straight-Lines-in-the-Modern-Era.pdf (21 pages, 679306 bytes).
-PDF statistics:
- 481 PDF objects out of 1000 (max. 8388607)
- 418 compressed objects within 5 object streams
- 103 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+!  ==> Fatal error occurred, no output PDF file produced!

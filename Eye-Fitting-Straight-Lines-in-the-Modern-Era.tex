@@ -600,9 +600,10 @@ the mgcv package \citep{mgcv_pkg} was used to fit a generalized additive
 mixed model (GAMM) separately to the OLS residuals and PA residuals to
 allow for estimation of smoothing splines. The \texttt{bam} function is
 used to fit GAMM's to very large data sets and use lower memory than the
-\texttt{gam} function. Parameter choice was treated as a fixed effect
-with no estimated intercept and a separate smoothing spline for \(x\)
-was estimated for each parameter choice. A random participant effect was
+\texttt{gam} function; REML is used to estimate parameters and smoothing
+splines. Parameter choice was treated as a fixed effect with no
+estimated intercept and a separate smoothing spline for \(x\) was
+estimated for each parameter choice. A random participant effect was
 included to account for variation due to participant and a random spline
 for each participant accounted for variation in spline for each
 participant. Defining e\_\{ijk,fit\} the same as in equation (2) above,

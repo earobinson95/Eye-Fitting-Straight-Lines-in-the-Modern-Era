@@ -14,7 +14,7 @@ format:
 
 All responses to reviewers' comments are written in \response{blue}.
 
-\todo{Need to address yet.} \dubcheck{Double check / review.}
+<!-- \todo{Need to address yet.} \dubcheck{Double check / review.} -->
 
 ### Reviewer: 1
 
@@ -50,7 +50,7 @@ I have a series of minor comments, though - see below. Specific minor comments:
   + \response{Changed wording for use of R software and included typical reference for R.}
 + p.8, l.55: "i = 1, ...N" -> "i = 1, ..., N,"
   + \response{Added "," into indexing on p11, l34 and p7, l55}
-+ \dubcheck{p.9, top: $y_{\bar{x}}$ in Table 1 and $\beta_0$ in (1) are not properly defined and used; are they the same?}
++ p.9, top: $y_{\bar{x}}$ in Table 1 and $\beta_0$ in (1) are not properly defined and used; are they the same?
   + \response{We aimed to replicate the trends from Mosteller et al. (1981). This original manuscript gives vague descriptions of the coefficients used to describe their trends. The way they defined their parameters was by using the y-value at the mean of the x-values $(y_{\bar{x}})$ and the slope. When simulating our data, we first generate and jitter x-values across the domain, therefore, x-bar may differ for each unique data set due to the random jitter. In turn, the actual y-intercept $(\beta_0)$ will vary slightly from data set to data set, but each trend will go through the same $(\bar{x}, y_{\bar{x}})$ point. We changed the equation notation to follow the point-slope equation rather than changing notation.}
 + p.9, l.25-37: can you further describe these four models with some more details and extend the table, e.g., list the domains in the table as well (and not only in the text); also indicate how many points were used in each scatterplot (e.g., was this random or fixed?; plot V in Fig 2 seems to have much fewer points than the other three); do the 4 letters have a certain meaning?
   + \response{We double checked the data simulation process based on the shiny applet code. There was an extra line of code in the manuscript file that incorrrectly filtered points out. There are were 30 points simulated for each parameter choice which is stated on p7 l53. A new "set" of data was simulated randomly for each participant with the same underlying parameters and a fixed number of points. We added the domain for each parameter choice to the table. The parameter choice names were selected to reflect the labels used in Mosteller et al. (1981). We clarified this on p8 l25 with "Model equation parameters, $beta_1$, $y_{\bar{x}}$, and parameter choice letter names (F, S, V, N) and V), were selected to reflect the four data sets used and labeled in Mosteller et al..." See analysis in supplementary material for code on the data simulation procedure.}
@@ -128,7 +128,7 @@ Thank you for your submission and interesting work. Two reviewers have provided 
 
 1. In your manuscript, it would be helpful if you could clarify and emphasize the novelty of your experiment, data collection, and analysis. In particular, how does your work differ from Ciccione and Dehaene (2021)?(Ciccione, L. and Dehaene, S., 2021. Can humans perform mental regression on a graph? Accuracy and bias in the perception of scatterplots. Cognitive Psychology, 128, p.101406.)
   + \response{We clarifed the differences between our work and Ciccione (2021) as our study use a more flexible method of testing graphics and introduces a way to analyze the data using GAMM's. While this study was designed to replicate results found in previous studies as a way to validate our method, our intent is to set the foundation for using 'You Draw It' for testing statistical graphics as the tool extends nicely to the non-linear setting. We added this clarification into the end of Section 1.2.}
-2. \todo{In Section 3, it is helpful to note the R functions used as comments or footnotes, but you should also clearly describe the method of estimation. In other words, what are the R functions doing to estimate the model?}
+2. In Section 3, it is helpful to note the R functions used as comments or footnotes, but you should also clearly describe the method of estimation. In other words, what are the R functions doing to estimate the model?
   + \response{We added the method of estimations based on the R documentation for the lmer and bam functions.}
 3. Could you clarify if the participants were known to be experts in statistics or related fields?
   + \response{We added a sentence describing that the data is from a pilot study and thus participants from the recruitment methods likely have an interest in advancing research in data visualization: "As this is a pilot study, participants from Twitter and Reddit pages related to data visualization voluntarily completed the study and likely have an interest in fields related to statistics and want to help advance research in graphics."}
