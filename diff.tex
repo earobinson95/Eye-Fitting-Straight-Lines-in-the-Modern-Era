@@ -1,7 +1,7 @@
 % !TeX program = pdfLaTeX
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL original-submission-Eye-Fitting-Straight-Lines-in-the-Modern-Era.tex   Wed Aug 10 08:24:53 2022
-%DIF ADD Eye-Fitting-Straight-Lines-in-the-Modern-Era.tex                       Wed Aug 10 08:25:27 2022
+%DIF ADD Eye-Fitting-Straight-Lines-in-the-Modern-Era.tex                       Wed Aug 10 08:34:20 2022
 \documentclass[12pt]{article}
 \usepackage{amsmath}
 \usepackage{graphicx,psfrag,epsf}
@@ -531,11 +531,9 @@ plot.
 
 \caption{\label{tab:eyefitting-parameters}Designated model equation parameters for simulated data.}
 \centering
-\DIFdelbeginFL %DIFDELCMD < \begin{tabular}[t]{cccc}
-%DIFDELCMD < %%%
 \begin{tabular}[t]{ccccc}
 \toprule
-Parameter Choice & $y_{\bar{x}}$ & $\beta_1$ & $\sigma$& Domain\\
+Parameter Choice & $y_{\bar{x}}$ & $\beta_1$ & $\sigma$ & Domain \\
 \midrule
 S & 3.88 & 0.66 & 1.30 \DIFaddbeginFL & \DIFaddFL{(0,20)}\DIFaddendFL \\
 F & 3.90 & 0.66 & 1.98 \DIFaddbeginFL & \DIFaddFL{(0,20)}\DIFaddendFL \\
@@ -912,14 +910,16 @@ we intend to create an R package designed for easy implementation of
 `You Draw It' task plots in order to make this tool accessible to other
 researchers.
 
-\begin{center}
-{\large\bf SUPPLEMENTARY MATERIAL}
-\end{center}
+\DIFdelbegin %DIFDELCMD < \begin{center}
+%DIFDELCMD < {\large\bf %%%
+\DIFdel{SUPPLEMENTARY MATERIAL}%DIFDELCMD < }
+%DIFDELCMD < \end{center}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \hypertarget{supplementary-material}{%
+\section{SUPPLEMENTARY MATERIAL}\label{supplementary-material}}
+\DIFaddend 
 
-\DIFaddbegin \DIFadd{\{\#supplementary-material\}
-}
-
-\DIFaddend \begin{itemize}
+\begin{itemize}
 \tightlist
 \item
   \DIFaddbegin \textbf{\DIFadd{Study Applet:}} \DIFadd{The shiny app used to conduct the study can be

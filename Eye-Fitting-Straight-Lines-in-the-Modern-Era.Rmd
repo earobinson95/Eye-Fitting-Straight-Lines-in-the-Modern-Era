@@ -515,11 +515,7 @@ While the focus of this study was on drawing linear trend-lines, further investi
 This tool could also be used to evaluate human ability to extrapolate data from trends. 
 In the future, we intend to create an R package designed for easy implementation of 'You Draw It' task plots in order to make this tool accessible to other researchers. 
 
-\begin{center}
-{\large\bf SUPPLEMENTARY MATERIAL}
-\end{center}
-
-{#supplementary-material}
+# SUPPLEMENTARY MATERIAL {#supplementary-material}
 
 + **Study Applet:** The shiny app used to conduct the study can be accessed at  [emily-robinson.shinyapps.io/you-draw-it-validation-applet](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
 + **RShiny Applet Code:** The code used to create the RShiny Applet for data collection can be found at [github.com/earobinson95/you-draw-it-validation-applet](https://github.com/earobinson95/you-draw-it-validation-applet).
