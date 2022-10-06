@@ -523,6 +523,9 @@ In the future, we intend to create an R package designed for easy implementation
 
 <!-- + **Study Applet:** The shiny app used to conduct the study can be accessed at  [https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/). -->
 <!-- + **RShiny Applet Code:** The code used to create the RShiny Applet for data collection can be found at [https://github.com/earobinson95/you-draw-it-validation-applet(https://github.com/earobinson95/you-draw-it-validation-applet). -->
-+ **Participant Data:** De-identified participant data collected in the study and used for analyses are available in `eyefitting-model-data.csv` or may be downloaded from GitHub at  [https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
-+ **Data Analysis Code:** The code used to replicate the analysis in this paper can be in `you-draw-it-eyefitting-analysis.Rmd` or found at [https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
++ **Participant Data:** De-identified participant data collected in the study and used for analyses (eyefitting-model-data.csv).
+<!-- `eyefitting-model-data.csv` or may be downloaded from GitHub at  [https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data).  -->
++ **Data Analysis Code:** The code used to replicate the analysis in this paper (you-draw-it-eyefitting-analysis.Rmd).
+<!-- or found at [https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/analysis/you-draw-it-eyefitting-analysis.Rmd](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/supplementary-materials/you-draw-it-eyefitting-analysis.Rmd). -->
++ **README:** File containing detailed descriptions of the supplementary material (README.html).
 
