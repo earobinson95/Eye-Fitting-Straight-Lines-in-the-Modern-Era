@@ -173,7 +173,7 @@ predict_gamm <- function(
 ```{r, fig.width = 12, fig.height = 4}
 
 # eyefitting_parameter_details <- read_csv("eyefitting-parameter-details.csv")
-eyefitting_parameter_details <- read_csv("https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/raw/main/analysis/eyefitting-feedback-data.csv")
+eyefitting_parameter_details <- read_csv("https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/raw/main/analysis/eyefitting-parameter-details.csv")
 eyefitting_parameter_details %>% knitr::kable()
 
 linearDataGen <-

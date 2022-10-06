@@ -1,0 +1,28 @@
+---
+title: "Final JCGS Cover Letter"
+subtitle: "Eye Fitting Straight Lines in the Modern Era"
+author: "Emily A. Robinson, Reka Howard, and Susan VanderPlas"
+date: "2022"
+format: pdf
+---
+
+## manuscript.zip
+
++ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.pdf`
++ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.Rmd`
++ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.tex`
++ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.pdf`
++ `bibliography.bib`
++ `agsm.bst`
++ `images/ydi-stimuli.png`
++ `figure-latex/eyefitting-example-plot-1.pdf`
++ `figure-latex/eyefitting-gamm-residualplots-1.pdf`
++ `figure-latex/eyefitting-lmer-residualplots-1.pdf`
++ `figure-latex/eyefitting-simplot-1.pdf`
++ `figure-latex/ols-vs-pca-example-1.pdf`
+
+## supplementary-material.zip
+
++ `README.html` 
++ `eyefitting-model-data.csv`
++ `you-draw-it-eyefitting-analysis.Rmd`
