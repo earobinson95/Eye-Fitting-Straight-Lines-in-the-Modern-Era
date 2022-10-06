@@ -484,41 +484,6 @@ eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
 eyefitting.gamm.plot
 ```
 
-```{r eyefitting-gamm-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS (blue) regression line and PA (orange) regression line determined by smoothing splines fit by a generalized additive mixed model. Estimated residual trends with 95\\% confidence bands are overlaid on the observed individual participant residuals."}
-eyefitting.grid.gamm <- read_csv("analysis/youdrawit-eyefitting-gammpred-data.csv")
-# Plot Predictions
-eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
-  filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
-  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
-  dplyr::rename(`Parameter Choice` = parm_id) %>%
-  ggplot(aes(x = x)) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.2) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.2) +
-  geom_ribbon(aes(ymin = ols.lower, ymax = ols.upper, fill = "OLS"), color = NA, alpha = 0.4) +
-  geom_line(aes(y = ols.pred, color = "OLS")) +
-  geom_ribbon(aes(ymin = pca.lower, ymax = pca.upper, fill = "PA"), color = NA, alpha = 0.4) +
-  geom_line(aes(y = pca.pred, color = "PA")) +
-  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
-  facet_wrap(~`Parameter Choice`, ncol = 4, labeller = label_both) +
-  # facet_wrap(`Parameter Choice`, ncol = 4, labeller = label_both) +
-  theme_bw(base_size = 14) +
-  theme(aspect.ratio = 1,
-        legend.position = "right",
-        plot.title   = element_text(size = 12, hjust = 0),
-        axis.text    = element_text(size = 12),
-        axis.title   = element_text(size = 12),
-        legend.title = element_text(size = 12),
-        legend.text  = element_text(size = 12),
-        # strip.text = element_text(size = 5, margin = margin(0.05,0,0.05,0, "cm")),
-        # strip.background = element_rect(size = 0.5),
-        legend.key.size = unit(1, "line")
-        ) +
-  scale_y_continuous("Residual") +
-  scale_color_manual("Individual participant \nresiduals", values = c("steelblue", "orange"), labels = c("OLS", "PA")) +
-  scale_fill_manual("GAMM fitted trend", values = c("steelblue", "orange"), labels = c("OLS", "PA")) 
-eyefitting.gamm.plot
-```
-
 # Discussion and Conclusion {#conclusion-discussion}
 
 The intent of this research was to adapt 'You Draw It' from the New York Times feature as a tool and method for testing graphics and introduce a method for statistically modeling the participant drawn lines.
@@ -556,8 +521,8 @@ In the future, we intend to create an R package designed for easy implementation
 
 # Supplementary Material {#supplementary-material}
 
-+ **Study Applet:** The shiny app used to conduct the study can be accessed at  [https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
-+ **RShiny Applet Code:** The code used to create the RShiny Applet for data collection can be found at [https://github.com/earobinson95/you-draw-it-validation-applet(https://github.com/earobinson95/you-draw-it-validation-applet).
-+ **Participant Data:** De-identified participant data collected in the study and used for analyses are available to be downloaded from GitHub at  [https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
-+ **Data Analysis Code:** The code used to replicate the analysis in this paper can be found at [https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
+<!-- + **Study Applet:** The shiny app used to conduct the study can be accessed at  [https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/). -->
+<!-- + **RShiny Applet Code:** The code used to create the RShiny Applet for data collection can be found at [https://github.com/earobinson95/you-draw-it-validation-applet(https://github.com/earobinson95/you-draw-it-validation-applet). -->
++ **Participant Data:** De-identified participant data collected in the study and used for analyses are available in `eyefitting-model-data.csv` or may be downloaded from GitHub at  [https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
++ **Data Analysis Code:** The code used to replicate the analysis in this paper can be in `you-draw-it-eyefitting-analysis.Rmd` or found at [https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
 
