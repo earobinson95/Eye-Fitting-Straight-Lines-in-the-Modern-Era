@@ -156,17 +156,17 @@ A total of 35 individuals completed `r length(unique(eyefitting_model_data$plot_
 Data were collected as a part of a pilot study meant to test the applet; therefore, either voluntary participant dropout or disconnection from a server not designed to accommodate large magnitudes of participants resulted in missing plots in our data set for analysis.
 All participants had normal or corrected to normal vision and signed an informed consent form.
 The experimental tasks took approximately 15 minutes to complete.
-As this is a pilot study, participants from Twitter and Reddit pages related to data visualization voluntarily completed the study and likely had an interest in fields related to statistics and wanted to help advance research in graphics.
+As this is a pilot study, participants from Twitter and Reddit pages related to data visualization voluntarily completed the study and likely have an interest in fields related to statistics and want to help advance research in graphics.
 While this study does utilize a convenience sample, as this is primarily a perceptual task, previous results have found few differences between expert and non-expert participants in this context [@vanderplas2015spatial].
 These data were collected to validate this method of graphical testing, with the hopes of providing a new tool to assess graphical perception interactively.
-Participants completed the experiment on their own computers in an environment of their choosing. The experiment was conducted and distributed through a Shiny application [@shinyPkg] found at [https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
+Participants completed the experiment on their own computers in an environment of their choosing. The experiment was conducted and distributed through a Shiny application [@shinyPkg] found at [emily-robinson.shinyapps.io/you-draw-it-validation-applet](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
 
 ## 'You Draw It' Task
 
 In the study, participants were shown an interactive scatterplot \pcref{fig:ydi-stimuli} along with the prompt, “Use your mouse to fill in the trend in the yellow box region.”
 The yellow box region moved along as the user drew their trend-line, providing a visual cue which indicates where the user still needed to complete a trend line. After the entire domain had been visually estimated or predicted, the yellow shaded region disappeared, indicating the participant had completed the task.
 Data Driven Documents (D3), a JavaScript-based graphing framework that facilitates user interaction, was used to create the 'You Draw It' visual. 
-In order to allow for user interaction and data collection, we integrated the D3 visual into Shiny using the `r2d3` R package [@r2d3].
+In order to allow for user interaction and data collection, we integrated the D3 visual into Shiny using the `r2d3` package [@r2d3].
 While the interface is highly customized to this particular task, we hope to generalize the code and provide a Shiny widget in an R package soon.
 
 ```{r ydi-stimuli, include = T, fig.cap = "'You Draw It' task plot as shown to particpants during the study. The first frame (left) illustrates what particpants first saw with the prompt “Use your mouse to fill in the trend in the yellow box region.” The second frame (middle), illustrates what the particpant saw while completing the task; the yellow shaded region provided a visual cue for participants indicating where the participant still needed to complete a trend-line. The last frame (right) illustrates the participants finished trend-line before submission.", out.width="100%"}
@@ -183,7 +183,7 @@ y_i = \beta_1(x_i-\bar{x}) + y_{\bar{x}} + e_i \\
 \text{with } e_i & \sim N(0, \sigma^2). \nonumber
 \end{align} 
 
-where $\beta_1$ represents the slope of the trend and $y_{\bar{x}}$ represents the $y$ value at the mean of the generated $x$ values. Model equation parameters, $\beta_1$, $y_{\bar{x}}$, and parameter choice letter names (S, F, V, N), were selected to reflect the four data sets used and labeled in @mosteller1981eye \pcref{tab:eyefitting-parameters}. The point $(x, y_{\bar{x})}$ was used in the point-slope equation of a line.
+Model equation parameters, $\beta_1$, $y_{\bar{x}}$, and parameter choice letter names (S, F, V, N), were selected to reflect the four data sets used and labeled in @mosteller1981eye \pcref{tab:eyefitting-parameters}. The mean of the generated $x$ values and the predefined $y$ value at $\bar x$, denoted $y_{\bar x}$ were used in the point-slope equation of a line.
 Parameter choices S, F, and N simulated data across a domain of 0 to 20. 
 Parameter choice F produced a trend with a positive slope and a large variance while N had a negative slope and a large variance. 
 In comparison, S showed a trend with a positive slope and a small variance while V yielded a steep positive slope with a small variance over the domain of 4 to 16. 
@@ -257,7 +257,7 @@ We compared the participant drawn line to two regression lines determined by ord
 Due to the randomness in the data generation process, the actual slope of the linear regression line fit through the simulated points could differ from the predetermined slope.
 Therefore, we fit an OLS regression to each scatterplot to obtain estimated parameters $\hat\beta_{0,OLS}$ and $\hat\beta_{1,OLS}$.
 Fitted values, $\hat y_{k,OLS}$, were then obtained every 0.25 increment across the domain from the OLS regression equation, $\hat y_{k,OLS} = \hat\beta_{0,OLS} + \hat\beta_{1,OLS} x_k$, for $k = 1, ..., 4 x_{max} +1$. 
-The PA regression slope, $\hat\beta_{1,PA}$, and y-intercept, $\hat\beta_{0,PA}$, were determined using the `mcreg` function in the mcr package in R [@mcr_pkg] which implements Deming regression (equivalent to a regression based on the slope of the first principal axis).
+The PA regression slope, $\hat\beta_{1,PA}$, and y-intercept, $\hat\beta_{0,PA}$, were determined using the `mcreg` function in the `mcr` package in R [@mcr_pkg] which implements Deming regression (equivalent to a regression based on the slope of the first principal axis).
 Fitted values, $\hat y_{k,PA}$ were then obtained every 0.25 increment across the domain from the PA regression equation, $\hat y_{k,PA} = \hat\beta_{0,PA} + \hat\beta_{1,PA} x_k$, for $k = 1, ..., 4 x_{max} +1$.
 
 ```{r ols-vs-pca-example, fig.height = 3, fig.width = 6, fig.cap=" Comparison between an OLS regression line which minimizes the vertical distance of points from the line and a regression line based on the principal axis which minimizes the Euclidean distance of points (orthogonal) from the line.", message=FALSE, warning=FALSE, out.width="80%"}
@@ -335,7 +335,7 @@ For each participant, the final data set used for analysis contained $x_{ijk}, y
 Using both a linear mixed model and a generalized additive mixed model, comparisons of vertical residuals in relation to the OLS fitted values ($e_{ijk,OLS} = y_{ijk,drawn} - \hat y_{ijk,OLS}$) and PA fitted values ($e_{ijk,PA} = y_{ijk,drawn} - \hat y_{ijk,PA}$) were made across the domain.
 \cref{fig:eyefitting-example-plot} displays an example of all three fitted trend lines for parameter choice F. 
 
-```{r eyefitting-example-plot, fig.height = 4, fig.width = 4, fig.cap = "Illustrates the data associated with and collected for one `You Draw It' task plot. Trend-lines include the participant drawn line (dashed black), the OLS regression line (solid steelblue) and the PA regression line based on the principal axis (long dashed orange).", out.width="50%"}
+```{r eyefitting-example-plot, fig.height = 4, fig.width = 4, fig.cap = "Illustrates the data associated with and collected for one `You Draw It' task plot. Trend-lines include the participant drawn line (dashed black), the OLS regression line (solid steelblue) and the PA regression line based on the principal axis (solid orange).", out.width="50%"}
 eyefitting_model_data %>%
   filter(participant_id == "60f510d6896cddc508ea6d3de4b58234", parm_id == "F") %>%
   dplyr::rename(`Parameter Choice` = parm_id) %>%
@@ -351,7 +351,7 @@ eyefitting_model_data %>%
   theme(aspect.ratio = 1) +
   scale_y_continuous("y") +
   scale_color_manual("", values = c("black", "steelblue", "orange2")) +
-  scale_linetype_manual("", values = c("dashed", "solid", "longdash"))
+  scale_linetype_manual("", values = c("dashed", "solid", "solid"))
 ```
 
 
@@ -359,7 +359,7 @@ eyefitting_model_data %>%
 <!-- https://cran.r-project.org/web/packages/lme4/vignettes/lmer.pdf -->
 
 The 'You Draw It' method does not restrict participants to draw a straight line as other methods would, such as using a ruler. Instead, participants are allowed to freely draw a line with potential curvature.
-Using the `lmer` function in the lme4 R package [@lme4], a linear mixed model (LMM) was fit separately to the OLS residuals and PA residuals, emulating the effect of constraining participants to draw a linear trend.
+Using the `lmer` function in the lme4 package [@lme4], a linear mixed model (LMM) was fit separately to the OLS residuals and PA residuals, emulating the effect of constraining participants to draw a linear trend.
 Both fixed and random parameter estimates in the LMM were determined by optimizing the restricted maximum likelihood (REML) through penalized least squares.
 Parameter choice, $x$, and the interaction between $x$ and the parameter choice were treated as fixed effects with a random participant effect included to account for variation due to participant.
 The LMM equation for each fit (OLS and PA) is given by:
@@ -425,16 +425,16 @@ eyefitting.lmer.plot
 
 ### Smoothing Spline Trend
 
-Eliminating the linear trend constraint, the `bam` function in the mgcv R package [@mgcv_pkg] was used to fit a generalized additive mixed model (GAMM) separately to the OLS residuals and PA residuals to allow for estimation of smoothing splines.
-The `bam` function is used to fit GAMM's to very large data sets and use lower memory than the `gam` function in the mgcv R package; the `bam` function implements restricted maximum likelihood (REML) to estimate parameters and smoothing splines.
+Eliminating the linear trend constraint, the `bam` function in the mgcv package [@mgcv_pkg] was used to fit a generalized additive mixed model (GAMM) separately to the OLS residuals and PA residuals to allow for estimation of smoothing splines.
+The `bam` function is used to fit GAMM's to very large data sets and use lower memory than the `gam` function; REML is used to estimate parameters and smoothing splines.
 Parameter choice was treated as a fixed effect with no estimated intercept and a separate smoothing spline for $x$ was estimated for each parameter choice. A random participant effect was included to account for variation due to participant and a random spline for each participant accounted for variation in spline for each participant.
-Defining $e_{ijk,fit}$ the same as in equation (2) above, the GAMM equation for each fit (OLS and PA) residuals is given by:
+Defining e_{ijk,fit} the same as in equation (2) above, the GAMM equation for each fit (OLS and PA) residuals is given by:
 \begin{equation}
 e_{ijk,fit} = \alpha_i + s_{i}(x_{ijk}) + p_{j} + s_{j}(x_{ijk})
 \end{equation}
 \noindent where
 
-+ $e_{ijk,fit}$ is the same as in equation (2)
++ $e_{ijk,fit}$ is the same as equation
 + $\alpha_i$ is the intercept for the parameter choice $i$
 + $s_{i}$ is the smoothing spline for the $i^{th}$ parameter choice
 + $x_{ijk}$ is the $x$ value for the $i^{th}$ parameter choice, $j^{th}$ participant, and $k^{th}$ increment
@@ -465,42 +465,6 @@ eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
   geom_line(aes(y = pca.pred, color = "PA")) +
   geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
   facet_wrap(~`Parameter Choice`, ncol = 4, labeller = label_both) +
-  # facet_wrap(`Parameter Choice`, ncol = 4, labeller = label_both) +
-  theme_bw(base_size = 14) +
-  theme(aspect.ratio = 1,
-        legend.position = "right",
-        plot.title   = element_text(size = 12, hjust = 0),
-        axis.text    = element_text(size = 12),
-        axis.title   = element_text(size = 12),
-        legend.title = element_text(size = 12),
-        legend.text  = element_text(size = 12),
-        # strip.text = element_text(size = 5, margin = margin(0.05,0,0.05,0, "cm")),
-        # strip.background = element_rect(size = 0.5),
-        legend.key.size = unit(1, "line")
-        ) +
-  scale_y_continuous("Residual") +
-  scale_color_manual("Individual participant \nresiduals", values = c("steelblue", "orange"), labels = c("OLS", "PA")) +
-  scale_fill_manual("GAMM fitted trend", values = c("steelblue", "orange"), labels = c("OLS", "PA")) 
-eyefitting.gamm.plot
-```
-
-```{r eyefitting-gamm-residualplots, fig.height = 3, fig.width = 9, out.width = "100%", fig.cap = "Estimated trend line of the residuals between the participant drawn points and fitted values for both the OLS (blue) regression line and PA (orange) regression line determined by smoothing splines fit by a generalized additive mixed model. Estimated residual trends with 95\\% confidence bands are overlaid on the observed individual participant residuals."}
-eyefitting.grid.gamm <- read_csv("analysis/youdrawit-eyefitting-gammpred-data.csv")
-# Plot Predictions
-eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
-  filter((parm_id %in% c("F", "N", "S") | (x <= 16 & x >= 4))) %>%
-  mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
-  dplyr::rename(`Parameter Choice` = parm_id) %>%
-  ggplot(aes(x = x)) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.2) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.2) +
-  geom_ribbon(aes(ymin = ols.lower, ymax = ols.upper, fill = "OLS"), color = NA, alpha = 0.4) +
-  geom_line(aes(y = ols.pred, color = "OLS")) +
-  geom_ribbon(aes(ymin = pca.lower, ymax = pca.upper, fill = "PA"), color = NA, alpha = 0.4) +
-  geom_line(aes(y = pca.pred, color = "PA")) +
-  geom_hline(yintercept = 0, linetype = "dashed", alpha = 0.5) +
-  facet_wrap(~`Parameter Choice`, ncol = 4, labeller = label_both) +
-  # facet_wrap(`Parameter Choice`, ncol = 4, labeller = label_both) +
   theme_bw(base_size = 14) +
   theme(aspect.ratio = 1,
         legend.position = "right",
@@ -537,9 +501,7 @@ Additionally, there is a training effect related to the completion of the 'You D
 @de1991misdirections conducted a study in which participants moved their hand slowly from an initial position in front of them to a visual target (movement task); they were then asked to repeat the task using different sizes of pointers (perceptual task).
 Their results indicated that deviations from the shortest pointers were comparable to those of the movement task, but that bias increased as the length of the pointer increased.
 While we suggested participants use a mouse to complete the study, we could not require the use; therefore, some participants may have used a track-pad and results may have been influenced by the pressure placed on their track-pad [@easton1978finger].
-In cognitive psychology, @cui_2018 studied the improvement in estimating correlations in scatter plots through perceptual learning interventions.  
-Their study provided support for an improved proficiency in correlation estimation after training.
-We used a randomized complete design experimental structure, while @mosteller1981eye implemented a latin square design to test for an order effect due to practice.
+
 
 # Future Work {#future-work}
 
@@ -547,17 +509,16 @@ This study provided a basis for the use of 'You Draw It' as a tool for testing s
 Additional studies related to the validation and use of the tool would be useful for providing insight into explanations of biases introduced by the task such as the deviation from a straight line.
 For instance, a variation on the current study could compare manual adjustment methods such as shifting and rotating a horizontal line segment until the fit is suitable to the 'You Draw It' method on the same set of data. This might explain the large deviation from the participant drawn line as $x$ approaches 20.
 Another useful extension study would be to compare the 'You Draw It' method as conducted by direct interaction - using a digital pen on a tablet - to indirect interaction - using a computer mouse to relate to a pointer on the screen. 
-Previous studies investigated human ability to perform regressions over scatterplots with outliers and found participant estimated trend lines to be closer to a robust trend line than the statistically fitted trend line where outliers were included [@bobko_1979; @correll_2017].
-This work could provide an extension and further evaluate the perceptual system's resistance to outliers by allowing participants to deviate from a straight line, potentially capturing the outlier(s).
-<!-- Further extensions to this work might ask participants to draw a trend-line through scatterplots with one (or multiple) extreme outliers in order to further evaluate the perceptual system's resistance to outliers [@bobko_1979; @correll_2017]. -->
+Further extensions to this work might ask participants to draw a trend-line through scatterplots with one (or multiple) extreme outliers in order to evaluate the perceptual system's resistance to outliers.
+
 While the focus of this study was on drawing linear trend-lines, further investigation is necessary to implement this method in non-linear settings and with real data in order to facilitate scientific communication - a strength of the combination of the flexible 'You Draw It' method and GAMM analysis method.
-@ciccione2021can evaluated human ability to extrapolate data from trends by asking participants to provide a single point estimate; this tool could be used to evaluate a continuous extrapolation of points from a trend line for various linear and non-linear data structures.
+This tool could also be used to evaluate human ability to extrapolate data from trends. 
 In the future, we intend to create an R package designed for easy implementation of 'You Draw It' task plots in order to make this tool accessible to other researchers. 
 
-# Supplementary Material {#supplementary-material}
+# SUPPLEMENTARY MATERIAL {#supplementary-material}
 
-+ **Study Applet:** The shiny app used to conduct the study can be accessed at  [https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
-+ **RShiny Applet Code:** The code used to create the RShiny Applet for data collection can be found at [https://github.com/earobinson95/you-draw-it-validation-applet(https://github.com/earobinson95/you-draw-it-validation-applet).
-+ **Participant Data:** De-identified participant data collected in the study and used for analyses are available to be downloaded from GitHub at  [https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
-+ **Data Analysis Code:** The code used to replicate the analysis in this paper can be found at [https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
++ **Study Applet:** The shiny app used to conduct the study can be accessed at  [emily-robinson.shinyapps.io/you-draw-it-validation-applet](https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/).
++ **RShiny Applet Code:** The code used to create the RShiny Applet for data collection can be found at [github.com/earobinson95/you-draw-it-validation-applet](https://github.com/earobinson95/you-draw-it-validation-applet).
++ **Participant Data:** De-identified participant data collected in the study and used for analyses are available to be downloaded from GitHub at  [github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data). 
++ **Data Analysis Code:** The code used to replicate the analysis in this paper can be found at [earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html](https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html).
 

@@ -332,8 +332,8 @@ analysis. All participants had normal or corrected to normal vision and
 signed an informed consent form. The experimental tasks took
 approximately 15 minutes to complete. As this is a pilot study,
 participants from Twitter and Reddit pages related to data visualization
-voluntarily completed the study and likely had an interest in fields
-related to statistics and wanted to help advance research in graphics.
+voluntarily completed the study and likely have an interest in fields
+related to statistics and want to help advance research in graphics.
 While this study does utilize a convenience sample, as this is primarily
 a perceptual task, previous results have found few differences between
 expert and non-expert participants in this context
@@ -343,7 +343,7 @@ to assess graphical perception interactively. Participants completed the
 experiment on their own computers in an environment of their choosing.
 The experiment was conducted and distributed through a Shiny application
 \citep{shinyPkg} found at
-\url{https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/}.
+\href{https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/}{emily-robinson.shinyapps.io/you-draw-it-validation-applet}.
 
 \hypertarget{you-draw-it-task}{%
 \subsection{`You Draw It' Task}\label{you-draw-it-task}}
@@ -358,7 +358,7 @@ shaded region disappeared, indicating the participant had completed the
 task. Data Driven Documents (D3), a JavaScript-based graphing framework
 that facilitates user interaction, was used to create the `You Draw It'
 visual. In order to allow for user interaction and data collection, we
-integrated the D3 visual into Shiny using the \texttt{r2d3} R package
+integrated the D3 visual into Shiny using the \texttt{r2d3} package
 \citep{r2d3}. While the interface is highly customized to this
 particular task, we hope to generalize the code and provide a Shiny
 widget in an R package soon.
@@ -385,25 +385,25 @@ y_i = \beta_1(x_i-\bar{x}) + y_{\bar{x}} + e_i \\
 \text{with } e_i & \sim N(0, \sigma^2). \nonumber
 \end{align}
 
-where \(\beta_1\) represents the slope of the trend and \(y_{\bar{x}}\)
-represents the \(y\) value at the mean of the generated \(x\) values.
 Model equation parameters, \(\beta_1\), \(y_{\bar{x}}\), and parameter
 choice letter names (S, F, V, N), were selected to reflect the four data
 sets used and labeled in \citet{mosteller1981eye}
-(\cref{tab:eyefitting-parameters}). The point \((x, y_{\bar{x})}\) was
-used in the point-slope equation of a line. Parameter choices S, F, and
-N simulated data across a domain of 0 to 20. Parameter choice F produced
-a trend with a positive slope and a large variance while N had a
-negative slope and a large variance. In comparison, S showed a trend
-with a positive slope and a small variance while V yielded a steep
-positive slope with a small variance over the domain of 4 to 16.
-\cref{fig:eyefitting-simplot} illustrates an example of simulated data
-for all four parameter choices intended to reflect the trends in
-\citet{mosteller1981eye}. Aesthetic design choices were made consistent
-across each of the interactive `You Draw It' task plots. The y-axis
-range extended 10\% beyond (above and below) the range of the simulated
-data points to allow for users to draw outside the simulated data set
-range and avoid anchoring their lines to the corners of the plot.
+(\cref{tab:eyefitting-parameters}). The mean of the generated \(x\)
+values and the predefined \(y\) value at \(\bar x\), denoted
+\(y_{\bar x}\) were used in the point-slope equation of a line.
+Parameter choices S, F, and N simulated data across a domain of 0 to 20.
+Parameter choice F produced a trend with a positive slope and a large
+variance while N had a negative slope and a large variance. In
+comparison, S showed a trend with a positive slope and a small variance
+while V yielded a steep positive slope with a small variance over the
+domain of 4 to 16. \cref{fig:eyefitting-simplot} illustrates an example
+of simulated data for all four parameter choices intended to reflect the
+trends in \citet{mosteller1981eye}. Aesthetic design choices were made
+consistent across each of the interactive `You Draw It' task plots. The
+y-axis range extended 10\% beyond (above and below) the range of the
+simulated data points to allow for users to draw outside the simulated
+data set range and avoid anchoring their lines to the corners of the
+plot.
 
 \begin{table}
 
@@ -476,8 +476,8 @@ equation,
 \(\hat y_{k,OLS} = \hat\beta_{0,OLS} + \hat\beta_{1,OLS} x_k\), for
 \(k = 1, ..., 4 x_{max} +1\). The PA regression slope,
 \(\hat\beta_{1,PA}\), and y-intercept, \(\hat\beta_{0,PA}\), were
-determined using the \texttt{mcreg} function in the mcr package in R
-\citep{mcr_pkg} which implements Deming regression (equivalent to a
+determined using the \texttt{mcreg} function in the \texttt{mcr} package
+in R \citep{mcr_pkg} which implements Deming regression (equivalent to a
 regression based on the slope of the first principal axis). Fitted
 values, \(\hat y_{k,PA}\) were then obtained every 0.25 increment across
 the domain from the PA regression equation,
@@ -513,7 +513,7 @@ example of all three fitted trend lines for parameter choice F.
 
 }
 
-\caption{Illustrates the data associated with and collected for one `You Draw It' task plot. Trend-lines include the participant drawn line (dashed black), the OLS regression line (solid steelblue) and the PA regression line based on the principal axis (long dashed orange).}\label{fig:eyefitting-example-plot}
+\caption{Illustrates the data associated with and collected for one `You Draw It' task plot. Trend-lines include the participant drawn line (dashed black), the OLS regression line (solid steelblue) and the PA regression line based on the principal axis (solid orange).}\label{fig:eyefitting-example-plot}
 \end{figure}
 
 \hypertarget{linear-trend-constraint}{%
@@ -522,7 +522,7 @@ example of all three fitted trend lines for parameter choice F.
 The `You Draw It' method does not restrict participants to draw a
 straight line as other methods would, such as using a ruler. Instead,
 participants are allowed to freely draw a line with potential curvature.
-Using the \texttt{lmer} function in the lme4 R package \citep{lme4}, a
+Using the \texttt{lmer} function in the lme4 package \citep{lme4}, a
 linear mixed model (LMM) was fit separately to the OLS residuals and PA
 residuals, emulating the effect of constraining participants to draw a
 linear trend. Both fixed and random parameter estimates in the LMM were
@@ -596,27 +596,26 @@ estimated OLS regression line.
 \subsubsection{Smoothing Spline Trend}\label{smoothing-spline-trend}}
 
 Eliminating the linear trend constraint, the \texttt{bam} function in
-the mgcv R package \citep{mgcv_pkg} was used to fit a generalized
-additive mixed model (GAMM) separately to the OLS residuals and PA
-residuals to allow for estimation of smoothing splines. The \texttt{bam}
-function is used to fit GAMM's to very large data sets and use lower
-memory than the \texttt{gam} function in the mgcv R package; the
-\texttt{bam} function implements restricted maximum likelihood (REML) to
-estimate parameters and smoothing splines. Parameter choice was treated
-as a fixed effect with no estimated intercept and a separate smoothing
-spline for \(x\) was estimated for each parameter choice. A random
-participant effect was included to account for variation due to
-participant and a random spline for each participant accounted for
-variation in spline for each participant. Defining \(e_{ijk,fit}\) the
-same as in equation (2) above, the GAMM equation for each fit (OLS and
-PA) residuals is given by: \begin{equation}
+the mgcv package \citep{mgcv_pkg} was used to fit a generalized additive
+mixed model (GAMM) separately to the OLS residuals and PA residuals to
+allow for estimation of smoothing splines. The \texttt{bam} function is
+used to fit GAMM's to very large data sets and use lower memory than the
+\texttt{gam} function; REML is used to estimate parameters and smoothing
+splines. Parameter choice was treated as a fixed effect with no
+estimated intercept and a separate smoothing spline for \(x\) was
+estimated for each parameter choice. A random participant effect was
+included to account for variation due to participant and a random spline
+for each participant accounted for variation in spline for each
+participant. Defining e\_\{ijk,fit\} the same as in equation (2) above,
+the GAMM equation for each fit (OLS and PA) residuals is given by:
+\begin{equation}
 e_{ijk,fit} = \alpha_i + s_{i}(x_{ijk}) + p_{j} + s_{j}(x_{ijk})
 \end{equation} \noindent where
 
 \begin{itemize}
 \tightlist
 \item
-  \(e_{ijk,fit}\) is the same as in equation (2)
+  \(e_{ijk,fit}\) is the same as equation
 \item
   \(\alpha_i\) is the intercept for the parameter choice \(i\)
 \item
@@ -708,13 +707,7 @@ length of the pointer increased. While we suggested participants use a
 mouse to complete the study, we could not require the use; therefore,
 some participants may have used a track-pad and results may have been
 influenced by the pressure placed on their track-pad
-\citep{easton1978finger}. In cognitive psychology, \citet{cui_2018}
-studied the improvement in estimating correlations in scatter plots
-through perceptual learning interventions.\\
-Their study provided support for an improved proficiency in correlation
-estimation after training. We used a randomized complete design
-experimental structure, while \citet{mosteller1981eye} implemented a
-latin square design to test for an order effect due to practice.
+\citep{easton1978finger}.
 
 \hypertarget{future-work}{%
 \section{Future Work}\label{future-work}}
@@ -733,47 +726,42 @@ participant drawn line as \(x\) approaches 20. Another useful extension
 study would be to compare the `You Draw It' method as conducted by
 direct interaction - using a digital pen on a tablet - to indirect
 interaction - using a computer mouse to relate to a pointer on the
-screen. Previous studies investigated human ability to perform
-regressions over scatterplots with outliers and found participant
-estimated trend lines to be closer to a robust trend line than the
-statistically fitted trend line where outliers were included
-\citep{bobko_1979, correll_2017}. This work could provide an extension
-and further evaluate the perceptual system's resistance to outliers by
-allowing participants to deviate from a straight line, potentially
-capturing the outlier(s). While the focus of this study was on drawing
-linear trend-lines, further investigation is necessary to implement this
-method in non-linear settings and with real data in order to facilitate
-scientific communication - a strength of the combination of the flexible
-`You Draw It' method and GAMM analysis method. \citet{ciccione2021can}
-evaluated human ability to extrapolate data from trends by asking
-participants to provide a single point estimate; this tool could be used
-to evaluate a continuous extrapolation of points from a trend line for
-various linear and non-linear data structures. In the future, we intend
-to create an R package designed for easy implementation of `You Draw It'
-task plots in order to make this tool accessible to other researchers.
+screen. Further extensions to this work might ask participants to draw a
+trend-line through scatterplots with one (or multiple) extreme outliers
+in order to evaluate the perceptual system's resistance to outliers.
+
+While the focus of this study was on drawing linear trend-lines, further
+investigation is necessary to implement this method in non-linear
+settings and with real data in order to facilitate scientific
+communication - a strength of the combination of the flexible `You Draw
+It' method and GAMM analysis method. This tool could also be used to
+evaluate human ability to extrapolate data from trends. In the future,
+we intend to create an R package designed for easy implementation of
+`You Draw It' task plots in order to make this tool accessible to other
+researchers.
 
 \hypertarget{supplementary-material}{%
-\section{Supplementary Material}\label{supplementary-material}}
+\section{SUPPLEMENTARY MATERIAL}\label{supplementary-material}}
 
 \begin{itemize}
 \tightlist
 \item
   \textbf{Study Applet:} The shiny app used to conduct the study can be
   accessed at
-  \url{https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/}.
+  \href{https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/}{emily-robinson.shinyapps.io/you-draw-it-validation-applet}.
 \item
   \textbf{RShiny Applet Code:} The code used to create the RShiny Applet
   for data collection can be found at
-  {[}\url{https://github.com/earobinson95/you-draw-it-validation-applet(https://github.com/earobinson95/you-draw-it-validation-applet}).
+  \href{https://github.com/earobinson95/you-draw-it-validation-applet}{github.com/earobinson95/you-draw-it-validation-applet}.
 \item
   \textbf{Participant Data:} De-identified participant data collected in
   the study and used for analyses are available to be downloaded from
   GitHub at
-  \url{https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data}.
+  \href{https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data}{github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data}.
 \item
   \textbf{Data Analysis Code:} The code used to replicate the analysis
   in this paper can be found at
-  \url{https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html}.
+  \href{https://earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html}{earobinson95.github.io/Eye-Fitting-Straight-Lines-in-the-Modern-Era/analysis/you-draw-it-eyefitting-analysis.html}.
 \end{itemize}
 
 \bibliographystyle{agsm}
