@@ -87,8 +87,8 @@ comparing results to the less technological method utilized in
 \citet{mosteller1981eye} and extending that study with formal
 statistical analysis methods. Results were consistent with those found
 in the previous study; when shown points following a linear trend,
-participants tended to fit the slope of the first principal component
-over the slope of the least-squares regression line. This trend was most
+participants tended to fit the slope of the principal axis over the
+slope of the least-squares regression line. This trend was most
 prominent when shown data simulated with larger variances. This study
 reinforces the differences between intuitive visual model fitting and
 statistical model fitting, providing information about human perception
@@ -161,7 +161,7 @@ participants' abilities to detect a stimulus or a difference between two
 stimuli. Psychophysical methods have been used to test graphical
 perception, as in \citet{vanderplas2015signs}, which used the method of
 adjustment - a technique which requires participants to alter a changing
-stimulus to match a given constant stimuli \citep{gescheider_1997}- to
+stimulus to match a given constant stimuli \citep{gescheider_1997} - to
 estimate the magnitude of the impact of the sine illusion. However,
 there are more modern testing methods that have been developed since the
 heyday of psychophysics.
@@ -178,9 +178,9 @@ observation is in its own row, and each value is in its own cell
 \citep{wickham2016r}. Graphics are viewed as a mapping from variables in
 a data set (or statistics computed from the data) to visual attributes
 such as the axes, colors, shapes, or facets on the canvas in which the
-chart is displayed. Software, such as Hadley Wickham's ggplot2
-\citep{wickham2011ggplot2}, aims to implement the framework of creating
-charts and graphics as the Grammar of Graphics recommends.
+chart is displayed. Software, such as Hadley Wickham's \texttt{ggplot2}
+package in R \citep{wickham2011ggplot2}, aims to implement the framework
+of creating charts and graphics as the Grammar of Graphics recommends.
 
 Combining the Grammar of Graphics with another tool for statistical
 graphics testing, the statistical lineup, yields a method for evaluating
@@ -263,8 +263,9 @@ direction, and those biases increase with noise and with number of
 points. This supports the results found in \citet{mosteller1981eye} and
 suggest that participants might use Deming regression
 \citep{deming1943statistical, linnet1998performance, martin2000general},
-which minimizes the Euclidean distance of points from the line, when
-fitting a line to a noisy scatterplot.
+which is equivalent to the principal axis and minimizes the Euclidean
+distance of points from the line, when fitting a line to a noisy
+scatterplot.
 
 While not explicitly intended for perceptual testing, in 2015, the New
 York Times introduced an interactive feature, called `You Draw It'
@@ -322,27 +323,27 @@ to extend the use of the method beyond the linear setting.
 \hypertarget{participants}{%
 \subsection{Participants}\label{participants}}
 
-Participants were recruited through through Twitter, Reddit, and direct
-email in May 2021. A total of 35 individuals completed 131 unique `You
-Draw It' task plots. Data were collected as a part of a pilot study
-meant to test the applet; therefore, either voluntary participant
-dropout or disconnection from a server not designed to accommodate large
-magnitudes of participants resulted in missing plots in our data set for
-analysis. All participants had normal or corrected to normal vision and
-signed an informed consent form. The experimental tasks took
-approximately 15 minutes to complete. As this is a pilot study,
-participants from Twitter and Reddit pages related to data visualization
-voluntarily completed the study and likely had an interest in fields
-related to statistics and wanted to help advance research in graphics.
-While this study does utilize a convenience sample, as this is primarily
-a perceptual task, previous results have found few differences between
-expert and non-expert participants in this context
-\citep{vanderplas2015spatial}. These data were collected to validate
-this method of graphical testing, with the hopes of providing a new tool
-to assess graphical perception interactively. Participants completed the
-experiment on their own computers in an environment of their choosing.
-The experiment was conducted and distributed through a Shiny application
-\citep{shinyPkg} found at
+Participants were recruited through Twitter, Reddit, and direct email in
+May 2021. A total of 35 individuals completed 131 unique `You Draw It'
+task plots. Data were collected as a part of a pilot study meant to test
+the applet; therefore, either voluntary participant dropout or
+disconnection from a server not designed to accommodate large magnitudes
+of participants resulted in missing plots in our data set for analysis.
+All participants had normal or corrected to normal vision and signed an
+informed consent form. The experimental tasks took approximately 15
+minutes to complete. As this is a pilot study, participants from Twitter
+and Reddit pages related to data visualization voluntarily completed the
+study and likely had an interest in fields related to statistics and
+wanted to help advance research in graphics. While this study does
+utilize a convenience sample, as this is primarily a perceptual task,
+previous results have found few differences between expert and
+non-expert participants in this context \citep{vanderplas2015spatial}.
+These data were collected to validate this method of graphical testing,
+with the hopes of providing a new tool to assess graphical perception
+interactively. Participants completed the experiment on their own
+computers in an environment of their choosing. The experiment was
+conducted and distributed through a R Shiny application \citep{shinyPkg}
+found at
 \url{https://emily-robinson.shinyapps.io/you-draw-it-validation-applet/}.
 
 \hypertarget{you-draw-it-task}{%
@@ -358,7 +359,7 @@ shaded region disappeared, indicating the participant had completed the
 task. Data Driven Documents (D3), a JavaScript-based graphing framework
 that facilitates user interaction, was used to create the `You Draw It'
 visual. In order to allow for user interaction and data collection, we
-integrated the D3 visual into Shiny using the \texttt{r2d3} R package
+integrated the D3 visual into R Shiny using the \texttt{r2d3} R package
 \citep{r2d3}. While the interface is highly customized to this
 particular task, we hope to generalize the code and provide a Shiny
 widget in an R package soon.
@@ -383,13 +384,11 @@ relationship. Data were simulated based on the point-slope form of a
 linear model with additive errors: \begin{align}
 y_i = \beta_1(x_i-\bar{x}) + y_{\bar{x}} + e_i \\
 \text{with } e_i & \sim N(0, \sigma^2). \nonumber
-\end{align}
-
-where \(\beta_1\) represents the slope of the trend and \(y_{\bar{x}}\)
-represents the \(y\) value at the mean of the generated \(x\) values.
-Model equation parameters, \(\beta_1\), \(y_{\bar{x}}\), and parameter
-choice letter names (S, F, V, N), were selected to reflect the four data
-sets used and labeled in \citet{mosteller1981eye}
+\end{align} where \(\beta_1\) represents the slope of the trend and
+\(y_{\bar{x}}\) represents the \(y\) value at the mean of the generated
+\(x\) values. Model equation parameters, \(\beta_1\), \(y_{\bar{x}}\),
+and parameter choice letter names (S, F, V, N), were selected to reflect
+the four data sets used and labeled in \citet{mosteller1981eye}
 (\cref{tab:eyefitting-parameters}). The point \((x, y_{\bar{x})}\) was
 used in the point-slope equation of a line. Parameter choices S, F, and
 N simulated data across a domain of 0 to 20. Parameter choice F produced
@@ -400,7 +399,7 @@ positive slope with a small variance over the domain of 4 to 16.
 \cref{fig:eyefitting-simplot} illustrates an example of simulated data
 for all four parameter choices intended to reflect the trends in
 \citet{mosteller1981eye}. Aesthetic design choices were made consistent
-across each of the interactive `You Draw It' task plots. The y-axis
+across each of the interactive `You Draw It' task plots. The \(y\)-axis
 range extended 10\% beyond (above and below) the range of the simulated
 data points to allow for users to draw outside the simulated data set
 range and avoid anchoring their lines to the corners of the plot.
@@ -475,12 +474,12 @@ obtained every 0.25 increment across the domain from the OLS regression
 equation,
 \(\hat y_{k,OLS} = \hat\beta_{0,OLS} + \hat\beta_{1,OLS} x_k\), for
 \(k = 1, ..., 4 x_{max} +1\). The PA regression slope,
-\(\hat\beta_{1,PA}\), and y-intercept, \(\hat\beta_{0,PA}\), were
+\(\hat\beta_{1,PA}\), and \(y\)-intercept, \(\hat\beta_{0,PA}\), were
 determined using the \texttt{mcreg} function in the mcr package in R
 \citep{mcr_pkg} which implements Deming regression (equivalent to a
-regression based on the slope of the first principal axis). Fitted
-values, \(\hat y_{k,PA}\) were then obtained every 0.25 increment across
-the domain from the PA regression equation,
+regression based on the slope of the principal axis). Fitted values,
+\(\hat y_{k,PA}\) were then obtained every 0.25 increment across the
+domain from the PA regression equation,
 \(\hat y_{k,PA} = \hat\beta_{0,PA} + \hat\beta_{1,PA} x_k\), for
 \(k = 1, ..., 4 x_{max} +1\).
 
@@ -675,33 +674,35 @@ replicating the study found in \citet{mosteller1981eye}. Using
 generalized additive mixed models, we assessed the deviation of the
 participant drawn lines from the statistically fitted regression lines.
 Our results found that when shown points following a linear trend,
-participants visually fit a regression line that mimics the first
-principal axis regression as opposed to ordinary least squares
-regression. Data simulated with a larger variance provided strong
-support for a participants tendency to visually fit the first principal
-axis regression. We utilized modern technology to replicate a study
-conducted 40 years ago, and strengthened the original results with
-current analysis methods which allow for more flexibility and
-sophistication. Our results indicate that participants minimized the
-distance from their drawn regression line over both the \(x\) and \(y\)
-axis simultaneously. We allowed participants to draw trend lines that
-deviated from a straight line and gained an insight into the curvature
-the human eye perceives in a set of points. Researchers in cognitive and
-human movement sciences have found that human arm movement is a complex
-task \citep{miall1995curvature, rousset2015study}. The `You Draw It'
-method described in this paper uses \emph{indirect interaction} in which
-the mouse position and resulting visual line on the screen are
-dissociated. Therefore, curvature found in participant drawn lines from
-a straight lines could potentially be explained by the lack of
-coordination which results from the eye-hand dissociation from indirect
-drawing and the distortion of visual perception affecting the curvature
-of movements. Additionally, there is a training effect related to the
-completion of the `You Draw It' task - the movement of the line must be
-slow so that the visual representation on the screen can accurately
-capture each movement. \citet{de1991misdirections} conducted a study in
-which participants moved their hand slowly from an initial position in
-front of them to a visual target (movement task); they were then asked
-to repeat the task using different sizes of pointers (perceptual task).
+participants visually fit a regression line that mimics the principal
+axis regression line as opposed to ordinary least squares regression
+line. Data simulated with a larger variance provided strong support for
+a participants tendency to visually fit the first principal axis
+regression. We utilized modern technology to replicate a study conducted
+40 years ago, and strengthened the original results with current
+analysis methods which allow for more flexibility and sophistication.
+Our results indicate that participants minimized the distance from their
+drawn regression line over both the \(x\) and \(y\) axis simultaneously.
+We allowed participants to draw trend lines that deviated from a
+straight line and gained an insight into the curvature the human eye
+perceives in a set of points.
+
+Researchers in cognitive and human movement sciences have found that
+human arm movement is a complex task
+\citep{miall1995curvature, rousset2015study}. The `You Draw It' method
+described in this paper uses \emph{indirect interaction} in which the
+mouse position and resulting visual line on the screen are dissociated.
+Therefore, curvature found in participant drawn lines from a straight
+lines could potentially be explained by the lack of coordination which
+results from the eye-hand dissociation from indirect drawing and the
+distortion of visual perception affecting the curvature of movements.
+Additionally, there is a training effect related to the completion of
+the `You Draw It' task - the movement of the line must be slow so that
+the visual representation on the screen can accurately capture each
+movement. \citet{de1991misdirections} conducted a study in which
+participants moved their hand slowly from an initial position in front
+of them to a visual target (movement task); they were then asked to
+repeat the task using different sizes of pointers (perceptual task).
 Their results indicated that deviations from the shortest pointers were
 comparable to those of the movement task, but that bias increased as the
 length of the pointer increased. While we suggested participants use a
@@ -710,11 +711,11 @@ some participants may have used a track-pad and results may have been
 influenced by the pressure placed on their track-pad
 \citep{easton1978finger}. In cognitive psychology, \citet{cui_2018}
 studied the improvement in estimating correlations in scatter plots
-through perceptual learning interventions.\\
-Their study provided support for an improved proficiency in correlation
-estimation after training. We used a randomized complete design
-experimental structure, while \citet{mosteller1981eye} implemented a
-latin square design to test for an order effect due to practice.
+through perceptual learning interventions. Results form their study
+provided support for an improved proficiency in correlation estimation
+after training. We used a randomized complete design experimental
+structure, while \citet{mosteller1981eye} implemented a latin square
+design to test for an order effect due to practice.
 
 \hypertarget{future-work}{%
 \section{Future Work}\label{future-work}}
@@ -737,20 +738,21 @@ screen. Previous studies investigated human ability to perform
 regressions over scatterplots with outliers and found participant
 estimated trend lines to be closer to a robust trend line than the
 statistically fitted trend line where outliers were included
-\citep{bobko_1979, correll_2017}. This work could provide an extension
-and further evaluate the perceptual system's resistance to outliers by
-allowing participants to deviate from a straight line, potentially
-capturing the outlier(s). While the focus of this study was on drawing
-linear trend-lines, further investigation is necessary to implement this
-method in non-linear settings and with real data in order to facilitate
-scientific communication - a strength of the combination of the flexible
-`You Draw It' method and GAMM analysis method. \citet{ciccione2021can}
-evaluated human ability to extrapolate data from trends by asking
-participants to provide a single point estimate; this tool could be used
-to evaluate a continuous extrapolation of points from a trend line for
-various linear and non-linear data structures. In the future, we intend
-to create an R package designed for easy implementation of `You Draw It'
-task plots in order to make this tool accessible to other researchers.
+\citep{bobko_1979, correll_2017}. The work in this paper could provide
+an extension and further evaluate the perceptual system's resistance to
+outliers by allowing participants to deviate from a straight line,
+potentially capturing the outlier(s). While the focus of this study was
+on drawing linear trend lines, further investigation is necessary to
+implement this method in nonlinear settings and with real data in order
+to facilitate scientific communication - a strength of the combination
+of the flexible `You Draw It' method and GAMM analysis method.
+\citet{ciccione2021can} evaluated human ability to extrapolate data from
+trends by asking participants to provide a single point estimate; this
+tool could be used to evaluate a continuous extrapolation of points from
+a trend line for various linear and nonlinear data structures. In the
+future, we intend to create an R package designed for easy
+implementation of `You Draw It' task plots in order to make this tool
+accessible to other researchers.
 
 \hypertarget{supplementary-material}{%
 \section{Supplementary Material}\label{supplementary-material}}
@@ -764,7 +766,7 @@ task plots in order to make this tool accessible to other researchers.
   \textbf{Data Analysis Code:} The code used to replicate the analysis
   in this paper (you-draw-it-eyefitting-analysis.Rmd).
 \item
-  \textbf{README:} File containing detailed descriptions of the
+  \textbf{readme:} File containing detailed descriptions of the
   supplementary material (README.html).
 \end{itemize}
 

@@ -8,21 +8,20 @@ format: pdf
 
 ## manuscript.zip
 
-+ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.pdf`
-+ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.Rmd`
-+ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.tex`
-+ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.pdf`
-+ `bibliography.bib`
++ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.pdf` Final pdf version of manuscript.
++ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.Rmd` Final rmarkdown document used to write the manuscript with the proper formatting.
++ `Eye-Fitting-Straight-Lines-in-the-Modern-Era.tex` Final latex file outputted from the rmarkdown document.
++ `bibliography.bib` File containing references in bibtex format.
 + `agsm.bst`
-+ `images/ydi-stimuli.png`
-+ `figure-latex/eyefitting-example-plot-1.pdf`
-+ `figure-latex/eyefitting-gamm-residualplots-1.pdf`
-+ `figure-latex/eyefitting-lmer-residualplots-1.pdf`
-+ `figure-latex/eyefitting-simplot-1.pdf`
-+ `figure-latex/ols-vs-pca-example-1.pdf`
++ `images/ydi-stimuli.png` Image for Figure 1 in the manuscript.
++ `figure-latex/eyefitting-simplot-1.pdf` Image for Figure 2 in the manuscript; originally created using R ggplot2 code within the rmarkdown file.
++ `figure-latex/ols-vs-pca-example-1.pdf` Image for Figure 3 in the manuscript; originally created using R ggplot2 code within the rmarkdown file.
++ `figure-latex/eyefitting-example-plot-1.pdf` Image for Figure 4 in the manuscript; originally created using R ggplot2 code within the rmarkdown file.
++ `figure-latex/eyefitting-lmer-residualplots-1.pdf` Image for Figure 5 in the manuscript; originally created using R ggplot2 code within the rmarkdown file. This image is to be printed in color.
++ `figure-latex/eyefitting-gamm-residualplots-1.pdf` Image for Figure 6 in the manuscript; originally created using R ggplot2 code within the rmarkdown file. This image is to be printed in color.
 
 ## supplementary-material.zip
 
-+ `README.html` 
-+ `eyefitting-model-data.csv`
-+ `you-draw-it-eyefitting-analysis.Rmd`
++ `README.html` File containing detailed descriptions of the supplementary material.
++ `eyefitting-model-data.csv` De-identified participant data collected in the study and used for analyses.
++ `you-draw-it-eyefitting-analysis.Rmd` The .Rmd code file used to replicate the analysis in this paper.
