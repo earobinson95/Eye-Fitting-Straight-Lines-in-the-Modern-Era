@@ -25,3 +25,10 @@ latexdiff(
   output_format = NULL,
   ld_opts = "--replace-context2cmd=\"none\""
 )
+
+# in terminal
+
+# latexdiff intermediate-revisions-Eye-Fitting-Straight-Lines-in-the-Modern-Era.tex Eye-Fitting-Straight-Lines-in-the-Modern-Era.tex > diff-2.tex
+
+
+

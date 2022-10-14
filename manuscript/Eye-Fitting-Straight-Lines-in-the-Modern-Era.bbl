@@ -1,0 +1,249 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[Aisch et~al.]{Aisch, Cox \harvardand\
+  Quealy}{2015}{aisch_cox_quealy_2015}
+Aisch, G., Cox, A. \harvardand\ Quealy, K.  \harvardyearleft
+  2015\harvardyearright , `You draw it: How family income predicts children's
+  college chances'.
+\newline\harvardurl{https://www.nytimes.com/interactive/2015/05/28/upshot/you-draw-it-how-family-income-affects-childrens-college-chances.html}
+
+\harvarditem{Appelle}{1972}{appelle1972perception}
+Appelle, S.  \harvardyearleft 1972\harvardyearright , `Perception and
+  discrimination as a function of stimulus orientation: the "oblique effect" in
+  man and animals.', {\em Psychological Bulletin} {\bf 78}(4),~266.
+
+\harvarditem[Bates et~al.]{Bates, M{\"a}chler, Bolker \harvardand\
+  Walker}{2015}{lme4}
+Bates, D., M{\"a}chler, M., Bolker, B. \harvardand\ Walker, S.
+  \harvardyearleft 2015\harvardyearright , `Fitting linear mixed-effects models
+  using {lme4}', {\em Journal of Statistical Software} {\bf 67}(1),~1--48.
+
+\harvarditem{Bobko \harvardand\ Karren}{1979}{bobko_1979}
+Bobko, P. \harvardand\ Karren, R.  \harvardyearleft 1979\harvardyearright ,
+  `The perception of pearson product moment correlations from bivariate
+  scatterplots', {\em Personnel Psychology} {\bf 32}(2),~313--325.
+
+\harvarditem[Bostock et~al.]{Bostock, Ogievetsky \harvardand\
+  Heer}{2011}{bostock2011d3}
+Bostock, M., Ogievetsky, V. \harvardand\ Heer, J.  \harvardyearleft
+  2011\harvardyearright , `D$^3$ data-driven documents', {\em IEEE Transactions
+  on Visualization and Computer Graphics} {\bf 17}(12),~2301--2309.
+
+\harvarditem[Buchanan et~al.]{Buchanan, Park \harvardand\
+  Pearce}{2017}{buchanan_park_pearce_2017}
+Buchanan, L., Park, H. \harvardand\ Pearce, A.  \harvardyearleft
+  2017\harvardyearright , `You draw it: What got better or worse during
+  {O}bama's presidency'.
+\newline\harvardurl{https://www.nytimes.com/interactive/2017/01/15/us/politics/you-draw-obama-legacy.html}
+
+\harvarditem[Buja et~al.]{Buja, Cook, Hofmann, Lawrence, Lee, Swayne
+  \harvardand\ Wickham}{2009}{buja2009statistical}
+Buja, A., Cook, D., Hofmann, H., Lawrence, M., Lee, E.-K., Swayne, D.~F.
+  \harvardand\ Wickham, H.  \harvardyearleft 2009\harvardyearright ,
+  `Statistical inference for exploratory data analysis and model diagnostics',
+  {\em Philosophical Transactions of the Royal Society A: Mathematical,
+  Physical and Engineering Sciences} {\bf 367}(1906),~4361--4383.
+
+\harvarditem[Chang et~al.]{Chang, Cheng, Allaire, Sievert, Schloerke, Xie,
+  Allen, McPherson, Dipert \harvardand\ Borges}{2021}{shinyPkg}
+Chang, W., Cheng, J., Allaire, J., Sievert, C., Schloerke, B., Xie, Y., Allen,
+  J., McPherson, J., Dipert, A. \harvardand\ Borges, B.  \harvardyearleft
+  2021\harvardyearright , {\em shiny: Web Application Framework for R}.
+\newblock R package version 1.7.1.
+\newline\harvardurl{https://CRAN.R-project.org/package=shiny}
+
+\harvarditem{Ciccione \harvardand\ Dehaene}{2020}{ciccione2020grouping}
+Ciccione, L. \harvardand\ Dehaene, S.  \harvardyearleft 2020\harvardyearright ,
+  `Grouping mechanisms in numerosity perception', {\em Open Mind} {\bf
+  4},~102--118.
+
+\harvarditem{Ciccione \harvardand\ Dehaene}{2021}{ciccione2021can}
+Ciccione, L. \harvardand\ Dehaene, S.  \harvardyearleft 2021\harvardyearright ,
+  `Can humans perform mental regression on a graph? accuracy and bias in the
+  perception of scatterplots', {\em Cognitive Psychology} {\bf 128},~101406.
+
+\harvarditem{Cleveland}{1993}{cleveland1993visualizing}
+Cleveland, W.~S.  \harvardyearleft 1993\harvardyearright , {\em Visualizing
+  data}, Hobart Press, Summit, NJ.
+
+\harvarditem[Cleveland et~al.]{Cleveland, Diaconis \harvardand\
+  McGill}{1982}{cleveland1982variables}
+Cleveland, W.~S., Diaconis, P. \harvardand\ McGill, R.  \harvardyearleft
+  1982\harvardyearright , `Variables on scatterplots look more highly
+  correlated when the scales are increased', {\em Science} {\bf
+  216}(4550),~1138--1141.
+
+\harvarditem{Cleveland \harvardand\ McGill}{1984}{cleveland1984graphical}
+Cleveland, W.~S. \harvardand\ McGill, R.  \harvardyearleft
+  1984\harvardyearright , `Graphical perception: Theory, experimentation, and
+  application to the development of graphical methods', {\em Journal of the
+  American Statistical Association} {\bf 79}(387),~531--554.
+
+\harvarditem{Cleveland \harvardand\ McGill}{1985}{cleveland1985graphical}
+Cleveland, W.~S. \harvardand\ McGill, R.  \harvardyearleft
+  1985\harvardyearright , `Graphical perception and graphical methods for
+  analyzing scientific data', {\em Science} {\bf 229}(4716),~828--833.
+
+\harvarditem{Correll \harvardand\ Heer}{2017}{correll_2017}
+Correll, M. \harvardand\ Heer, J.  \harvardyearleft 2017\harvardyearright ,
+  Regression by eye: Estimating trends in bivariate visualizations, {\em in}
+  `Proceedings of the 2017 CHI Conference on Human Factors in Computing
+  Systems', CHI '17, Association for Computing Machinery, New York, NY, USA,
+  p.~1387–1396.
+\newline\harvardurl{https://doi.org/10.1145/3025453.3025922}
+
+\harvarditem[Cui et~al.]{Cui, Massey \harvardand\ Kellman}{2018}{cui_2018}
+Cui, L., Massey, C.~M. \harvardand\ Kellman, P.~J.  \harvardyearleft
+  2018\harvardyearright , `Perceptual learning in correlation estimation: The
+  role of learning category organization', {\em Proceedings of the 40th Annual
+  Conference of the Cognitive Science Society} .
+\newline\harvardurl{https://par.nsf.gov/biblio/10254053}
+
+\harvarditem[De~Graaf et~al.]{De~Graaf, Sittig \harvardand\ van~der
+  Gon}{1991}{de1991misdirections}
+De~Graaf, J., Sittig, A. \harvardand\ van~der Gon, J.  \harvardyearleft
+  1991\harvardyearright , `Misdirections in slow goal-directed arm movements
+  and pointer-setting tasks', {\em Experimental Brain Research} {\bf
+  84}(2),~434--438.
+
+\harvarditem{Deming}{1943}{deming1943statistical}
+Deming, W.~E.  \harvardyearleft 1943\harvardyearright , {\em Statistical
+  adjustment of data}, John Wiley \& Sons, New York, NY.
+
+\harvarditem{Easton \harvardand\ Falzett}{1978}{easton1978finger}
+Easton, R.~D. \harvardand\ Falzett, M.  \harvardyearleft 1978\harvardyearright
+  , `Finger pressure during tracking of curved contours: Implications for a
+  visual dominance phenomenon', {\em Perception \& Psychophysics} {\bf
+  24}(2),~145--153.
+
+\harvarditem{Finney}{1951}{finney1951subjective}
+Finney, D.  \harvardyearleft 1951\harvardyearright , `Subjective judgment in
+  statistical analysis: An experimental study', {\em Journal of the Royal
+  Statistical Society: Series B (Methodological)} {\bf 13}(2),~284--297.
+
+\harvarditem{Gescheider}{1997}{gescheider_1997}
+Gescheider, G.  \harvardyearleft 1997\harvardyearright , {\em Psychophysics:
+  The Fundamentals}, 3 edn, Lawrence Erlbaum Associates, Mahwah, NJ.
+
+\harvarditem[Hofmann et~al.]{Hofmann, Follett, Majumder \harvardand\
+  Cook}{2012}{hofmann2012graphical}
+Hofmann, H., Follett, L., Majumder, M. \harvardand\ Cook, D.  \harvardyearleft
+  2012\harvardyearright , `Graphical tests for power comparison of competing
+  designs', {\em IEEE Transactions on Visualization and Computer Graphics} {\bf
+  18}(12),~2441--2448.
+
+\harvarditem{Katz}{2017}{katz_2017}
+Katz, J.  \harvardyearleft 2017\harvardyearright , `You draw it: Just how bad
+  is the drug overdose epidemic?'.
+\newline\harvardurl{https://www.nytimes.com/interactive/2017/04/14/upshot/drug-overdose-epidemic-you-draw-it.html}
+
+\harvarditem{Kosslyn}{2006}{kosslyn2006graph}
+Kosslyn, S.~M.  \harvardyearleft 2006\harvardyearright , {\em Graph design for
+  the eye and mind}, Oxford University Press, New York, NY.
+
+\harvarditem{Lauer \harvardand\ Post}{1989}{lauer1989density}
+Lauer, T.~W. \harvardand\ Post, G.~V.  \harvardyearleft 1989\harvardyearright ,
+  `Density in scatterplots and the estimation of correlation', {\em Behaviour
+  \& Information Technology} {\bf 8}(3),~235--244.
+
+\harvarditem{Lewandowsky \harvardand\ Spence}{1989}{lewandowsky1989perception}
+Lewandowsky, S. \harvardand\ Spence, I.  \harvardyearleft 1989\harvardyearright
+  , `The perception of statistical graphs', {\em Sociological Methods \&
+  Research} {\bf 18}(2-3),~200--242.
+
+\harvarditem{Linnet}{1998}{linnet1998performance}
+Linnet, K.  \harvardyearleft 1998\harvardyearright , `Performance of deming
+  regression analysis in case of misspecified analytical error ratio in method
+  comparison studies', {\em Clinical Chemistry} {\bf 44}(5),~1024--1031.
+
+\harvarditem[Manuilova et~al.]{Manuilova, Schuetzenmeister \harvardand\
+  Model}{2021}{mcr_pkg}
+Manuilova, E., Schuetzenmeister, A. \harvardand\ Model, F.  \harvardyearleft
+  2021\harvardyearright , {\em mcr: Method Comparison Regression}.
+\newblock R package version 1.2.2.
+\newline\harvardurl{https://CRAN.R-project.org/package=mcr}
+
+\harvarditem{Martin}{2000}{martin2000general}
+Martin, R.~F.  \harvardyearleft 2000\harvardyearright , `General deming
+  regression for estimating systematic bias and its confidence interval in
+  method-comparison studies', {\em Clinical Chemistry} {\bf 46}(1),~100--104.
+
+\harvarditem{Miall \harvardand\ Haggard}{1995}{miall1995curvature}
+Miall, R. \harvardand\ Haggard, P.  \harvardyearleft 1995\harvardyearright ,
+  `The curvature of human arm movements in the absence of visual experience',
+  {\em Experimental Brain Research} {\bf 103}(3),~421--428.
+
+\harvarditem[Mosteller et~al.]{Mosteller, Siegel, Trapido \harvardand\
+  Youtz}{1981}{mosteller1981eye}
+Mosteller, F., Siegel, A., Trapido, E. \harvardand\ Youtz, C.  \harvardyearleft
+  1981\harvardyearright , `Eye fitting straight lines', {\em The American
+  Statistician} {\bf 35}(3),~150--152.
+
+\harvarditem{{R Core Team}}{2021}{Rsoftware}
+{R Core Team}  \harvardyearleft 2021\harvardyearright , {\em R: A Language and
+  Environment for Statistical Computing}, R Foundation for Statistical
+  Computing, Vienna, Austria.
+\newline\harvardurl{https://www.R-project.org/}
+
+\harvarditem[Rousset et~al.]{Rousset, B\'{e}rard \harvardand\
+  Ortega}{2015}{rousset2015study}
+Rousset, E., B\'{e}rard, F. \harvardand\ Ortega, M.  \harvardyearleft
+  2015\harvardyearright , Study of the effect of the directness of the
+  interaction on novice users when drawing straight lines, {\em in}
+  `Proceedings of the 27th Conference on l'Interaction Homme-Machine', IHM '15,
+  Association for Computing Machinery, New York, NY, USA.
+\newline\harvardurl{https://doi.org/10.1145/2820619.2820633}
+
+\harvarditem{Spence}{1990}{spence1990visual}
+Spence, I.  \harvardyearleft 1990\harvardyearright , `Visual psychophysics of
+  simple graphical elements.', {\em Journal of Experimental Psychology: Human
+  Perception and Performance} {\bf 16}(4),~683.
+
+\harvarditem[Strayer et~al.]{Strayer, Luraschi \harvardand\
+  Allaire}{2022}{r2d3}
+Strayer, N., Luraschi, J. \harvardand\ Allaire, J.  \harvardyearleft
+  2022\harvardyearright , {\em r2d3: Interface to 'D3' Visualizations}.
+\newblock R package version 0.2.6.
+\newline\harvardurl{https://CRAN.R-project.org/package=r2d3}
+
+\harvarditem{Unwin \harvardand\ Wills}{1988}{unwin1988eyeballing}
+Unwin, A. \harvardand\ Wills, G.  \harvardyearleft 1988\harvardyearright ,
+  Eyeballing time series, {\em in} `Proceedings of the 1988 ASA Statistical
+  Computing Section', pp.~263--268.
+
+\harvarditem{VanderPlas \harvardand\ Hofmann}{2015{\em a}}{vanderplas2015signs}
+VanderPlas, S. \harvardand\ Hofmann, H.  \harvardyearleft 2015{\em
+  a}\harvardyearright , `Signs of the sine illusion—why we need to care',
+  {\em Journal of Computational and Graphical Statistics} {\bf
+  24}(4),~1170--1190.
+
+\harvarditem{VanderPlas \harvardand\ Hofmann}{2015{\em
+  b}}{vanderplas2015spatial}
+VanderPlas, S. \harvardand\ Hofmann, H.  \harvardyearleft 2015{\em
+  b}\harvardyearright , `Spatial reasoning and data displays', {\em IEEE
+  Transactions on Visualization and Computer Graphics} {\bf 22}(1),~459--468.
+
+\harvarditem{VanderPlas \harvardand\ Hofmann}{2017}{vanderplas2017clusters}
+VanderPlas, S. \harvardand\ Hofmann, H.  \harvardyearleft 2017\harvardyearright
+  , `Clusters beat trend!? testing feature hierarchy in statistical graphics',
+  {\em Journal of Computational and Graphical Statistics} {\bf
+  26}(2),~231--242.
+
+\harvarditem{Wickham}{2011}{wickham2011ggplot2}
+Wickham, H.  \harvardyearleft 2011\harvardyearright , `ggplot2', {\em Wiley
+  Interdisciplinary Reviews: Computational Statistics} {\bf 3}(2),~180--185.
+
+\harvarditem{Wickham \harvardand\ Grolemund}{2016}{wickham2016r}
+Wickham, H. \harvardand\ Grolemund, G.  \harvardyearleft 2016\harvardyearright
+  , {\em R for data science: import, tidy, transform, visualize, and model
+  data}, "O'Reilly Media, Inc.", Sebastopol, CA.
+
+\harvarditem{Wilkinson}{2013}{wilkinson2013grammar}
+Wilkinson, L.  \harvardyearleft 2013\harvardyearright , {\em The grammar of
+  graphics}, Springer Science \& Business Media, New York, NY.
+
+\harvarditem{Wood}{2017}{mgcv_pkg}
+Wood, S.  \harvardyearleft 2017\harvardyearright , {\em Generalized Additive
+  Models: An Introduction with R}, 2 edn, Chapman and Hall/CRC, New York, NY.
+
+\end{thebibliography}

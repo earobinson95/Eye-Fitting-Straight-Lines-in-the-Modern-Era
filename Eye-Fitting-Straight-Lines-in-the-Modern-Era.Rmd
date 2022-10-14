@@ -6,7 +6,7 @@ blinded: 0
 
 authors: 
 - name: Emily A. Robinson 1
-  # thanks: The authors gratefully acknowledge ...
+  thanks: The authors report there are no competing interests to declare.
   affiliation: Department of Statistics, University of Nebraska - Lincoln
 
 - name: Reka Howard 2
@@ -14,7 +14,7 @@ authors:
   
 - name: Susan VanderPlas 3
   affiliation: Department of Statistics, University of Nebraska - Lincoln
-  
+
 keywords:
 - Cognitive Bias
 - Graph Perception
@@ -394,9 +394,9 @@ eyefitting.lmer.plot <- eyefitting.preds.lmer %>%
   dplyr::rename(`Parameter Choice` = parm_id) %>%
   ggplot(aes(x = x)) +
   geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), 
-            aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.2) +
+            aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.1) +
   geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), 
-            aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.2) +
+            aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.1) +
   geom_ribbon(aes(ymin = asymp.LCL.ols, ymax = asymp.UCL.ols, fill = "OLS"), color = NA, alpha = 0.4) +
   geom_line(aes(y = emmean.ols, color = "OLS")) +
   geom_ribbon(aes(ymin = asymp.LCL.pca, ymax = asymp.UCL.pca, fill = "PA"), color = NA, alpha = 0.4) +
@@ -456,8 +456,8 @@ eyefitting.gamm.plot <- eyefitting.grid.gamm %>%
   mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>%
   dplyr::rename(`Parameter Choice` = parm_id) %>%
   ggplot(aes(x = x)) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.2) +
-  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.2) +
+  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_ols_drawn, group = plot_id, color = "OLS"), alpha = 0.1) +
+  geom_line(data = eyefitting_model_data %>% mutate(parm_id = factor(parm_id, levels = c("S", "F", "V", "N"))) %>% dplyr::rename(`Parameter Choice` = parm_id), aes(x = x, y = residual_pca_drawn, group = plot_id, color = "PA"), alpha = 0.1) +
   geom_ribbon(aes(ymin = ols.lower, ymax = ols.upper, fill = "OLS"), color = NA, alpha = 0.4) +
   geom_line(aes(y = ols.pred, color = "OLS")) +
   geom_ribbon(aes(ymin = pca.lower, ymax = pca.upper, fill = "PA"), color = NA, alpha = 0.4) +
@@ -527,5 +527,5 @@ In the future, we intend to create an R package designed for easy implementation
 <!-- `eyefitting-model-data.csv` or may be downloaded from GitHub at  [https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/data).  -->
 + **Data Analysis Code:** The code used to replicate the analysis in this paper (you-draw-it-eyefitting-analysis.Rmd).
 <!-- or found at [https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/analysis/you-draw-it-eyefitting-analysis.Rmd](https://github.com/earobinson95/Eye-Fitting-Straight-Lines-in-the-Modern-Era/tree/main/supplementary-materials/you-draw-it-eyefitting-analysis.Rmd). -->
-+ **readme:** File containing detailed descriptions of the supplementary material (README.html).
++ **README:** File containing detailed descriptions of the supplementary material (README.html).
 
